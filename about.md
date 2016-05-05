@@ -1,11 +1,9 @@
 ---
 layout: page
-title: About
+title: ¿Por qué?
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+Este blog me sirve como cajón de sastre. Puedo así, almacenar y ordenar algunas de las operaciones que hago sobre mis maquinas [GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.en.html), el aprendizaje en redes y [sistemas de telecomunicación](http://coitt.es/) y de los experimentos relacionados con la [fabricación](http://portal.uned.es/portal/page?_pageid=93,1646862&_dad=portal), tanto artesanal como [digital](http://fabfoundation.org/).
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+A todos los demás que se muestran interesados, gracias por leerme y espero que les sea útil.

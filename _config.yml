@@ -1,12 +1,12 @@
 # Site settings
-title: Blog de Factores
-email: info@factores.es
-lema: Hacer y deshacer... todo es hacer.
-description: "Este blog me sirve como cajón de sastre. Puedo así, almacenar y ordenar algunas de las fechorías que le hago a mis ordenadores con GNU/Linux, el aprendizaje en redes y sistemas de telecomunicaciones y de los experimentos relacionados con la fabricación, tanto artesanal como digital."
+title: El blog
+email: info@telectric.es
+lema: Ingeniería, Instalaciones e Integración
+description: "Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio."
 baseurl: ""
 url: ""
-twitter_username: factores_es
-github_username:  factores
+#twitter_username: factores_es
+#github_username:  factores
 
 # Build settings
 markdown: kramdown
