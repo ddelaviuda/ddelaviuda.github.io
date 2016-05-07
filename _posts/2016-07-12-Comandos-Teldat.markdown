@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Router Telda 3G, comandos básicos" 
+title:  "Router Teldat 3G, comandos básicos" 
 date:   2016-07-12 18:39:22
 categories: 
 ---
