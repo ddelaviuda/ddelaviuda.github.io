@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>¿Cómo crear nuevas entradas con Jekyll?</title>
+    <title>XEN en Debian: Operaciones básicas</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.">
-    <link rel="canonical" href="/jekyll/update/2016/07/05/welcome-to-jekyll/">
+    <link rel="canonical" href="/sistemas/2016/07/12/Xen-en-Debian.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -20,7 +20,7 @@
 
   <div class="wrap">
 
-    <a class="site-title" href="/">El blog</a>
+    <a class="site-title" href="/">Jazzplat Grandes Cuentas</a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -36,11 +36,11 @@
       </a>
       <div class="trigger">
         
+          
+        
+          
+        
           <a class="page-link" href="/about/">¿Por qué?</a>
-        
-          
-        
-          
         
       </div>
     </nav>
@@ -59,24 +59,57 @@
       src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
     
-    <h1>¿Cómo crear nuevas entradas con Jekyll?</h1>
-    <p class="meta">Jul 5, 2016</p>
+    <h1>XEN en Debian: Operaciones básicas</h1>
+    <p class="meta">Jul 12, 2016</p>
   </header>
 
   <article class="post-content">
-  <p>You’ll find this post in your <code>_posts</code> directory - edit this post and re-build (or run with the <code>-w</code> switch) to see your changes!
-To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention: YYYY-MM-DD-name-of-post.ext.</p>
+  <h2 id="informacin-obtenidad-de-aquhttpwikixenprojectorgwikimainpage">Información obtenidad de <a href="http://wiki.xenproject.org/wiki/Main_Page">aquí</a>.</h2>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<p>Emplearemos la herramienta xl, la única disponible en la versión de Xen 4.5 y posteriores.
+Listado</p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">//Programa de ejemplo en C</span>
-<span class="n">include</span> <span class="o">&lt;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
+<p>Para mostrar las máquinas viturales que están activadas en XEN se usa el siguiente comando.</p>
 
-<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
-<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div>
+<div>
+  <pre><code class="bash">$ sudo xen list
+Name           ID   Mem VCPUs	State	Time(s)
+Domain-0            0  1012     4     r-----     216.7
+nombre1             1  1024     2     -b----      28.2
+nombre2             2  1024     2     -b----      72.4
+nombre3             4  1024     2     -b----       2.8</code></pre>
+</div>
 
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>.</p>
+<p>Creación</p>
+
+<p>Para crear una máquina virtual –en el ejemplo se usa direccionamiento estático y la distribución debian jessie– ejecutamos el comando siguiente:</p>
+
+<div>
+  <pre><code class="bash">sudo xen-create-image --hostname=nombre \
+  --size=8Gb --memory=1024Mb --swap 1024Mb \
+  --ip=10.0.0.2 \
+  --netmask=255.255.255.0 \
+  --gateway=10.0.0.1 \
+  --vcpus=2 \
+  --lvm=vg0 \
+  --pygrub \
+  --dist=jessie</code></pre>
+</div>
+
+<p>Al terminar la creación se genera texto con un resumen de la configuración de red y la contraseña root del sistema.
+Arranque</p>
+
+<p>El comando de creación del apartado anterior genera una archivo .cfg que debe ser invocado para cargar la máquina virtual creada. En el siguiente comando se muestra un ejemplo.</p>
+
+<div>
+  <pre><code class="bash">sudo xl create /path/archivo_generado.cfg</code></pre>
+</div>
+
+<p>Para que una máquina creada arranque al inicio con dom0 será necesario crear un enlace simbólico de su archivo de configuración al directorio /etc/xen/auto.</p>
+
+<div>
+  <pre><code class="bash">sudo ln -s /etc/xen/archivo_generado.cfg /etc/xen/auto/nombre_enlace.cfg</code></pre>
+</div>
 
 
   </article>
@@ -90,12 +123,12 @@ To add new posts, simply add a file in the <code>_posts</code> directory that fo
 
   <div class="wrap">
 
-    <h2 class="footer-heading">El blog</h2>
+    <h2 class="footer-heading">Jazzplat Grandes Cuentas</h2>
 
     <div class="footer-col-1 column">
       <ul>
         <li>Ingeniería, Instalaciones e Integración</li>
-        <li><a href="mailto:info@telectric.es">info@telectric.es</a></li>
+        <li><a href="mailto:"></a></li>
       </ul>
     </div>
 

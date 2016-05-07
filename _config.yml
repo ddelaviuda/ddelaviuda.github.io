@@ -1,6 +1,6 @@
 # Site settings
-title: El blog
-email: info@telectric.es
+title: Jazzplat Grandes Cuentas
+#email: info@telectric.es
 lema: Ingeniería, Instalaciones e Integración
 description: "Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio."
 baseurl: ""
@@ -10,6 +10,8 @@ url: ""
 
 # Build settings
 markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
 #redcarpet
 #kramdown
-permalink: pretty
+#permalink: pretty

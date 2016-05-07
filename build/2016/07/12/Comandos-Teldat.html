@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Router Telda 3G, comandos básicos</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.">
+    <link rel="canonical" href="/2016/07/12/Comandos-Teldat.html">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/">Jazzplat Grandes Cuentas</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          
+        
+          
+        
+          <a class="page-link" href="/about/">¿Por qué?</a>
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+    <h1>Router Telda 3G, comandos básicos</h1>
+    <p class="meta">Jul 12, 2016</p>
+  </header>
+
+  <article class="post-content">
+  <h2 id="acceso-inicial">Acceso inicial</h2>
+
+<p>El escenario que se va a suponer es un ordenador conectado a una de las interfaces del Router (IP 192.168.1.1).</p>
+
+<p>Desde la máquina linux ejecutamos <strong>telnet</strong>.</p>
+
+<div>
+  <pre><code class="C">telnet 192.168.1.1</code></pre>
+</div>
+
+<p>El router nos pedirá usuario y contraseña.</p>
+
+<div>
+  <pre><code class="C">User:usuario
+Password:***********</code></pre>
+</div>
+
+<p>Una vez que hemos accedido se nos mostrará el modelo del router y la versión de <em>software</em>, para finalmente disponer del <em>prompt</em> para introducir comandos.</p>
+
+<div>
+  <pre><code class="C">router *</code></pre>
+</div>
+
+<p>Pulsando ‘?’ veremos el las opciones disponibles.</p>
+
+<div>
+  <pre><code class="C">router *?
+  config            Edit configuration parameters, without altering the
+                    operation
+  flush             Clears all the messages stored up to that moment in the
+                    events buffer
+  intercept         Change the procedures escape character
+  load              Reload the program from the flash memory
+  logout            Ends the Telnet connection established with the device
+  monitor           Monitor the state of the system
+  process           Access to a different device procedure
+  restart           Restart the device
+  running-config    Edit configuration parameters, altering the operation
+  status            Displays the names and identifiers of each procedure
+  telnet            Do a telnet
+  vrf-telnet        Do a telnet from a secondary vrf</code></pre>
+</div>
+
+<p>Para cambiar el modo de operación podemos usar <em>process ?</em></p>
+
+<div>
+  <pre><code class="C">router *process ?
+  1    Starting point on booting a console session
+  2    Display events produced in the system
+  3    Monitor the state of the system
+  4    Edit configuration parameters, without altering the operation
+  5    Edit configuration parameters, altering the operation
+  6    Process information</code></pre>
+</div>
+
+<h2 id="modo-monitorizacin-process-3">Modo monitorización (<em>process 3</em>)</h2>
+
+<p>Para acceder al modo monitorización pulsamos </p>
+
+<div>
+  <pre><code class="C">router *process 3
+Console Operator
+router +</code></pre>
+</div>
+
+<p>El signo ‘+’ indica que hemos cambiado de modo de operación. Ahora obtendremos los comandos disponibles de un modo similar al anterior.</p>
+
+<div>
+  <pre><code class="C">router +?
+  buffer                 Packet buffers assigned to each interface
+  clear                  Clear network statistics
+  configuration          List status of current protocols and interfaces
+  device                 List statistics for the specified interface
+  error                  List error counters
+  event                  Event Logging System environment
+  feature                Access to monitoring commands for router features
+  last-config-changes    Display the last changes made in the configuration
+  log                    Dump log data
+  malloc-monitor         Malloc monitor information
+  memory                 Display memory, buffer and packet data
+  network                Enter the console environment of a specified network
+  node                   Enter the node monitoring environment
+  protocol               Enter the commands environment for a specified
+                         protocol
+  queue                  Display buffer statistics for a specified interface
+  quick                  Access the quick menu monitoring
+  statistics             Display statistics for a specified interface
+  system                 Permit monitoring of the systems memory and stacks
+  telephony              Monitoring environment for the telephony functions
+  uci                    Encryption statistics
+  web-probe              Access the Web poll monitoring</code></pre>
+</div>
+
+<p>Podemos empezar haciendo una prueba de ping para ello.</p>
+
+<div>
+  <pre><code class="C">router +ping
+IP destination []? 8.8.8.8
+IP source (192.168.1.1 suggested, 0.0.0.0 for dynamic) [0.0.0.0]? 0.0.0.0
+Number of data bytes[56]?
+Differentiated Services Field[0]?
+Time between pings(&gt;=10ms)[1000]?
+Number of pings[0]?
+Time out(&gt;=10ms)[0]?
+Avoid fragmentation[no](Yes/No)  [N]?</code></pre>
+</div>
+
+<p>Para cancelar el ping debemos pulsar intro o <strong>exit</strong> e intro desde otros modos.</p>
+
+<p>El comando <strong>device</strong> muestra los errores en las interfaces.</p>
+<div>
+  <pre><code class="C">router +device
+                                       Auto-test   Auto-test     Maintenance
+Interface               CSR    Vect      valids    failures        failures
+ethernet0/0               0       0           4           0               0
+cellular1/0               0       0           2           1               0
+cellular1/1               1       0           2           1               0
+ppp1                      0       0          11          10               0</code></pre>
+</div>
+
+<p>Es posible explorar más en profundiad una interfaz con <strong>network ‘interfaz’</strong></p>
+
+<div>
+  <pre><code class="C">router +network ethernet0/0
+router ethernet0/0 ETH+?
+  bdescs             List descriptors
+  bitrate            Bit rate monitor
+  clear              Clear information
+  counters           List device counters
+  dot1x              Access to 802.1X monitoring
+  dump               Dump internal stats
+  llc                Access to llc monitoring
+  oam                Ethernet OAM monitoring
+  repeater-switch    Access to switch monitoring
+  status             List interface status
+  exit</code></pre>
+</div>
+
+<p>Cada interfaz tiene distintas opciones.</p>
+
+<div>
+  <pre><code class="C">router +network cellular1/1
+router cellular1/1 AT+?
+  at-mode         Send AT commands directly to the module
+  bdescs          List descriptors
+  bitrate         Bit rate monitor
+  buffer          Display saved commands and answers
+  clear           Clear interface and module parameters
+  command         Send AT command to the module
+  dump            Dump internal stats
+  list            List interface and module parameters
+  power-module    Module power control
+  qmi             QMI options
+  sms             SMS menu
+  statistics      Interface statistics
+  exit</code></pre>
+</div>
+
+<p>Para ver la potencia en una conexión radio</p>
+<div>
+  <pre><code class="C">router cellular1/1 AT+network status
+Querying...Please wait...
+Registration state: Home network
+PLMN Public Land Mobile Network code: xxxxx
+PLMN Public Land Mobile Network name: operador
+Cell Location Area Code 0xXXXX (xxxx), Identification 0xXXXX (xxx)
+System Mode WCDMA, Service domain: PS
+Network technology currently in use: HSDPA/HSUPA
+Receive signal code power of the active set's strongest cells(RSCP):  -59 dBm
+Total energy per chip per power density value of set's strongest cells(EcIo):  -2.0 dB
+Last EcIo measured in WCDMA DATA mode:  -3.5 dB
+Primary Scrambling Code (PSC) 0xXXXX (xx)
+Operational status
+Current Time:  140100           Temperature: 40
+Bootup Time:   516              Mode:        ONLINE
+System mode:   WCDMA            PS state:    Attached
+WCDMA band:    IMT2000          GSM band:    Unknown
+WCDMA channel: 10713            GSM channel: 65535
+GMM (PS) state:REGISTERED       NORMAL SERVICE
+MM (CS) state: IDLE             NORMAL SERVICE
+
+WCDMA L1 State:L1M_PCH_SLEEP    RRC State:   DISCONNECTED
+
+RX level (dBm):-57
+Coverage level: 5 (*****)</code></pre>
+</div>
+
+<p><strong>Protocolo IP</strong>
+Accedemos mediante este comando.</p>
+
+<div>
+  <pre><code class="C">router +protocol ip</code></pre>
+</div>
+
+<p>Notese que cambia el <em>prompt</em>.</p>
+
+<div>
+  <pre><code class="C">router IP+?
+  access-controls        IP access control mode and configured access control
+                         records
+  aggregation-route      Configured aggregation routes
+  bping                  Broadcast ping
+  cache                  Cached routing table
+  counters               IP statistics
+  dump-routing-table     Routing table
+  interface-addresses    IP interface addresses
+  ipsec                  IPSec monitoring
+  nat                    NAT monitoring
+  ping                   Send ping queries to any other host
+  pool                   Address pool established in the router and ranges of
+                         addresses reserved
+  proxy-igmp             Proxy IGMP monitoring
+  route-given-address    Existing routes for a specific destination IP address
+  sizes                  Size of specific IP parameters
+  static-routes          Configured static routes
+  tcp-list               List of TCP connections
+  traceroute             Complete path to a particular destination
+  tvrp                   TVRP monitoring
+  udp-list               List of registered UDP ports
+  vrf                    IP monitoring in a VPN Routing/Forwarding instance
+  vrrp                   VRRP monitoring
+  exit</code></pre>
+</div>
+
+<p>El comando <strong>cache</strong> es similar a <strong>ip accounting</strong> de Cisco.</p>
+
+<div>
+  <pre><code class="C">router IP+cache ?
+
+Destination           Usage        Next hop
+ 
+207.46.193.115    98           207.46.193.115   (ppp1)
+160.46.253.107    147          160.46.253.107   (ppp1)
+50.22.210.154     3            50.22.210.154    (ppp1)
+10.96.223.22      4            10.96.223.22     (ethernet0/0)
+157.55.231.252    10           157.55.231.252   (ppp1)
+213.199.148.230   5            213.199.148.230  (ppp1)
+10.96.223.32      424          10.96.223.32     (ethernet0/0)
+10.96.223.50      75           10.96.223.50     (ethernet0/0)</code></pre>
+</div>
+
+<p>Para ver las IP de las interfaces ejecutamos los que sigue.</p>
+
+<div>
+  <pre><code class="C">router IP+interface-addresses
+Interface IP Addresses:
+-----------------------
+ethernet0/0        192.168.1.1/24
+ppp1               unnumbered - using global-address (1.1.1.1)
+
+Special IP Addresses:
+---------------------
+internal-address    0.0.0.0
+management-address  10.0.0.1
+router-id           0.0.0.0
+global-address      8.8.8.8</code></pre>
+</div>
+
+<p>Para mostrar la tabla de rutas.</p>
+
+<div>
+  <pre><code class="C">router IP+dump-routing-table
+Type                Dest net/Mask  Cost Age  Next hop(s)
+
+stat(1)[0]          0.0.0.0/0  [ 60/1 ] 0   ppp1
+sbnt(0)[0]         2.0.0.0/8  [240/1 ] 0   none
+ dir(0)[1]      1.0.0.1/32 [  0/1 ] 0   snk
+ dir(0)[1]      192.168.1.1/24 [  0/1 ] 0   ethernet0/0
+
+Default gateway in use.
+Type Cost Age  Next hop
+stat 1    0   ppp1
+
+Routing table size: 7 nets (728 bytes), 4 nets known, 4 shown</code></pre>
+</div>
+
+<p>Protocolo HSRP/TVRP</p>
+
+<div>
+  <pre><code class="C">router IP+tvrp
+router TVRP+list all
+
+              ===== Global TVRP Parameters =====
+
+  TVRP is currently: ENABLED
+  TVRP port (UDP):   1985
+  Virtual redirects: ENABLED
+  Unknown packets:   4
+  Authentication Failed packets:   0
+
+
+                ===== List of TVRP groups =====
+
+ +------------------------------------------------------------+
+ |                      TVRP GROUP:   1                       |
+ +------------------------------------------------------------+
+   Virtual IP:  192.168.1.3
+   Virtual MAC: 00-00-0c-07-ac-01
+   Current local IP/Interface: 192.168.1.1
+   ACTIVE Router:  192.168.1.1
+   STANDBY Router: 192.168.1.2
+   Hellotime: 3               Holdtime: 10
+   TVRP state:  STANDBY       Previous state:    SPEAK
+   Currently  RUNNING         Last event: HELO_EXP
+   Initial: 1           Learn: 0           Listen: 1
+   Speak: 2           Standby: 2           Active: 1
+     Hello messages --&gt;  sent:   46660,   received:   51616
+     Coup messages ---&gt;  sent:       0,   received:       2
+     Resign messages -&gt;  sent:       1,   received:       0</code></pre>
+</div>
+
+<p><strong>Protocolo ARP</strong></p>
+
+<p>De forma similar al protocolo IP.</p>
+
+<div>
+  <pre><code class="C">router +protocol arp
+router ARP+dump ethernet0/0
+
+ARP entries for IP protocol
+MAC address           IP address       Timeout(min)
+00-00-00-00-00-00     192.168.1.2      200</code></pre>
+</div>
+
+<h2 id="modo-configuracin">Modo configuración</h2>
+
+<p>Para salir de un modo de configuración previo pulsaremos <strong>Ctrl+p</strong></p>
+
+<div>
+  <pre><code class="C">router Config&gt;?
+  add                    Create a virtual interface
+  autoinstall            Set autoinstall parameters
+  backup-files           Perform backup router system files
+  banner                 Define a banner
+  config-media           Select the active storage device
+  confirm-cfg            Confirms current configuration
+  confirm-cfg-needed     Enables the need of configuration confirmation
+  copy                   Copies Running Configuration to Static Configuration
+  description            Configuration description
+  disable                Disable specific features
+  dump-command-errors    View command line errors
+  enable                 Enable specific features
+  event                  Record those events you wish to be stored
+  feature                Additional features of the router
+  file                   Access the files present in the device
+  firmware-checking      Enables cheching when firmware files are required
+  format                 Format a storage unit in the device
+  global-profiles        Defines the router PPP, ATM etc profiles
+  licence-change         Changes current licence
+  list                   Lists all kind of information
+  log-command-errors     Start logging command line errors
+  network                Access the commands menu to configure a specific
+                         interface
+  no                     Negate a command or set its defaults
+  node                   Access the X25 or XOT node configuration
+  privilege              Defines command privilege parameters
+  protocol               Access the configuration environment of a specific
+                         protocol
+  save                   Store the configuration in the active storage unit
+  set                    Configure various general parameters
+  strong-password        Enable strong password
+  telephony              Set VoIP telephony parameters
+  time                   Change and check the date and time
+  uci                    UCI configuration
+  unset-demo-licence     Disable demo licence and return to base licence
+  user                   Create a registered user
+  end                    Configuration end</code></pre>
+</div>
+
+<p>Para mostrar la configuración.</p>
+
+<div>
+  <pre><code class="C">router Config&gt;show config
+.
+.
+.</code></pre>
+</div>
+
+<p>Con esto termina la entrada de introducción.</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading">Jazzplat Grandes Cuentas</h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>Ingeniería, Instalaciones e Integración</li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

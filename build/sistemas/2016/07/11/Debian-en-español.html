@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>¿Cómo crear nuevas entradas con Jekyll?</title>
+    <title>Cambiar idioma a Castellano en Debian</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.">
-    <link rel="canonical" href="/jekyll/update/2016/07/05/welcome-to-jekyll/">
+    <link rel="canonical" href="/sistemas/2016/07/11/Debian-en-espa%C3%B1ol.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -20,7 +20,7 @@
 
   <div class="wrap">
 
-    <a class="site-title" href="/">El blog</a>
+    <a class="site-title" href="/">Jazzplat Grandes Cuentas</a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -36,11 +36,11 @@
       </a>
       <div class="trigger">
         
+          
+        
+          
+        
           <a class="page-link" href="/about/">¿Por qué?</a>
-        
-          
-        
-          
         
       </div>
     </nav>
@@ -59,24 +59,26 @@
       src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
     
-    <h1>¿Cómo crear nuevas entradas con Jekyll?</h1>
-    <p class="meta">Jul 5, 2016</p>
+    <h1>Cambiar idioma a Castellano en Debian</h1>
+    <p class="meta">Jul 11, 2016</p>
   </header>
 
   <article class="post-content">
-  <p>You’ll find this post in your <code>_posts</code> directory - edit this post and re-build (or run with the <code>-w</code> switch) to see your changes!
-To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention: YYYY-MM-DD-name-of-post.ext.</p>
+  <p>Ejecutamos el programa <em>dpkg</em></p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<div>
+  <pre><code class="bash">dpkg-reconfigure locales</code></pre>
+</div>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">//Programa de ejemplo en C</span>
-<span class="n">include</span> <span class="o">&lt;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;</span>
+<p>De entre las opciones presentadas optamos por selecionar es_ES.UTF-8</p>
 
-<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
-<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div>
+<p>Para comprobar que todo funciona correctamente ejecutamos.</p>
 
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>.</p>
+<div>
+  <pre><code class="bash">env | grep LANG</code></pre>
+</div>
+
+<p>Hecho.</p>
 
 
   </article>
@@ -90,12 +92,12 @@ To add new posts, simply add a file in the <code>_posts</code> directory that fo
 
   <div class="wrap">
 
-    <h2 class="footer-heading">El blog</h2>
+    <h2 class="footer-heading">Jazzplat Grandes Cuentas</h2>
 
     <div class="footer-col-1 column">
       <ul>
         <li>Ingeniería, Instalaciones e Integración</li>
-        <li><a href="mailto:info@telectric.es">info@telectric.es</a></li>
+        <li><a href="mailto:"></a></li>
       </ul>
     </div>
 
