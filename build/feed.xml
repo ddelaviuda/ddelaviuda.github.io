@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jazzplat Grandes Cuentas</title>
+    <title>Redes y Sistemas</title>
     <description>Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>2016-05-07 02:42:51 +0000</pubDate>
-    <lastBuildDate>2016-05-07 02:42:51 +0000</lastBuildDate>
+    <pubDate>2016-05-07 16:40:37 +0000</pubDate>
+    <lastBuildDate>2016-05-07 16:40:37 +0000</lastBuildDate>
     <generator>Jekyll v</generator>
     
       <item>
@@ -69,7 +69,7 @@ Arranque&lt;/p&gt;
       </item>
     
       <item>
-        <title>Router Telda 3G, comandos básicos</title>
+        <title>Router Teldat 3G, comandos básicos</title>
         <description>&lt;h2 id=&quot;acceso-inicial&quot;&gt;Acceso inicial&lt;/h2&gt;
 
 &lt;p&gt;El escenario que se va a suponer es un ordenador conectado a una de las interfaces del Router (IP 192.168.1.1).&lt;/p&gt;
