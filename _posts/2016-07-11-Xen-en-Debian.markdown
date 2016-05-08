@@ -39,13 +39,13 @@ sudo xen-create-image --hostname=nombre \
 Al terminar la creación se genera texto con un resumen de la configuración de red y la contraseña root del sistema.
 Arranque
 
-El comando de creación del apartado anterior genera una archivo .cfg que debe ser invocado para cargar la máquina virtual creada. En el siguiente comando se muestra un ejemplo.
+El comando de creación del apartado anterior genera una archivo `.cfg` que debe ser invocado para cargar la máquina virtual creada. En el siguiente comando se muestra un ejemplo.
 
 {% highlight bash %}
 sudo xl create /path/archivo_generado.cfg
 {% endhighlight %}
 
-Para que una máquina creada arranque al inicio con dom0 será necesario crear un enlace simbólico de su archivo de configuración al directorio /etc/xen/auto.
+Para que una máquina creada arranque al inicio con dom0 será necesario crear un enlace simbólico de su archivo de configuración al directorio `/etc/xen/auto`.
 
 {% highlight bash %}
 sudo ln -s /etc/xen/archivo_generado.cfg /etc/xen/auto/nombre_enlace.cfg
