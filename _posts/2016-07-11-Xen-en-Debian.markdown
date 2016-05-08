@@ -3,6 +3,7 @@ layout: post
 title:  "XEN en Debian: Operaciones básicas"
 date:   2016-07-12 18:39:22
 categories: sistemas
+comments: true
 ---
 Información obtenidad de [aquí](http://wiki.xenproject.org/wiki/Main_Page).
 ------------------------------
