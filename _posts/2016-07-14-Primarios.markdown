@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Primarios"
+title:  "Primarios de voz"
 date:   2016-07-14 10:39:22
 categories: redes
 ---
