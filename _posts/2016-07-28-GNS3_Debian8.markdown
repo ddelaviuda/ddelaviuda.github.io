@@ -1,0 +1,106 @@
+---
+layout: post
+title:  "Instalación de GNS3 en Debian 8"
+date:   2016-07-28 10:39:22
+categories: redes
+comments: true
+---
+
+[Instrucciones en inglés](https://gns3.com/support/docs/installing-gns3-1-4-on-ubuntu-li)
+
+Instalación de dependencias
+---------------------------
+
+*Dependencias de GNS3*
+
+Para ello ejecutamos el comando `apt-get`.
+
+{% highlight bash %}
+sudo apt-get update 
+{% endhighlight %}
+y
+
+{% highlight bash %}
+sudo apt-get install python3-dev
+sudo apt-get install python3-setuptools
+sudo apt-get install python3-pyqt5
+sudo apt-get install python3-pyqt5.qtsvg
+sudo apt-get install python3-pyqt5.qtwebkit
+sudo apt‐get install python3‐ws4py
+sudo apt‐get install python3‐netifaces
+sudo apt-get install python3-pip
+{% endhighlight %}
+
+
+*Dependencias de Dynamips*
+
+{% highlight bash %}
+sudo apt-get install cmake
+sudo apt‐get install uuid‐dev
+sudo apt‐get install libelf‐dev
+sudo apt‐get install libpcap‐dev
+{% endhighlight %}
+
+Compilamos Dynamips
+-------------------
+
+**Primero descargamos las fuentes**
+
+Las fuentes de GNS3 estan en *github*, este servidor utiliza git por lo tanto lo primero que vamos a hacer es instalar *git*.
+
+{% highlight bash %}
+sudo apt-get install git
+{% endhighlight %}
+
+Ahora que ya tenemos *git* creamos un directorio que nos guste.
+
+{% highlight bash %}
+mkdir -p ~/git/
+{% endhighlight %}
+Y nos situamos en él
+{% highlight bash %}
+cd ~/git/
+{% endhighlight %}
+
+Y descargamos las fuentes
+{% highlight bash %}
+git clone https://github.com/GNS3/dynamips
+{% endhighlight %}
+
+**Ahora compilamos**
+
+Dentro del directorio dynamips, mediante `cd ~/git/dynamips` ejecutamos lo siguiente.
+
+{% highlight bash %}
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+sudo setcap cap_net_admin,cap_net_raw=ep /usr/local/bin/dynamips
+{% endhighlight %}
+
+
+Compilamos GNS3
+---------------
+
+**Descargamos las fuentes**
+
+Nos situamos en direcctorio seleccionado anteriormente.
+{% highlight bash %}
+cd ~/git/
+{% endhighlight %}
+
+Y descargamos las fuentes
+{% highlight bash %}
+git clone https://github.com/GNS3/gns3-gui
+{% endhighlight %}
+
+
+**Compilamos**
+
+Aquí *GNS3* nos brinda un guión en **python** que podemos aprovechar ejecutándolo una vez accedido al mismo mediante `cd ~/git/gns3`.
+
+{% highlight bash %}
+sudo python3 setup.py install
+{% endhighlight %}
