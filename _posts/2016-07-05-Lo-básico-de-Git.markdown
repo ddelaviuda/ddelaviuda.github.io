@@ -64,8 +64,6 @@ Si se han hecho cambios en el repositorio remoto que ahora queremos tener ejectu
 {% highlight bash %}
 git pull origin master
 {% endhighlight %}
-Gestión de las diferencias
-
 **Clonar**
 
 Si queremos copiar e iniciar un repositorio remoto podemos ejecutar el siguiente comando.
@@ -74,7 +72,7 @@ Si queremos copiar e iniciar un repositorio remoto podemos ejecutar el siguiente
 git clone https://github.com/usuario/nombre_repositorio
 {% endhighlight %}
 
-
+Gestión de las diferencias
 --------------------------
 ¿Queremos saber la diferencia entre el repositorio remoto y nuestro último commit? Ejecutamos
 {% highlight bash %}
