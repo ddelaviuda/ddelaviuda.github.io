@@ -206,7 +206,7 @@ gns3
 Actualizaciones
 ---------------
 
-Ejecutar los comandos siguientes con la versión seguida del igual/=.
+Ejecutar los comandos siguientes con la versión antecedida por el igual/=.
 
 {% highlight bash %}
 sudo pip3 install gns3-gui==1.4.5

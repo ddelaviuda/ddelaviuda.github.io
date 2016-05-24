@@ -1,8 +1,8 @@
 # Site settings
-title: "Telectric | Blog de Redes y Sistemas"
+title: "Telectric | Blog de tecnología"
 #email: info@telectric.es
 lema: Ingeniería, Instalaciones e Integración
-description: "Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio."
+description: "Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores junto con unos experimentados Instaladores autorizados, todos a su servicio."
 baseurl: ""
 url: ""
 twitter_username: telectric_es
