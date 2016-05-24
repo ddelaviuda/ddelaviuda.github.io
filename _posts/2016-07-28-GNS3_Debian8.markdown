@@ -11,7 +11,7 @@ comments: true
 Instalación de dependencias
 ---------------------------
 
-*Dependencias de GNS3*
+**Dependencias de GNS3**
 
 Para ello ejecutamos el comando `apt-get`.
 
@@ -32,7 +32,7 @@ sudo apt-get install python3-pip
 {% endhighlight %}
 
 
-*Dependencias de Dynamips*
+**Dependencias de Dynamips**
 
 {% highlight bash %}
 sudo apt-get install cmake
@@ -41,8 +41,8 @@ sudo apt‐get install libelf‐dev
 sudo apt‐get install libpcap‐dev
 {% endhighlight %}
 
-Compilamos Dynamips
--------------------
+Compilado de Dynamips
+---------------------
 
 **Primero descargamos las fuentes**
 
@@ -81,8 +81,8 @@ sudo setcap cap_net_admin,cap_net_raw=ep /usr/local/bin/dynamips
 {% endhighlight %}
 
 
-Compilamos GNS3
----------------
+Compilado de GNS3
+-----------------
 
 **Descargamos las fuentes**
 
@@ -104,3 +104,112 @@ Aquí *GNS3* nos brinda un guión en **python** que podemos aprovechar ejecután
 {% highlight bash %}
 sudo python3 setup.py install
 {% endhighlight %}
+
+Instalación de GNS3-server
+--------------------------
+
+Ejecutamos los siguiente.
+
+{% highlight bash %}
+cd ~/git/
+git clone https://github.com/GNS3/gns3-server
+cd gns3-server
+sudo apt-get install python3-setuptools
+{% endhighlight %}
+
+
+Instalación de complementos para IOS e IOU
+-------------------------------------------
+
+Habilitamos la arquitectura de 32 bit en Debian si instalamos el sistema de 64 bit.
+
+{% highlight bash %}
+sudo dpkg --add-architecture i386
+sudo apt-get update
+{% endhighlight %}
+
+Ahora es tiempo de instalar los complementos.
+
+{% highlight bash %}
+sudo apt-get install libssl1.0.0:i386
+sudo ln -s /lib/i386-linux-gnu/libcrypto.so.1.0.0 /lib/libcrypto.so.4
+sudo apt-get install bison
+sudo apt-get install flex
+{% endhighlight %}
+
+Y ahora instalamos unas librerias que residen en **github**.
+
+{% highlight bash %}
+cd ~/git/
+git clone http://github.com/ndevilla/iniparser.git
+cd iniparser
+make
+sudo cp libiniparser.* /usr/lib/
+sudo cp src/iniparser.h /usr/local/include
+sudo cp src/dictionary.h /usr/local/include
+{% endhighlight %}
+
+Compilado e instalación de IOUYAP
+---------------------------------
+
+{% highlight bash %}
+cd ~/git/
+git clone https://github.com/GNS3/iouyap
+cd iouyap
+sudo make install
+{% endhighlight %}
+
+Opcionalmente instalaremos Ubridge
+----------------------------------
+
+{% highlight bash %}
+sudo apt-get install libpcap-dev
+cd ~/git/
+git clone https://github.com/GNS3/ubridge
+cd ubridge
+make
+sudo make install
+{% endhighlight %}
+
+Y VPCS
+------
+
+{% highlight bash %}
+cd ~/git/
+git clone https://github.com/GNS3/vpcs
+cd vpcs/src
+./mk.sh
+sudo cp vpcs /usr/local/bin/
+{% endhighlight %}
+
+Instalación de complementos: Cpulimit, Virtualbox, QEMU y Wireshark
+-------------------------------------------------------------------
+
+Lo que equivale a hacer.
+
+{% highlight bash %}
+sudo apt-get install cpulimit
+sudo apt-get install virtualbox
+sudo apt-get install qemu
+sudo apt-get install wireshark
+{% endhighlight %}
+
+Inicio de GNS3
+--------------
+
+Ejecutamos desde el terminal.
+
+{% highlight bash %}
+gns3
+{% endhighlight %}
+
+Actualizaciones
+---------------
+
+Ejecutar los comandos siguientes con la versión seguida del igual/=.
+
+{% highlight bash %}
+sudo pip3 install gns3-gui==1.4.5
+sudo pip3 install gns3-server==1.4.5
+{% endhighlight %}
+
