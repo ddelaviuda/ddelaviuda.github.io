@@ -18,13 +18,13 @@ Instalamos el complilador de C.
 
 {% highlight bash %}
 sudo apt-get install gcc
-{% highlight bash %}
+{% endhighlight %}
 
 Y las cabeceras del núcleo.
 
 {% highlight bash %}
 sudo apt-get install linux-headers-$(uname -r)
-{% highlight bash %}
+{% endhighlight %}
 
 Instalación
 -----------
@@ -40,7 +40,6 @@ Despúes, mandamos a `sh` que ejecute el *bundle*.
 {% highlight bash %}
 sudo ./VMware-Player-12.1.1-3770994.x86_64.bundle
 {% endhighlight %}
-
 
 En el menú del sistema buscamos VMWARE para ejecutar el programa.
 
