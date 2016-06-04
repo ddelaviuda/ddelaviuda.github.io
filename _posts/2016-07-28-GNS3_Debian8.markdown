@@ -115,6 +115,9 @@ cd ~/git/
 git clone https://github.com/GNS3/gns3-server
 cd gns3-server
 sudo apt-get install python3-setuptools
+cd gns3-server-master
+sudo python3 setup.py install
+gns3server
 {% endhighlight %}
 
 

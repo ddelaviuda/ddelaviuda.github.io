@@ -36,7 +36,7 @@ chmod +x VMware-Player-12.1.1-3770994.x86_64.bundle
 {% endhighlight %}
 
 
-Despúes, mandamos a `sh` que ejecute el *bundle*.
+Despúes ejecutamos el *bundle*.
 {% highlight bash %}
 sudo ./VMware-Player-12.1.1-3770994.x86_64.bundle
 {% endhighlight %}
