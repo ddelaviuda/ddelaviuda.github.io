@@ -2,7 +2,7 @@
 title: Blog de Factores
 email: info@factores.es
 description: "Este blog me sirve como cajón de saster. Puedo así, recopilar y ordenar algunas de las fechorías que le hago a mis distribuciones GNU/Linux, el aprendizaje en redes de telecomunicaciones y experimentos relacionados con la fabricación, tanto artesanal como digital."
-baseurl: "blog.factores.es"
+baseurl: "/"
 url: "http://blog.factores.es"
 twitter_username: factores_es
 github_username:  factores
