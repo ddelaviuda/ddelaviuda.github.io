@@ -51,7 +51,7 @@ git remote add origin https://github.com/usuario/nombre_repositorio
 
 Para actualizar el repositorio remoto usamos push tal y como sigue ---la opción -u es para que git recuerde los parámetros y usando git push git añada origin y master, más sobre master después---. Es necesario que el directorio remoto no tenga nada en él, de otro modo el comando dará un error.
 {% highlight sh %}
-git push -u origin master
+$ git push -u origin master
 {% endhighlight %}
 Bajar
 
