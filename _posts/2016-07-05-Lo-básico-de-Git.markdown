@@ -7,7 +7,8 @@ categories: Git GitHub
 
 Hoja de referencia rápida
 
-###Instalación de Git
+Instalación de Git
+------------------
 
 {% highlight bash %}sudo apt-get install git{% endhighlight %}
 
