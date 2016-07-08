@@ -5,7 +5,7 @@ date:   2016-07-05 18:39:22
 categories: Git GitHub
 ---
 
-Hoja de referencia rápida
+[Hoja de referencia rápida][referencia]
 
 Instalación de Git
 ------------------
@@ -13,16 +13,15 @@ Instalación de Git
 {% highlight bash %}sudo apt-get install git{% endhighlight %}
 
 Iniciar repositorio Git
+-----------------------
 
 Nos situamos en el directorio de nuestra elección.
 
 {% highlight bash %}cd /path{% endhighlight %}
 
-
-
 Y iniciamos el repositorio, este creará un directorio .git
 
-git init
+{% highlight bash %}git init{% endhighlight %}
 
 Adición de archivos/directorios al repositorio
 
@@ -135,3 +134,4 @@ Check out the [Jekyll docs][jekyll] for more info on how to get the most out of 
 
 [jekyll-gh]: https://github.com/jekyll/jekyll
 [jekyll]:    http://jekyllrb.com
+[referencia]: https://services.github.com/kit/downloads/es_ES/github-git-cheat-sheet.pdf
