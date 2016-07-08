@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Your awesome title</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 07 Jul 2016 20:52:05 +0200</pubDate>
-    <lastBuildDate>Thu, 07 Jul 2016 20:52:05 +0200</lastBuildDate>
+    <title>Blog de Factores</title>
+    <description>Este blog me sirve como cajón de saster. Puedo así, recopilar y ordenar algunas de las fechorías que le hago a mis distribuciones GNU/Linux, el aprendizaje en redes de telecomunicaciones y experimentos relacionados con la fabricación, tanto artesanal como digital.</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 08 Jul 2016 16:43:31 +0200</pubDate>
+    <lastBuildDate>Fri, 08 Jul 2016 16:43:31 +0200</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
@@ -16,23 +16,151 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Programa de ejemplo en C&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Hello world!&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 05 Jul 2016 20:39:22 +0200</pubDate>
-        <link>http://yourdomain.com/jekyll/update/2016/07/05/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2016/07/05/welcome-to-jekyll/</guid>
+        <link>/jekyll/update/2016/07/05/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">/jekyll/update/2016/07/05/welcome-to-jekyll/</guid>
         
         
         <category>jekyll</category>
         
         <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Lo básico de Git y GitHub</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://services.github.com/kit/downloads/es_ES/github-git-cheat-sheet.pdf&quot;&gt;Hoja de referencia rápida&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;instalacin-de-git&quot;&gt;Instalación de Git&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo apt-get install git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;iniciar-repositorio-git&quot;&gt;Iniciar repositorio Git&lt;/h2&gt;
+
+&lt;p&gt;Nos situamos en el directorio de nuestra elección.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /path&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y iniciamos el repositorio, este creará un directorio .git&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;adicin-de-archivosdirectorios-al-repositorio&quot;&gt;Adición de archivos/directorios al repositorio&lt;/h2&gt;
+&lt;p&gt;Cuando está creado el repositorio podemos ejecutar desde el directorio el comando git status, que nos mostrará todos los archivos que están en él y que no han sido añadidos al repositorio —más sobre esto después—. Podemos probara a ejecutarlo vacío y tras haber añadido un fichero de prueba, git nos indicará que el fichero no está en el repositorio.&lt;/p&gt;
+
+&lt;p&gt;Ejecutando el siguiente comando veremos como el fichero de prueba.txt se al seguimiento del repositorio, todavía no está incluido en él.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git add prueba.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Se pueden añadir varios archivos con el comodín * si usamos ‘’.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git add &lt;span class=&quot;s1&quot;&gt;&amp;#39;*.txt&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si ejecutasemos después git status git indicará que el repositorio está al día —siempre que prueba.txt fuese el único archivo en el directorio—.&lt;/p&gt;
+
+&lt;p&gt;El fichero prueba.txt todavía sólo está en observación, si queremos añadir –cometer– todos los ficheros en observación al respositorio ejecutamos el siguiente comando —la opción -m permite añadir un comentario, es recomendable—.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git commit -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;comentario sobre la comisión&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si queremos eliminar de observación (stage) un archivo añadido antes de una comisión ejecutamos.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git reset HEAD prueba.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;repositorios-remotos-github&quot;&gt;Repositorios remotos (GitHub)&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Subir&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Para guardar nuestro repositorio en remoto y hacer comisiones contra él será necesario darle un nombre y asociarle una URL, el repositorio de GitHub es muy práctico para ello. Se suele usar origin como nombre para el repositorio remoto.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git remote add origin https://github.com/usuario/nombre_repositorio&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para actualizar el repositorio remoto usamos push tal y como sigue —la opción -u es para que git recuerde los parámetros y usando git push git añada origin y master, más sobre master después—. Es necesario que el directorio remoto no tenga nada en él, de otro modo el comando dará un error.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git push -u origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Bajar&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Si se han hecho cambios en el repositorio remoto que ahora queremos tener ejectuamos&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git pull origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;gestin-de-las-diferencias&quot;&gt;Gestión de las diferencias&lt;/h2&gt;
+&lt;p&gt;¿Queremos saber la diferencia entre el repositorio remoto y nuestro último commit? Ejecutamos&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git diff HEAD&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Restaurar&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Si una vez modificado un archivo deseamos que este se recupere a su estado en la última comisión ejecutamos el siguiente comando indicando el nombre del archivo a recuperar.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git checkout -- octocat.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Ramas&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Si queremos trabajar en una “versión” diferente del proyecto crearemos una rama para modificarla libremente —en el ejemplo llamamos a la rama borrador—.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git branch borrador&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Para pasar a utilizar la nueva rama ejecutamos.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git checkout borrador&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si queremos enumerar las ramas disponibles ejecutamos&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git branch -a&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;En la nueva rama podremos hacer varias modificaciones, por ejemplo borrar archivos en el directorio y en la rama.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git rm &lt;span class=&quot;s1&quot;&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Una vez borrado, y para que esto se traslade al repositorio, ejecutamos.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git commit -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;Borrado de archivos&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si queremos que los cambios en una rama se materialicen en la maestra (master) haremos lo que sigue:&lt;/p&gt;
+
+&lt;p&gt;Accedemos a la rama maestra.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git checkout master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Y unimos la rama alternativa —llamada borrador en el ejemplo— a la maestra.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git merge borrador&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si queremos eliminar la rama alternativa —llamada borrador— suponiendo que no sea necesaria.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git branch -d borrador&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Respaldo remoto&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Si queremos sincronizar el repositorio local con un repositorio remoto ejecutamos el proceso en dos pasos.&lt;/p&gt;
+
+&lt;p&gt;Búsqueda…&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git fetch origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;… y respaldo.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git reset --hard origin/master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 05 Jul 2016 20:39:22 +0200</pubDate>
+        <link>/git/github/2016/07/05/Lo-b%C3%A1sico-de-Git/</link>
+        <guid isPermaLink="true">/git/github/2016/07/05/Lo-b%C3%A1sico-de-Git/</guid>
+        
+        
+        <category>git</category>
+        
+        <category>github</category>
         
       </item>
     
