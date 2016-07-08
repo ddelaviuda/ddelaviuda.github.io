@@ -48,7 +48,7 @@ git reset HEAD prueba.txt
 {% endhighlight %}
 Repositorios remotos (GitHub)
 -----------------------------
-Subir
+**Subir**
 
 Para guardar nuestro repositorio en remoto y hacer comisiones contra él será necesario darle un nombre y asociarle una URL, el repositorio de GitHub es muy práctico para ello. Se suele usar origin como nombre para el repositorio remoto.
 {% highlight bash %}
@@ -58,7 +58,7 @@ Para actualizar el repositorio remoto usamos push tal y como sigue ---la opción
 {% highlight bash %}
 git push -u origin master
 {% endhighlight %}
-Bajar
+**Bajar**
 
 Si se han hecho cambios en el repositorio remoto que ahora queremos tener ejectuamos
 {% highlight bash %}
@@ -70,13 +70,13 @@ Gestión de las diferencias
 {% highlight bash %}
 git diff HEAD
 {% endhighlight %}
-Restaurar
+**Restaurar**
 
 Si una vez modificado un archivo deseamos que este se recupere a su estado en la última comisión ejecutamos el siguiente comando indicando el nombre del archivo a recuperar.
 {% highlight bash %}
 git checkout -- octocat.txt
 {% endhighlight %}
-Ramas
+**Ramas**
 
 Si queremos trabajar en una "versión" diferente del proyecto crearemos una rama para modificarla libremente ---en el ejemplo llamamos a la rama borrador---.
 {% highlight bash %}
@@ -98,7 +98,7 @@ Una vez borrado, y para que esto se traslade al repositorio, ejecutamos.
 {% highlight bash %}
 git commit -m "Borrado de archivos"
 {% endhighlight %}
-Si queremos que los cambios en una rama se materialicen en la maestra (master) haremos lo que sigue
+Si queremos que los cambios en una rama se materialicen en la maestra (master) haremos lo que sigue:
 
 Accedemos a la rama maestra.
 {% highlight bash %}
@@ -112,7 +112,7 @@ Si queremos eliminar la rama alternativa ---llamada borrador--- suponiendo que n
 {% highlight bash %}
 git branch -d borrador
 {% endhighlight %}
-Respaldo remoto
+**Respaldo remoto**
 
 Si queremos sincronizar el repositorio local con un repositorio remoto ejecutamos el proceso en dos pasos.
 
@@ -124,16 +124,5 @@ git fetch origin master
 {% highlight bash %}
 git reset --hard origin/master
 {% endhighlight %}
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
 
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
-
-[jekyll-gh]: https://github.com/jekyll/jekyll
-[jekyll]:    http://jekyllrb.com
 [referencia]: https://services.github.com/kit/downloads/es_ES/github-git-cheat-sheet.pdf
