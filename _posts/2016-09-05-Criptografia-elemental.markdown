@@ -13,7 +13,7 @@ E=KxM→C
 
 D=KxC→M
 
-Además, debe cumplirse que: \forall \,m \in M, k\in K: D(k,E(k,m))=m
+Además, debe cumplirse que: ![codigo](/_image/definicion_codigo_cripto.png) \forall \,m \in M, k\in K: D(k,E(k,m))=m
 
 [Hoja de referencia rápida][referencia]
 
