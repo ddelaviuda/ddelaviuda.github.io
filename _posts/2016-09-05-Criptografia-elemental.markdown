@@ -8,8 +8,8 @@ Definición de código criptográfico
 ----------------------------------
 
 Un código definido en K, M y C con un par de de algoritmos eficientes* (E,D) donde:
-E=KxM-->C
-D=KxC-->M
+E=KxM→C
+D=KxC→M
 
 [Hoja de referencia rápida][referencia]
 
