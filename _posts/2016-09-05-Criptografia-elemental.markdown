@@ -31,6 +31,8 @@ El algoritmo de cifrado y de descifrado es la operación o-exclusiva (XOR).
 
 c=k⊕m y m=k⊕c
 
+\frac{\delta E_{x}}{\delta t} = \frac{\delta f(z-ct)}{\delta t} = f^{\prime}(z - ct)\Big(\frac{\delta(z-ct)}{\delta t}\Big) = -c*f^{\prime}(z - ct)
+
 Teoría de la seguridad en la información (Shanon 1949)
 ------------------------------------------------------
 
