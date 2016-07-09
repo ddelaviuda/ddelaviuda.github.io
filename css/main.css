@@ -408,3 +408,4 @@ a:visited { color: #205caa; }
     margin: 0 0 15px; }
 
 }
+code.has-jax {font: inherit; font-size: 100%; background: inherit; border: inherit;}
