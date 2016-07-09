@@ -18,3 +18,11 @@ Además, debe cumplirse que: ![codigo]({{ site.url }}/_image/definicion_codigo_c
 *Eficiente aquí se refiere a que la ejecución de estos algoritmos debe producirse en tiempo polinomial.
 
 El algoritmo E puede tener una componente aleatoria en su salida pero el algoritmo D siempre es determinista.
+
+Algunos ejemplos
+----------------
+*Libreta de un sólo uso* **one time pad** 
+
+M={0,1}n, K={0,1}n y C={0,1}n
+
+C=K xor M
