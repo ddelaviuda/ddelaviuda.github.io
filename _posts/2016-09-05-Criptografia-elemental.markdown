@@ -13,7 +13,7 @@ E=KxM→C
 
 D=KxC→M
 
-Además, debe cumplirse que: ![codigo](http://mathurl.com/render.cgi?%5Cforall%20%5C%2Cm%20%5Cin%20M%2C%20k%5Cin%20K%3A%20D%28k%2CE%28k%2Cm%29%29%3Dm%5Cnocache)
+Además, debe cumplirse que: \forall \,m \in M, k\in K: D(k,E(k,m))=m
 
 [Hoja de referencia rápida][referencia]
 
