@@ -8,7 +8,7 @@ twitter_username: factores_es
 github_username:  factores
 
 # Build settings
-markdown: redcarpet
+markdown: kramdown
 #redcarpet
 #kramdown
 permalink: pretty
