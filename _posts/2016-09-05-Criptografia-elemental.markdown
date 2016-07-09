@@ -19,11 +19,13 @@ Además, debe cumplirse que: ![codigo]({{ site.url }}/_image/definicion_codigo_c
 
 El algoritmo E puede tener una componente aleatoria en su salida pero el algoritmo D siempre es determinista.
 
-Algunos ejemplos
-----------------
-**Libreta de un sólo uso** *one time pad*
+Ejemplo característico: Libreta de un sólo uso (*one time pad*)
+---------------------------------------------------------------
+El "tamaño" del mensaje m, la clave k y el cifrado c son iguales a n.
 
-M={0,1}n, K={0,1}n y C={0,1}n
+M={0,1}^n, K={0,1}^n y C={0,1}^n
+
+El algoritmo de cifrado y de descifrado es la operación o-exclusiva.
 
 C=K(xor)M; M=K(xor)C 
 
