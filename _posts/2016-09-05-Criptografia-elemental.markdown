@@ -38,7 +38,7 @@ longitud(m_0)=longitud(m_1)
 P(E(k,m_0)=c)=P(E(k,m_1))
 k es uniforme en el espacio K, esto es k \xleftarrow{R} K
 
-Teorema: Para que un código posea ´secreto perfecto’
+Teorema: Para que un código posea "secreto perfecto"
 ----------------------------------------------------
 \mid k\mid\geq \mid K\mid
 
