@@ -1,7 +1,7 @@
 # Site settings
 title: Blog de Factores
 email: info@factores.es
-description: "Este blog me sirve como cajón de sastre. Puedo así, recopilar y ordenar algunas de las fechorías que le hago a mis distribuciones GNU/Linux, el aprendizaje en redes de telecomunicaciones y experimentos relacionados con la fabricación, tanto artesanal como digital."
+description: "Este blog me sirve como cajón de sastre. Puedo así, almacenar y ordenar algunas de las fechorías que le hago a mis ordenadores con GNU/Linux, el aprendizaje en redes y sistemas de telecomunicaciones y de los experimentos relacionados con la fabricación, tanto artesanal como digital."
 baseurl: ""
 url: ""
 twitter_username: factores_es
