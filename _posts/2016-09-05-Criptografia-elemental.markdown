@@ -31,13 +31,16 @@ Teoría de la seguridad en la información (Shanon 1949)
 ------------------------------------------------------
 
 La idea intuitiva es que c no debe revelar información sobre m. Sin embargo la definición formal es más compleja como se verá a continuación.
+
 Un código de cifrado tiene **secreto perfecto** si:
 \forall \,m_0,m_1\, con\, y\,\forall c\in C
 longitud(m_0)=longitud(m_1)
 P(E(k,m_0)=c)=P(E(k,m_1))
 k es uniforme en el espacio K, esto es k \xleftarrow{R} K
+
 Teorema: Para que un código posea ´secreto perfecto’
--------------
+----------------------------------------------------
 \mid k\mid\geq \mid K\mid
+
 Es decir, la longitud de k debe ser mayor o igual a la longitud de m, el código *one time pad* cumple la condición el el límite.
 
