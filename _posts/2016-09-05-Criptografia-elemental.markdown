@@ -25,9 +25,9 @@ El "tamaño" del mensaje m, la clave k y el cifrado c son iguales a n.
 
 M={0,1}^n, K={0,1}^n y C={0,1}^n
 
-El algoritmo de cifrado y de descifrado es la operación o-exclusiva.
+El algoritmo de cifrado y de descifrado es la operación o-exclusiva (XOR).
 
-C=K(xor)M; M=K(xor)C 
+C=K(XOR)M; M=K(XOR)C 
 
 Teoría de la seguridad en la información (Shanon 1949)
 ------------------------------------------------------
