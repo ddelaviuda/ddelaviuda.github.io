@@ -2,7 +2,7 @@
 layout: post
 title:  "Lo básico de Git y GitHub"
 date:   2016-07-05 18:39:22
-categories: Git GitHub
+categories: desarrollo versiones
 ---
 
 [Hoja de referencia rápida][referencia]
