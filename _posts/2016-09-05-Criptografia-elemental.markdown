@@ -25,4 +25,4 @@ Algunos ejemplos
 
 M={0,1}n, K={0,1}n y C={0,1}n
 
-C=K xor M
+C=K(xor)M; M=K(xor)C 
