@@ -1,5 +1,4 @@
 # Site settings
-avatar: https://avatars0.githubusercontent.com/u/16340980?v=3&s=460
 title: Blog de Factores
 email: info@factores.es
 description: "Este blog me sirve como cajón de sastre. Puedo así, almacenar y ordenar algunas de las fechorías que le hago a mis ordenadores con GNU/Linux, el aprendizaje en redes y sistemas de telecomunicaciones y de los experimentos relacionados con la fabricación, tanto artesanal como digital."
@@ -9,7 +8,7 @@ twitter_username: factores_es
 github_username:  factores
 
 # Build settings
-markdown: redcarpet
+markdown: kramdown
 #redcarpet
 #kramdown
 permalink: pretty
