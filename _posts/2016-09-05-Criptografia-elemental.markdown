@@ -13,7 +13,8 @@ E=KxM→C
 
 D=KxC→M
 
-Además, debe cumplirse que: ![codigo]({{ site.url }}/_image/definicion_codigo_cripto.png) \\[\forall \,m \in M, k\in K: D(k,E(k,m))=m\\]
+Además, debe cumplirse que: ![codigo]({{ site.url }}/_image/definicion_codigo_cripto.png) 
+\\(\forall \,m \in M, k\in K: D(k,E(k,m))=m\\)
 $$a^2 + b^2 = c^2$$
 
 *Eficiente aquí se refiere a que la ejecución de estos algoritmos debe producirse en tiempo polinomial.
