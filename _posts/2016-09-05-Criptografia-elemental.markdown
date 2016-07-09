@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Criptografía elemental"
-date:   2016-09-05 18:39:22
+date:   2016-07-08 18:39:22
 categories: Seguridad
 ---
 
