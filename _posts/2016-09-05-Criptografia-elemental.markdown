@@ -21,7 +21,7 @@ El algoritmo E puede tener una componente aleatoria en su salida pero el algorit
 
 Algunos ejemplos
 ----------------
-*Libreta de un sólo uso* **one time pad** 
+**Libreta de un sólo uso** *one time pad*
 
 M={0,1}n, K={0,1}n y C={0,1}n
 
