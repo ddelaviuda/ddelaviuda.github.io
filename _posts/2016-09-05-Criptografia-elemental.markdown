@@ -53,6 +53,7 @@ k es uniforme en el espacio K, esto es $$k \xleftarrow{R} K$$
 
 Teorema: Para que un código posea "secreto perfecto"
 ----------------------------------------------------
+
 $$\mid k\mid\geq \mid K\mid$$
 
 Es decir, la longitud de k debe ser mayor o igual a la longitud de m, el código *one time pad* cumple la condición el el límite.
