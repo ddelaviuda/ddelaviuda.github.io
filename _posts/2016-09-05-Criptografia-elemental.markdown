@@ -21,7 +21,7 @@ Además, debe cumplirse que:
 
 El algoritmo E puede tener una componente aleatoria en su salida pero el algoritmo D siempre es determinista.
 
-Ejemplo característico: Libreta de un sólo uso (*one time pad*)
+Ejemplo característico: Libreta de un sólo uso (*One time pad*)
 ---------------------------------------------------------------
 El "tamaño" del mensaje m, la clave k y el cifrado c son iguales a n.
 
@@ -91,10 +91,17 @@ $$\exists A\, y\, \exists  \left [  1\leqslant i\leqslant (n-1)\right ]:  P\left
 
 Con:
 
-$$k \xleftarrow{R} K$$ con un $$\varepsilon $$ no despreciable si $$ \varepsilon \geqslant \frac{1}{2^{30}} $$
+$$k \xleftarrow{R} K$$ y un $$\varepsilon$$ no despreciable.
 
 Por lo tanto, un algoritmo será impredecible si no es predecible ---¡vaya vuelta para contar esto!---.
 
 **Notas finales sobre qué es despreciable:**
+
+En la práctica:
+
+$$ \varepsilon $$ se considera no despreciable si $$ \varepsilon \geqslant \frac{1}{2^{30}} $$ (1GB de datos) y se considera despreciable si  $$ \varepsilon \geqslant \frac{1}{2^{80}} $$
+
+En teoría: $$\varepsilon$$ es una función tal que $$\varepsilon:Z^{\geq 0}\rightarrow R^{\geq 0}$$
+
 
 
