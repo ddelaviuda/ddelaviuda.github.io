@@ -93,3 +93,4 @@ Con:
 
 $$k \xleftarrow{R} K\, ; \, \varepsilon \geqslant \frac{1}{2^{30}} $$
 
+Por lo tanto, un algoritmo será impredecible si no es predecible ---¡vaya vuelta para contar esto!---.
