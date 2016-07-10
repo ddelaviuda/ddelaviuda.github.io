@@ -26,7 +26,7 @@ Ejemplo característico: Libreta de un sólo uso (*one time pad*)
 El "tamaño" del mensaje m, la clave k y el cifrado c son iguales a n.
 
 {% raw %}
-$$M={\left\{0,1\right\}}^n, K={\left\{0,1\right\}}^n,C={\left\{0,1\right\}}^n$
+$$M={\left\{0,1\right\}}^n, K={\left\{0,1\right\}}^n,C={\left\{0,1\right\}}^n$$
 {% endraw %}
 El algoritmo de cifrado y de descifrado es la operación o-exclusiva (XOR).
 
