@@ -47,7 +47,7 @@ Un código de cifrado tiene **secreto perfecto** si:
 {% raw %}
 $$\forall \,m_0,m_1\, con\, y\,\forall c\in C$$
 
-$$Con\,longitud(m_0)=longitud(m_1)$$
+$$Longitud(m_0)=Longitud(m_1)$$
 
 $$P(E(k,m_0)=c)=P(E(k,m_1))$$
 {% endraw %}
