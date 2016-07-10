@@ -89,7 +89,7 @@ Matemáticamente se expresa así:
 
 $$\exists A\, y\, \exists  \left [  1\leqslant i\leqslant (n-1)\right ]:  P\left [  A\left\{G\left(k \right )\mid _{1,...i} \right \}=G\left(k \right )\mid _{i+1} \right ]\geqslant \left ( \frac{1}{2} +\varepsilon \right ) $$
 
-Con
+Con:
 
-$$k \xleftarrow{R} K\, y \, \varepsilon \geqslant \frac{1}{2^{30}} $$
+$$k \xleftarrow{R} K\, ; \, \varepsilon \geqslant \frac{1}{2^{30}} $$
 
