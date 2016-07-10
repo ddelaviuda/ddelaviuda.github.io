@@ -1,6 +1,7 @@
 # Site settings
 title: Blog de Factores
 email: info@factores.es
+lema: Hacer y deshacer... todo es hacer.
 description: "Este blog me sirve como cajón de sastre. Puedo así, almacenar y ordenar algunas de las fechorías que le hago a mis ordenadores con GNU/Linux, el aprendizaje en redes y sistemas de telecomunicaciones y de los experimentos relacionados con la fabricación, tanto artesanal como digital."
 baseurl: ""
 url: ""
