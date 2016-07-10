@@ -30,9 +30,9 @@ M={0,1}^n, K={0,1}^n y C={0,1}^n
 El algoritmo de cifrado y de descifrado es la operación o-exclusiva (XOR).
 
 c=k⊕m y m=k⊕c
-
-\frac{\delta E_{x}}{\delta t} = \frac{\delta f(z-ct)}{\delta t} = f^{\prime}(z - ct)\Big(\frac{\delta(z-ct)}{\delta t}\Big) = -c*f^{\prime}(z - ct)
-
+{% raw %}
+\\(\frac{\delta E_{x}}{\delta t} = \frac{\delta f(z-ct)}{\delta t} = f^{\prime}(z - ct)\Big(\frac{\delta(z-ct)}{\delta t}\Big) = -c*f^{\prime}(z - ct)\\)
+{% endraw %}
 Teoría de la seguridad en la información (Shanon 1949)
 ------------------------------------------------------
 
