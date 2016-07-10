@@ -47,7 +47,7 @@ Un código de cifrado tiene **secreto perfecto** si:
 {% raw %}
 $$\forall \,m_0,m_1\, con\, y\,\forall c\in C$$
 
-$$longitud(m_0)=longitud(m_1)$$
+$$Con\,longitud(m_0)=longitud(m_1)$$
 
 $$P(E(k,m_0)=c)=P(E(k,m_1))$$
 {% endraw %}
@@ -56,7 +56,7 @@ k es uniforme en el espacio K, esto es $$k \xleftarrow{R} K$$
 Teorema: Para que un código posea "secreto perfecto"
 ----------------------------------------------------
 
-$$\mid k\mid\geq \mid K\mid$$
+$$\mid K\mid\geq \mid M\mid$$
 
 Es decir, la longitud de k debe ser mayor o igual a la longitud de m, el código *one time pad* cumple la condición el el límite.
 
