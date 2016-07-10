@@ -10,6 +10,7 @@ Definición de código criptográfico
 Un código definido en K, M y C con un par de de algoritmos eficientes* (E,D) donde:
 
 $$E=K\times M\rightarrow  C$$
+
 $$D=K\times C\rightarrow M$$
 
 Además, debe cumplirse que:
@@ -28,7 +29,9 @@ El "tamaño" del mensaje m, la clave k y el cifrado c son iguales a n.
 $$M={\left\{0,1\right\}}^n, K={\left\{0,1\right\}}^n,C={\left\{0,1\right\}}^n$$
 {% endraw %}
 El algoritmo de cifrado y de descifrado es la operación o-exclusiva (XOR).
-cifrado: $$c=k\oplus m$$ y descifrado $$m=k\oplus c$$
+cifrado: $$c=k\oplus m$$
+
+Descifrado $$m=k\oplus c$$
 
 Teoría de la seguridad en la información (Shanon 1949)
 ------------------------------------------------------
