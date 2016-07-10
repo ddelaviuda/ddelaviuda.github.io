@@ -81,6 +81,15 @@ $$m=G\left(k\right)\oplus c$$
 
 Tal y como indicó Shannon este tipo de cifrado no tiene secreto perfecto y por lo tanto habrá que definir lo que se considera un generador G seguro, mientras tanto veamos la definición de un generador G impredecible.
 
-Para que un generador G sea impredecible no tiene que existir un algoritmo que conocidos i primeros bits generados permitar calcular los n-i bits restantes. Matemáticamente se expresa así:
+Para que un generador G sea impredecible no tiene que existir un algoritmo eficiente A que conocidos los i primeros bits generados permita calcular los n-i bits restantes. 
 
 $$\exists i : G\left(k \right )\mid _{1,...i}\,\xrightarrow{algoritmo}G\left(k \right )\mid _{i+1,...n} $$
+
+Matemáticamente se expresa así:
+
+$$\exists A\, y\, \exists  \left [  1\leqslant i\leqslant (n-1)\right ]:  P\left [  A\left\{G\left(k \right )\mid _{1,...i} \right \}=G\left(k \right )\mid _{i+1} \right ]\geqslant \left ( \frac{1}{2} +\varepsilon \right ) $$
+
+Con
+
+$$k \xleftarrow{R} K\, y \, \varepsilon \geqslant \frac{1}{2^{30}} $$
+
