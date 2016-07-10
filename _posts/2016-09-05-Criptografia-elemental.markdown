@@ -50,7 +50,9 @@ $$\forall \,m_0,m_1\, con\, y\,\forall c\in C$$
 $$Longitud(m_0)=Longitud(m_1)$$
 
 $$P\left[ E\left(k,m_0\right)=c\right]=P\left[ E\left(k,m_1\right)=c\right]$$
+
 {% endraw %}
+
 k es uniforme en el espacio K, esto es $$k \xleftarrow{R} K$$
 
 Teorema: Para que un código posea "secreto perfecto"
@@ -76,3 +78,9 @@ $$c=G\left(k\right)\oplus m$$
 Descifrado: 
 
 $$m=G\left(k\right)\oplus c$$
+
+Tal y como indicó Shannon este tipo de cifrado no tiene secreto perfecto y por lo tanto habrá que definir lo que se considera un generador G seguro, mientras tanto veamos la definición de un generador G impredecible.
+
+Para que un generador G sea impredecible no tiene que existir un algoritmo que conocidos i primeros bits generados permitar calcular los n-i bits restantes. Matemáticamente se expresa así:
+
+$$\exists i : G\left(k \right )\mid _{1,...i}\,\xrightarrow{algoritmo}G\left(k \right )\mid _{i+1,...n} $$
