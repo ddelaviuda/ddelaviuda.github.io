@@ -107,5 +107,7 @@ $$\varepsilon$$ es una función tal que $$\varepsilon:Z^{\geq 0}\rightarrow R^{\
 
 $$ \varepsilon $$ se considera no despreciable si $$ \exists d:\varepsilon\left(\lambda \right )\geqslant 1/\lambda^{d}$$ y se considera despreciable si  $$\forall d, \lambda\geqslant \lambda_d: \varepsilon \left(\lambda \right )\leqslant 1/\lambda^{d}$$.
 
+-Ejemplo despreciable:
 
+-Ejemplo no despreciable:
 
