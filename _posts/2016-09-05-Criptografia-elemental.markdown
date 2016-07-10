@@ -46,7 +46,9 @@ La idea intuitiva es que c no debe revelar información sobre m. Sin embargo la 
 Un código de cifrado tiene **secreto perfecto** si:
 {% raw %}
 $$\forall \,m_0,m_1\, con\, y\,\forall c\in C$$
+
 $$longitud(m_0)=longitud(m_1)$$
+
 $$P(E(k,m_0)=c)=P(E(k,m_1))$$
 {% endraw %}
 k es uniforme en el espacio K, esto es $$k \xleftarrow{R} K$$
