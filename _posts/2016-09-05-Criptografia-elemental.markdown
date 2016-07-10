@@ -85,7 +85,7 @@ Para que un generador G sea impredecible no tiene que existir un algoritmo efici
 
 $$\exists i : G\left(k \right )\mid _{1,...i}\,\xrightarrow{algoritmo}G\left(k \right )\mid _{i+1,...n} $$
 
-Matemáticamente se expresa así:
+Matemáticamente un generado predecible se espresa si existe un A tal que...
 
 $$\exists A\, y\, \exists  \left [  1\leqslant i\leqslant (n-1)\right ]:  P\left [  A\left\{G\left(k \right )\mid _{1,...i} \right \}=G\left(k \right )\mid _{i+1} \right ]\geqslant \left ( \frac{1}{2} +\varepsilon \right ) $$
 
