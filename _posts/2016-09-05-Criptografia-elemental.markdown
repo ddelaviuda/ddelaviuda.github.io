@@ -49,7 +49,7 @@ $$\forall \,m_0,m_1\, con\, y\,\forall c\in C$$
 
 $$Longitud(m_0)=Longitud(m_1)$$
 
-$$P(E(k,m_0)=c)=P(E(k,m_1))$$
+$$P\left\langle E\left(k,m_0\right)=c\right\rangle=P\left\langle E\left(k,m_1\right)\right\rangle$$
 {% endraw %}
 k es uniforme en el espacio K, esto es $$k \xleftarrow{R} K$$
 
