@@ -65,4 +65,4 @@ Cifrador de flujo (*Stream cipher)*
 
 Aquí la idea es remplazar la k aletoria de OTP un una pseudo-aleatoria. Un generador de claves pseudo-aleatorias o PRG (*Pseudo Random Generator*) es una funcion G que:
 
-$$G: $$
+$$G: \left \{ 0,1 \right \}^{s} \rightarrow \left \{ 0,1 \right \}^{n} ; s\ll n  $$
