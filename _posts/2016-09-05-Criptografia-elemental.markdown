@@ -109,5 +109,9 @@ $$ \varepsilon $$ se considera no despreciable si $$ \exists d:\varepsilon\left(
 
 -Ejemplo despreciable: $$\varepsilon \left(\lambda \right )=1/2^{_{\lambda}}$$
 
+Para un d dado existe una $$\lambda$$ tal que satisface la ecuación.
+
 -Ejemplo no despreciable: $$\varepsilon \left(\lambda \right )=1/\lambda^{_{1000}}$$
+
+En el ejemplo se comprueba que si se toma una $$\lambda$$ mayor a 1000 la condición no se cumple.
 
