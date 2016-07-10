@@ -30,9 +30,13 @@ $$M={\left\{0,1\right\}}^n, K={\left\{0,1\right\}}^n,C={\left\{0,1\right\}}^n$$
 {% endraw %}
 El algoritmo de cifrado y de descifrado es la operación o-exclusiva (XOR).
 
-Cifrado: $$c=k\oplus m$$
+Cifrado: 
 
-Descifrado: $$m=k\oplus c$$
+$$c=k\oplus m$$
+
+Descifrado: 
+
+$$m=k\oplus c$$
 
 Teoría de la seguridad en la información (Shanon 1949)
 ------------------------------------------------------
