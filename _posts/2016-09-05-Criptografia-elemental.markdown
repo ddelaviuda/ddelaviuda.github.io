@@ -2,7 +2,7 @@
 layout: post
 title:  "Criptografía elemental"
 date:   2016-07-08 18:39:22
-categories: Seguridad
+categories: seguridad
 ---
 Definición de código criptográfico
 ----------------------------------
@@ -58,5 +58,9 @@ Teorema: Para que un código posea "secreto perfecto"
 
 $$\mid K\mid\geq \mid M\mid$$
 
-Es decir, la longitud de k debe ser mayor o igual a la longitud de m, el código *one time pad* cumple la condición el el límite.
+Es decir, la longitud de k debe ser mayor o igual a la longitud de m, el código *one time pad* ---en adelante OTP--- cumple la condición el el límite.
 
+Cifrador de flujo (*Stream cipher)*
+-----------------------------------
+
+Aquí la idea es remplazar la k aletoria de OTP un una pseudo-aleatoria.
