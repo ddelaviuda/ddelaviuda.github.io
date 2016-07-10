@@ -67,4 +67,12 @@ Aquí la idea es remplazar la k aletoria de OTP un una pseudo-aleatoria. Un gene
 
 $$G: \left \{ 0,1 \right \}^{s} \rightarrow \left \{ 0,1 \right \}^{n} ; s\ll n  $$
 
-El algoritmo que genera esta función debe ser eficiente y su salida debe parecer aleatoria ---más sobre esto después---.
+El algoritmo que genera esta función debe ser eficiente y su salida debe parecer aleatoria ---más sobre esto después---. Esta nueva clave sustituirá a la k usanda en el OTP:
+
+Cifrado: 
+
+$$c=G\left(k\right)\oplus m$$
+
+Descifrado: 
+
+$$m=G\left(k\right)\oplus c$$
