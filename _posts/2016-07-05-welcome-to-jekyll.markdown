@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "¿Cómo crear nuevas entradas con Jekyll?"
 date:   2016-07-05 18:39:22
 categories: jekyll update
 ---
