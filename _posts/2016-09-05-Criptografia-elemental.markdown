@@ -87,7 +87,7 @@ $$\exists i : G\left(k \right )\mid _{1,...i}\,\xrightarrow{algoritmo}G\left(k \
 
 Matemáticamente un generador es predecible si existe un algoritmo A tal que...
 
-$$\exists A\, y\, \exists  \left [  1\leqslant i\leqslant (n-1)\right ]:  P\left [  A\left\{G\left(k \right )\mid _{1,...i} \right \}=G\left(k \right )\mid _{i+1} \right ]\geqslant \left ( \frac{1}{2} +\varepsilon \right ) $$
+$$\exists A\, y\, \exists  \left [  1\leqslant i\leqslant (n-1)\right ]:  P\left [  A\left\{G\left(k \right )\mid _{1,...i} \right \}=G\left(k \right )\mid _{i+1} \right ]\geqslant \left ( 1/2 +\varepsilon \right ) $$
 
 Con:
 
@@ -97,11 +97,15 @@ Por lo tanto, un algoritmo será impredecible si no es predecible ---¡vaya vuel
 
 **Notas finales sobre qué es despreciable:**
 
-En la práctica:
+*En la práctica:*
 
 $$ \varepsilon $$ se considera no despreciable si $$ \varepsilon \geqslant \frac{1}{2^{30}} $$ (1GB de datos) y se considera despreciable si  $$ \varepsilon \geqslant \frac{1}{2^{80}} $$
 
-En teoría: $$\varepsilon$$ es una función tal que $$\varepsilon:Z^{\geq 0}\rightarrow R^{\geq 0}$$
+*En teoría:*
+
+$$\varepsilon$$ es una función tal que $$\varepsilon:Z^{\geq 0}\rightarrow R^{\geq 0}$$
+
+$$ \varepsilon $$ se considera no despreciable si $$ \exists d:\varepsilon\left(\lambda \right )\geqslant 1/\lambda^{d} y se considera despreciable si  $$\forall d, \lambda\geqslant \lambda_d: \varepsilon \left(\lambda \right )\leqslant 1/\lambda^{d}$$.
 
 
 
