@@ -91,8 +91,10 @@ $$\exists A\, y\, \exists  \left [  1\leqslant i\leqslant (n-1)\right ]:  P\left
 
 Con:
 
-$$k \xleftarrow{R} K\, ; \, \varepsilon \geqslant \frac{1}{2^{30}} $$
+$$k \xleftarrow{R} K$$ con un $$\varepsilon $$ no despreciable si $$ \varepsilon \geqslant \frac{1}{2^{30}} $$
 
 Por lo tanto, un algoritmo será impredecible si no es predecible ---¡vaya vuelta para contar esto!---.
+
+**Notas finales sobre qué es despreciable:**
 
 
