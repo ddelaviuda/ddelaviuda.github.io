@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>XEN en Debian: Operaciones básicas</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.">
+    <link rel="canonical" href="/sistemas/2016/07/12/Xen-en-Debian.html">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+    <header class="site-header">
+<link rel="shortcut icon" type="image/png" href="/img/grey_circle_txt_48.png">
+  <div class="wrap">
+
+    <a class="site-title" href="/">Redes y Sistemas</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">¿Por qué?</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+    <h1>XEN en Debian: Operaciones básicas</h1>
+    <p class="meta">Jul 12, 2016</p>
+  </header>
+
+  <article class="post-content">
+  <h2 id="informacin-obtenidad-de-aquhttpwikixenprojectorgwikimainpage">Información obtenidad de <a href="http://wiki.xenproject.org/wiki/Main_Page">aquí</a>.</h2>
+
+<p>Emplearemos la herramienta xl, la única disponible en la versión de Xen 4.5 y posteriores.
+Listado</p>
+
+<p>Para mostrar las máquinas viturales que están activadas en XEN se usa el siguiente comando.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo xen list
+Name           ID   Mem VCPUs	State	Time<span class="o">(</span>s<span class="o">)</span>
+Domain-0            <span class="m">0</span>  <span class="m">1012</span>     <span class="m">4</span>     r-----     216.7
+nombre1             <span class="m">1</span>  <span class="m">1024</span>     <span class="m">2</span>     -b----      28.2
+nombre2             <span class="m">2</span>  <span class="m">1024</span>     <span class="m">2</span>     -b----      72.4
+nombre3             <span class="m">4</span>  <span class="m">1024</span>     <span class="m">2</span>     -b----       2.8</code></pre></div>
+
+<p>Creación</p>
+
+<p>Para crear una máquina virtual –en el ejemplo se usa direccionamiento estático y la distribución debian jessie– ejecutamos el comando siguiente:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo xen-create-image --hostname<span class="o">=</span>nombre <span class="se">\</span>
+  --size<span class="o">=</span>8Gb --memory<span class="o">=</span>1024Mb --swap 1024Mb <span class="se">\</span>
+  --ip<span class="o">=</span>10.0.0.2 <span class="se">\</span>
+  --netmask<span class="o">=</span>255.255.255.0 <span class="se">\</span>
+  --gateway<span class="o">=</span>10.0.0.1 <span class="se">\</span>
+  --vcpus<span class="o">=</span><span class="m">2</span> <span class="se">\</span>
+  --lvm<span class="o">=</span>vg0 <span class="se">\</span>
+  --pygrub <span class="se">\</span>
+  --dist<span class="o">=</span>jessie</code></pre></div>
+
+<p>Al terminar la creación se genera texto con un resumen de la configuración de red y la contraseña root del sistema.
+Arranque</p>
+
+<p>El comando de creación del apartado anterior genera una archivo <code>.cfg</code> que debe ser invocado para cargar la máquina virtual creada. En el siguiente comando se muestra un ejemplo.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo xl create /path/archivo_generado.cfg</code></pre></div>
+
+<p>Para que una máquina creada arranque al inicio con dom0 será necesario crear un enlace simbólico de su archivo de configuración al directorio <code>/etc/xen/auto</code>.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo ln -s /etc/xen/archivo_generado.cfg /etc/xen/auto/nombre_enlace.cfg</code></pre></div>
+
+
+  </article>
+
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//blogtelectric.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading">Redes y Sistemas</h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>Ingeniería, Instalaciones e Integración</li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

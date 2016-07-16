@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lo básico de Git y GitHub</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.">
+    <link rel="canonical" href="/desarrollo/versiones/2016/07/05/Lo-b%C3%A1sico-de-Git.html">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+    <header class="site-header">
+<link rel="shortcut icon" type="image/png" href="/img/grey_circle_txt_48.png">
+  <div class="wrap">
+
+    <a class="site-title" href="/">Redes y Sistemas</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">¿Por qué?</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+    <h1>Lo básico de Git y GitHub</h1>
+    <p class="meta">Jul 5, 2016</p>
+  </header>
+
+  <article class="post-content">
+  <p><a href="https://services.github.com/kit/downloads/es_ES/github-git-cheat-sheet.pdf">Hoja de referencia rápida</a></p>
+
+<h2 id="instalacin-de-git">Instalación de Git</h2>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install git</code></pre></div>
+
+<h2 id="iniciar-repositorio-git">Iniciar repositorio Git</h2>
+
+<p>Nos situamos en el directorio de nuestra elección.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /path</code></pre></div>
+
+<p>Y iniciamos el repositorio, este creará un directorio .git</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git init</code></pre></div>
+
+<h2 id="adicin-de-archivosdirectorios-al-repositorio">Adición de archivos/directorios al repositorio</h2>
+<p>Cuando está creado el repositorio podemos ejecutar desde el directorio el comando git status, que nos mostrará todos los archivos que están en él y que no han sido añadidos al repositorio —más sobre esto después—. Podemos probara a ejecutarlo vacío y tras haber añadido un fichero de prueba, git nos indicará que el fichero no está en el repositorio.</p>
+
+<p>Ejecutando el siguiente comando veremos como el fichero de prueba.txt se al seguimiento del repositorio, todavía no está incluido en él.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git add prueba.txt</code></pre></div>
+
+<p>Se pueden añadir varios archivos con el comodín * si usamos ‘’.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git add <span class="s1">&#39;*.txt&#39;</span></code></pre></div>
+
+<p>Si ejecutasemos después git status git indicará que el repositorio está al día —siempre que prueba.txt fuese el único archivo en el directorio—.</p>
+
+<p>El fichero prueba.txt todavía sólo está en observación, si queremos añadir –cometer– todos los ficheros en observación al respositorio ejecutamos el siguiente comando —la opción -m permite añadir un comentario, es recomendable—.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git commit -m <span class="s2">&quot;comentario sobre la comisión&quot;</span></code></pre></div>
+
+<p>Si queremos eliminar de observación (stage) un archivo añadido antes de una comisión ejecutamos.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git reset HEAD prueba.txt</code></pre></div>
+
+<h2 id="repositorios-remotos-github">Repositorios remotos (GitHub)</h2>
+<p><strong>Subir</strong></p>
+
+<p>Para guardar nuestro repositorio en remoto y hacer comisiones contra él será necesario darle un nombre y asociarle una URL, el repositorio de GitHub es muy práctico para ello. Se suele usar origin como nombre para el repositorio remoto.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git remote add origin https://github.com/usuario/nombre_repositorio</code></pre></div>
+
+<p>Para actualizar el repositorio remoto usamos push tal y como sigue —la opción -u es para que git recuerde los parámetros y usando git push git añada origin y master, más sobre master después—. Es necesario que el directorio remoto no tenga nada en él, de otro modo el comando dará un error.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git push -u origin master</code></pre></div>
+
+<p><strong>Bajar</strong></p>
+
+<p>Si se han hecho cambios en el repositorio remoto que ahora queremos tener ejectuamos</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git pull origin master</code></pre></div>
+
+<h2 id="gestin-de-las-diferencias">Gestión de las diferencias</h2>
+<p>¿Queremos saber la diferencia entre el repositorio remoto y nuestro último commit? Ejecutamos</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git diff HEAD</code></pre></div>
+
+<p><strong>Restaurar</strong></p>
+
+<p>Si una vez modificado un archivo deseamos que este se recupere a su estado en la última comisión ejecutamos el siguiente comando indicando el nombre del archivo a recuperar.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git checkout -- octocat.txt</code></pre></div>
+
+<p><strong>Ramas</strong></p>
+
+<p>Si queremos trabajar en una “versión” diferente del proyecto crearemos una rama para modificarla libremente —en el ejemplo llamamos a la rama borrador—.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git branch borrador</code></pre></div>
+
+<p>Para pasar a utilizar la nueva rama ejecutamos.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git checkout borrador</code></pre></div>
+
+<p>Si queremos enumerar las ramas disponibles ejecutamos</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git branch -a</code></pre></div>
+
+<p>En la nueva rama podremos hacer varias modificaciones, por ejemplo borrar archivos en el directorio y en la rama.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git rm <span class="s1">&#39;*&#39;</span></code></pre></div>
+
+<p>Una vez borrado, y para que esto se traslade al repositorio, ejecutamos.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git commit -m <span class="s2">&quot;Borrado de archivos&quot;</span></code></pre></div>
+
+<p>Si queremos que los cambios en una rama se materialicen en la maestra (master) haremos lo que sigue:</p>
+
+<p>Accedemos a la rama maestra.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git checkout master</code></pre></div>
+
+<p>Y unimos la rama alternativa —llamada borrador en el ejemplo— a la maestra.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git merge borrador</code></pre></div>
+
+<p>Si queremos eliminar la rama alternativa —llamada borrador— suponiendo que no sea necesaria.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git branch -d borrador</code></pre></div>
+
+<p><strong>Respaldo remoto</strong></p>
+
+<p>Si queremos sincronizar el repositorio local con un repositorio remoto ejecutamos el proceso en dos pasos.</p>
+
+<p>Búsqueda…</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git fetch origin master</code></pre></div>
+
+<p>… y respaldo.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git reset --hard origin/master</code></pre></div>
+
+
+  </article>
+
+
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading">Redes y Sistemas</h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>Ingeniería, Instalaciones e Integración</li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>¿Por qué?</title>
+    <title>Cambiar idioma a Castellano en Debian</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.">
-    <link rel="canonical" href="/about/">
+    <link rel="canonical" href="/sistemas/2016/07/11/Debian-en-espa%C3%B1ol.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -58,18 +58,30 @@
     <script type="text/javascript" async
       src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
-    <h1>¿Por qué?</h1>
+    
+    <h1>Cambiar idioma a Castellano en Debian</h1>
+    <p class="meta">Jul 11, 2016</p>
   </header>
 
   <article class="post-content">
-  <p>Este blog me sirve como cajón de sastre. Puedo así, almacenar y ordenar algunas de las operaciones que hago sobre mis maquinas <a href="https://www.gnu.org/gnu/linux-and-gnu.en.html">GNU/Linux</a>, el aprendizaje en redes y <a href="http://coitt.es/">sistemas de telecomunicación</a> y de los experimentos relacionados con la <a href="http://portal.uned.es/portal/page?_pageid=93,1646862&amp;_dad=portal">fabricación</a>, tanto artesanal como <a href="http://fabfoundation.org/">digital</a>.</p>
+  <p>Ejecutamos el programa <em>dpkg</em></p>
 
-<p>A todos los demás que se muestran interesados, gracias por leerme y espero que les sea útil.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">dpkg-reconfigure locales</code></pre></div>
+
+<p>De entre las opciones presentadas optamos por selecionar es_ES.UTF-8</p>
+
+<p>Para comprobar que todo funciona correctamente ejecutamos.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">env <span class="p">|</span> grep LANG</code></pre></div>
+
+<p>Hecho.</p>
+
 
   </article>
 
-</div>
 
+
+</div>
 
       </div>
     </div>

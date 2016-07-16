@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Configuración manual Wi-Fi en Debian</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.">
+    <link rel="canonical" href="/redes/2016/07/11/Debian-manual-wifi.html">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+    <header class="site-header">
+<link rel="shortcut icon" type="image/png" href="/img/grey_circle_txt_48.png">
+  <div class="wrap">
+
+    <a class="site-title" href="/">Redes y Sistemas</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">¿Por qué?</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+    <h1>Configuración manual Wi-Fi en Debian</h1>
+    <p class="meta">Jul 11, 2016</p>
+  </header>
+
+  <article class="post-content">
+  <h2 id="comandos-de-comprobacin">Comandos de comprobación</h2>
+
+<p>Verificamos si el <em>kernel</em> detecta el <em>hardware</em>.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo  lshw -C network</code></pre></div>
+
+<p>El resultado debería ser algo similar a esto.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">*-network DISABLED
+       description: Wireless interface
+       product: AR9287 Wireless Network Adapter <span class="o">(</span>PCI-Express<span class="o">)</span>
+       vendor: Qualcomm Atheros
+       physical id: 0
+       bus info: pci@0000:04:00.0
+       logical name: wlan0
+       version: 01
+       serial: xx:xx:xx:xx:xx:xx
+       width: <span class="m">64</span> bits
+       clock: 33MHz
+       capabilities: pm msi pciexpress bus_master cap_list ethernet physical wireless
+       configuration: <span class="nv">broadcast</span><span class="o">=</span>yes <span class="nv">driver</span><span class="o">=</span>ath9k <span class="nv">driverversion</span><span class="o">=</span>3.16.0-71-generic <span class="nv">firmware</span><span class="o">=</span>N/A <span class="nv">latency</span><span class="o">=</span><span class="m">0</span> <span class="nv">link</span><span class="o">=</span>no <span class="nv">multicast</span><span class="o">=</span>yes <span class="nv">wireless</span><span class="o">=</span>IEEE 802.11bgn
+       resources: irq:17 memory:f0400000-f040ffff</code></pre></div>
+
+<p>En la salida de texto anterior debemos comprobar que hay una cadena de texto junto a <strong>driver=</strong> y comprobaremos con <strong>lsmod</strong> si el driver está cargado. Para nuestro ejemplo será.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo lsmod <span class="p">|</span> grep -i ath9k</code></pre></div>
+
+<p>Si aparece sólo uno son buenas noticias y podemos continuar. Si aparecen varios hay que quitar uno con sudo blocklist nombre_driver y si no hay ninguno tendremos que cargarlo con un comado similar a este.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo modprobe ath9k_htc</code></pre></div>
+
+<p>Ahora descartamos que no haya ningún bloqueo <em>hardware</em> o <em>software</em>.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo rfkill list</code></pre></div>
+
+<h2 id="gestin-de-las-interfaces">Gestión de las interfaces</h2>
+
+<p>Para saber el nombre que el sistema le ha asignado a la interfaz WiFi ejecutamos esto.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/sbin/iw dev</code></pre></div>
+
+<p>Obteniendo algo como esto</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">phy#0
+	Interface wlan0
+		ifindex 3
+		<span class="nb">type </span>managed</code></pre></div>
+
+<p>El nombre es wlan0 y el timpo managed indica que es una estación que se conecta a un punto de acceso.</p>
+
+<p>Hora comprobamos si la interfaz está levantada.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ip link show wlan0</code></pre></div>
+
+<p>La salida.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">3: wlan0: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 90:f6:52:27:11:5b brd ff:ff:ff:ff:ff:ff</code></pre></div>
+
+<p>En la salida no tenemos <em>&lt;…,UP&gt;</em> por lo tanto tendremos que activarla, para ello ejecutamos.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo ip link <span class="nb">set </span>wlan0 up</code></pre></div>
+
+<p>Ahora sí vemos que aparece <em>UP</em>.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ip link show wlan0
+3: wlan0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu <span class="m">1500</span> qdisc mq state DOWN mode DEFAULT group default qlen 1000
+    link/ether 90:f6:52:27:11:5b brd ff:ff:ff:ff:ff:ff</code></pre></div>
+
+<p>Comprobamos el estado de la conexión</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/sbin/iw wlan0 link</code></pre></div>
+
+<p>Obtenemos <em>“Not connected.”</em> ya quen no está establecida todavía.</p>
+
+<h2 id="buscar-redes-cercanas">Buscar redes cercanas</h2>
+
+<p>Para buscar las redes disponibles ejecutamos lo siguiente.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo /sbin/iw wlan0 scan
+BSS xx:xx:xx:xx:xx:xx <span class="o">(</span>on wlan0<span class="o">)</span>
+        ... eliminado ...
+	freq: 2412
+	SSID: mi_red
+        ... eliminado ...
+	RSN:	 * Version: 1
+		 * Group cipher: CCMP
+		 * Pairwise ciphers: CCMP
+		 * Authentication suites: PSK
+		 * Capabilities: <span class="o">(</span>0x0000<span class="o">)</span>
+        ... eliminado ...</code></pre></div>
+
+<p>La información más importante de lo anterior es el SSID o nombre del punto de accedos y RSN que se refiere al tipo de conexión WPA2.</p>
+
+<h2 id="establecimiento-de-la-conexin-wpa2">Establecimiento de la conexión WPA2</h2>
+
+<p>Lo primero es crear un archivo que contenga la el nombre de la red “mi_red” y el la clave pública, contraseña o “psk”. Para ello.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo -s wpa_passphrase mi_red &gt;&gt; /etc/wpa_supplicant.conf</code></pre></div>
+
+<p>Una vez ejecutado la línea de comando espera la indroducción de texto, escribimos la contraseña o psk. El archivo tendrá la siguiente apariencia.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">cat /etc/wpa_supplicant.conf</code></pre></div>
+
+<p>Mostrando …</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># reading passphrase from stdin</span>
+<span class="nv">network</span><span class="o">={</span>
+	<span class="nv">ssid</span><span class="o">=</span><span class="s2">&quot;mi_red&quot;</span>
+	<span class="c">#psk=&quot;contraseña_de_prueba&quot;</span>
+	<span class="nv">psk</span><span class="o">=</span>75951eb58b775d53e2fe915d986c569e9d915a7f1375b5879121a498af792b3d
+<span class="o">}</span></code></pre></div>
+
+<p>Ahora para conectarnos ejecutamos el comando.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo wpa_supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant.conf</code></pre></div>
+
+<p>Y comprobamos que estamos conectados con el comando.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/sbin/iw wlan0 link</code></pre></div>
+
+<p>El resultado deberá dar algo como esto.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">Connected to xx:xx:xx:xx:xx:xx <span class="o">(</span>on wlan0<span class="o">)</span>
+SSID: mi_red
+freq: 2437
+RX: <span class="m">771824</span> bytes <span class="o">(</span><span class="m">6565</span> packets<span class="o">)</span>
+TX: <span class="m">1413</span> bytes <span class="o">(</span><span class="m">19</span> packets<span class="o">)</span>
+signal: -45 dBm
+tx bitrate: 1.0 MBit/s
+
+bss flags: short-slot-time
+dtim period: 0
+beacon int: 100</code></pre></div>
+
+<h2 id="obtencin-de-ip-por-dhcp">Obtención de IP por DHCP</h2>
+
+<p>Para comenzar con el protocolo DHCP ejecutamos el comando siguiente.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dhclient wlan0</code></pre></div>
+
+<p>Para comprobar la dirección IP asignada a la interfaz wlan0</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ip addr show wlan0</code></pre></div>
+
+<p>Resultando …</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">3: wlan0:  mtu <span class="m">1500</span> qdisc mq state UP group default qlen 1000
+    link/ether xx:xx:xx:xx:xx:xx brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.55/24 brd 192.168.1.255 scope global wlan0
+       valid_lft forever preferred_lft forever
+    inet6 xxxx::xxxx:xxxx:xxxx:xxxx/64 scope link 
+       valid_lft forever preferred_lft forever</code></pre></div>
+
+<p>Si queremos añadir una puerta de enlace a mano –192.168.1.254 en el ejemplo– ejecutaremos:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo ip route add default via 192.168.1.254 dev wlan0</code></pre></div>
+
+<p>Tras esto podemos probar a hacer ping al servidor DNS de Google Inc. (8.8.8.8)</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ping -c <span class="m">4</span> 8.8.8.8
+PING 8.8.8.8 <span class="o">(</span>8.8.8.8<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from 8.8.8.8: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">53</span> <span class="nb">time</span><span class="o">=</span>3.83 ms
+<span class="m">64</span> bytes from 8.8.8.8: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">53</span> <span class="nb">time</span><span class="o">=</span>3.92 ms
+<span class="m">64</span> bytes from 8.8.8.8: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">53</span> <span class="nb">time</span><span class="o">=</span>22.5 ms
+<span class="m">64</span> bytes from 8.8.8.8: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">4</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">53</span> <span class="nb">time</span><span class="o">=</span>6.07 ms
+
+--- 8.8.8.8 ping statistics ---
+<span class="m">4</span> packets transmitted, <span class="m">4</span> received, 0% packet loss, <span class="nb">time </span>3005ms
+rtt min/avg/max/mdev <span class="o">=</span> 3.833/9.096/22.547/7.817 ms</code></pre></div>
+
+<h2 id="opciones-adicionales">Opciones adicionales</h2>
+
+<p>Cómo cambiar la MAC de la interfaz</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo ifconfig <span class="s1">&#39;interface&#39;</span> down
+sudo ifconfig <span class="s1">&#39;interface&#39;</span> hw ether <span class="s1">&#39;mac&#39;</span>
+sudo ifconfig <span class="s1">&#39;interface&#39;</span> up</code></pre></div>
+
+<p>Asociación al punto de acceso WEP</p>
+
+<p>Configuración del ESSID</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo iwconfig <span class="s1">&#39;interface&#39;</span> essid <span class="s1">&#39;essid_name&#39;</span></code></pre></div>
+
+<p>Añadimos la contraseña WEP</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo iwconfig <span class="s1">&#39;interface&#39;</span> key <span class="err">&#39;</span>hex_password</code></pre></div>
+
+<p>Forzamos la asociación con el ESSID</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo iwconfig <span class="s1">&#39;interface&#39;</span> ap <span class="s1">&#39;essid_MAC&#39;</span></code></pre></div>
+
+<p>Forzamos la optención de IP mendiante el servidor DHCP</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">dhclient <span class="s1">&#39;interface&#39;</span></code></pre></div>
+
+<p>Si por otro lado deseamos realizar la configuración manual de la IP y su máscara</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo ifconfig <span class="s1">&#39;interface&#39;</span> <span class="s1">&#39;IP&#39;</span> netmask <span class="s1">&#39;mask&#39;</span></code></pre></div>
+
+<p><strong>Asociación al punto de acceso WPA en arranque</strong></p>
+
+<p>Editamos el archivo interfaces</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo nano /etc/network/interfaces</code></pre></div>
+
+<p>Y añadimos las líneas que se muestran a continuación.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">auto wlan0
+iface wlan0 inet static
+address <span class="s1">&#39;your_ip&#39;</span>
+netmask <span class="s1">&#39;your_netmask&#39;</span>
+gateway <span class="s1">&#39;gateway_ip&#39;</span>
+wpa-ssid <span class="s1">&#39;your_ssid_name&#39;</span>
+wpa-key-mgmt WPA-PSK
+wpa-group TKIP CCMP
+wpa-psk <span class="s1">&#39;your_password&#39;</span></code></pre></div>
+
+<p>Lo que aparece como <em>‘your_password’</em> tras <strong>wpa-psk</strong> debe ser sustituido por la <em>Pre-shared key</em> obtenida como resultado del siguiente comando:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo wpa_passphrase <span class="s1">&#39;ssid_name&#39;</span> <span class="s1">&#39;passphrase&#39;</span></code></pre></div>
+
+<p>Si el comando no está disponible debe ser instalado con <strong>apt-get</strong>:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install wpasupplicant</code></pre></div>
+
+<p>Finalmente es necesario configurar el servidor dns para ello debemos añadir la siguiente linea al ficher <strong>/etc/resolv.conf</strong>.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">nameserver 192.168.1.1</code></pre></div>
+
+<p>Alternativamente podemos crear un archivo que se suele llamar y dejar en <strong>/etc/wpa_supplicant.conf</strong> con la siguiente información.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">network</span><span class="o">=</span> <span class="o">{</span>
+          <span class="nv">ssid</span><span class="o">=</span><span class="s2">&quot;el_nombre_del_ssid&quot;</span>
+          <span class="nv">psk</span><span class="o">=</span><span class="s2">&quot;la_contraseña&quot;</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Para forzar la conexión con la red ejecutaremos el comando.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wpa_supplicant -B -i <span class="s1">&#39;interfaz&#39;</span> -c /etc/wpa_supplicant.conf</code></pre></div>
+
+
+  </article>
+
+
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading">Redes y Sistemas</h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>Ingeniería, Instalaciones e Integración</li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

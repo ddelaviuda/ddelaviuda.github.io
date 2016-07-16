@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Router Teldat 3G, comandos básicos</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.">
+    <link rel="canonical" href="/2016/07/12/Comandos-Teldat.html">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+    <header class="site-header">
+<link rel="shortcut icon" type="image/png" href="/img/grey_circle_txt_48.png">
+  <div class="wrap">
+
+    <a class="site-title" href="/">Redes y Sistemas</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">¿Por qué?</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+    <h1>Router Teldat 3G, comandos básicos</h1>
+    <p class="meta">Jul 12, 2016</p>
+  </header>
+
+  <article class="post-content">
+  <h2 id="acceso-inicial">Acceso inicial</h2>
+
+<p>El escenario que se va a suponer es un ordenador conectado a una de las interfaces del Router (IP 192.168.1.1).</p>
+
+<p>Desde la máquina linux ejecutamos <strong>telnet</strong>.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">telnet</span> <span class="mf">192.168.1.1</span></code></pre></div>
+
+<p>El router nos pedirá usuario y contraseña.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="nl">User</span><span class="p">:</span><span class="n">usuario</span>
+<span class="nl">Password</span><span class="p">:</span><span class="o">***********</span></code></pre></div>
+
+<p>Una vez que hemos accedido se nos mostrará el modelo del router y la versión de <em>software</em>, para finalmente disponer del <em>prompt</em> para introducir comandos.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="o">*</span></code></pre></div>
+
+<p>Pulsando ‘?’ veremos el las opciones disponibles.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="o">*?</span>
+  <span class="n">config</span>            <span class="n">Edit</span> <span class="n">configuration</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">without</span> <span class="n">altering</span> <span class="n">the</span>
+                    <span class="n">operation</span>
+  <span class="n">flush</span>             <span class="n">Clears</span> <span class="n">all</span> <span class="n">the</span> <span class="n">messages</span> <span class="n">stored</span> <span class="n">up</span> <span class="n">to</span> <span class="n">that</span> <span class="n">moment</span> <span class="n">in</span> <span class="n">the</span>
+                    <span class="n">events</span> <span class="n">buffer</span>
+  <span class="n">intercept</span>         <span class="n">Change</span> <span class="n">the</span> <span class="n">procedures</span> <span class="n">escape</span> <span class="n">character</span>
+  <span class="n">load</span>              <span class="n">Reload</span> <span class="n">the</span> <span class="n">program</span> <span class="n">from</span> <span class="n">the</span> <span class="n">flash</span> <span class="n">memory</span>
+  <span class="n">logout</span>            <span class="n">Ends</span> <span class="n">the</span> <span class="n">Telnet</span> <span class="n">connection</span> <span class="n">established</span> <span class="n">with</span> <span class="n">the</span> <span class="n">device</span>
+  <span class="n">monitor</span>           <span class="n">Monitor</span> <span class="n">the</span> <span class="n">state</span> <span class="n">of</span> <span class="n">the</span> <span class="n">system</span>
+  <span class="n">process</span>           <span class="n">Access</span> <span class="n">to</span> <span class="n">a</span> <span class="n">different</span> <span class="n">device</span> <span class="n">procedure</span>
+  <span class="n">restart</span>           <span class="n">Restart</span> <span class="n">the</span> <span class="n">device</span>
+  <span class="n">running</span><span class="o">-</span><span class="n">config</span>    <span class="n">Edit</span> <span class="n">configuration</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">altering</span> <span class="n">the</span> <span class="n">operation</span>
+  <span class="n">status</span>            <span class="n">Displays</span> <span class="n">the</span> <span class="n">names</span> <span class="n">and</span> <span class="n">identifiers</span> <span class="n">of</span> <span class="n">each</span> <span class="n">procedure</span>
+  <span class="n">telnet</span>            <span class="n">Do</span> <span class="n">a</span> <span class="n">telnet</span>
+  <span class="n">vrf</span><span class="o">-</span><span class="n">telnet</span>        <span class="n">Do</span> <span class="n">a</span> <span class="n">telnet</span> <span class="n">from</span> <span class="n">a</span> <span class="n">secondary</span> <span class="n">vrf</span></code></pre></div>
+
+<p>Para cambiar el modo de operación podemos usar <em>process ?</em></p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="o">*</span><span class="n">process</span> <span class="o">?</span>
+  <span class="mi">1</span>    <span class="n">Starting</span> <span class="n">point</span> <span class="n">on</span> <span class="n">booting</span> <span class="n">a</span> <span class="n">console</span> <span class="n">session</span>
+  <span class="mi">2</span>    <span class="n">Display</span> <span class="n">events</span> <span class="n">produced</span> <span class="n">in</span> <span class="n">the</span> <span class="n">system</span>
+  <span class="mi">3</span>    <span class="n">Monitor</span> <span class="n">the</span> <span class="n">state</span> <span class="n">of</span> <span class="n">the</span> <span class="n">system</span>
+  <span class="mi">4</span>    <span class="n">Edit</span> <span class="n">configuration</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">without</span> <span class="n">altering</span> <span class="n">the</span> <span class="n">operation</span>
+  <span class="mi">5</span>    <span class="n">Edit</span> <span class="n">configuration</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">altering</span> <span class="n">the</span> <span class="n">operation</span>
+  <span class="mi">6</span>    <span class="n">Process</span> <span class="n">information</span></code></pre></div>
+
+<h2 id="modo-monitorizacin-process-3">Modo monitorización (<em>process 3</em>)</h2>
+
+<p>Para acceder al modo monitorización pulsamos </p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="o">*</span><span class="n">process</span> <span class="mi">3</span>
+<span class="n">Console</span> <span class="n">Operator</span>
+<span class="n">router</span> <span class="o">+</span></code></pre></div>
+
+<p>El signo ‘+’ indica que hemos cambiado de modo de operación. Ahora obtendremos los comandos disponibles de un modo similar al anterior.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="o">+?</span>
+  <span class="n">buffer</span>                 <span class="n">Packet</span> <span class="n">buffers</span> <span class="n">assigned</span> <span class="n">to</span> <span class="n">each</span> <span class="n">interface</span>
+  <span class="n">clear</span>                  <span class="n">Clear</span> <span class="n">network</span> <span class="n">statistics</span>
+  <span class="n">configuration</span>          <span class="n">List</span> <span class="n">status</span> <span class="n">of</span> <span class="n">current</span> <span class="n">protocols</span> <span class="n">and</span> <span class="n">interfaces</span>
+  <span class="n">device</span>                 <span class="n">List</span> <span class="n">statistics</span> <span class="k">for</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">interface</span>
+  <span class="n">error</span>                  <span class="n">List</span> <span class="n">error</span> <span class="n">counters</span>
+  <span class="n">event</span>                  <span class="n">Event</span> <span class="n">Logging</span> <span class="n">System</span> <span class="n">environment</span>
+  <span class="n">feature</span>                <span class="n">Access</span> <span class="n">to</span> <span class="n">monitoring</span> <span class="n">commands</span> <span class="k">for</span> <span class="n">router</span> <span class="n">features</span>
+  <span class="n">last</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">changes</span>    <span class="n">Display</span> <span class="n">the</span> <span class="n">last</span> <span class="n">changes</span> <span class="n">made</span> <span class="n">in</span> <span class="n">the</span> <span class="n">configuration</span>
+  <span class="n">log</span>                    <span class="n">Dump</span> <span class="n">log</span> <span class="n">data</span>
+  <span class="n">malloc</span><span class="o">-</span><span class="n">monitor</span>         <span class="n">Malloc</span> <span class="n">monitor</span> <span class="n">information</span>
+  <span class="n">memory</span>                 <span class="n">Display</span> <span class="n">memory</span><span class="p">,</span> <span class="n">buffer</span> <span class="n">and</span> <span class="n">packet</span> <span class="n">data</span>
+  <span class="n">network</span>                <span class="n">Enter</span> <span class="n">the</span> <span class="n">console</span> <span class="n">environment</span> <span class="n">of</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">network</span>
+  <span class="n">node</span>                   <span class="n">Enter</span> <span class="n">the</span> <span class="n">node</span> <span class="n">monitoring</span> <span class="n">environment</span>
+  <span class="n">protocol</span>               <span class="n">Enter</span> <span class="n">the</span> <span class="n">commands</span> <span class="n">environment</span> <span class="k">for</span> <span class="n">a</span> <span class="n">specified</span>
+                         <span class="n">protocol</span>
+  <span class="n">queue</span>                  <span class="n">Display</span> <span class="n">buffer</span> <span class="n">statistics</span> <span class="k">for</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">interface</span>
+  <span class="n">quick</span>                  <span class="n">Access</span> <span class="n">the</span> <span class="n">quick</span> <span class="n">menu</span> <span class="n">monitoring</span>
+  <span class="n">statistics</span>             <span class="n">Display</span> <span class="n">statistics</span> <span class="k">for</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">interface</span>
+  <span class="n">system</span>                 <span class="n">Permit</span> <span class="n">monitoring</span> <span class="n">of</span> <span class="n">the</span> <span class="n">systems</span> <span class="n">memory</span> <span class="n">and</span> <span class="n">stacks</span>
+  <span class="n">telephony</span>              <span class="n">Monitoring</span> <span class="n">environment</span> <span class="k">for</span> <span class="n">the</span> <span class="n">telephony</span> <span class="n">functions</span>
+  <span class="n">uci</span>                    <span class="n">Encryption</span> <span class="n">statistics</span>
+  <span class="n">web</span><span class="o">-</span><span class="n">probe</span>              <span class="n">Access</span> <span class="n">the</span> <span class="n">Web</span> <span class="n">poll</span> <span class="n">monitoring</span></code></pre></div>
+
+<p>Podemos empezar haciendo una prueba de ping para ello.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="o">+</span><span class="n">ping</span>
+<span class="n">IP</span> <span class="n">destination</span> <span class="p">[]</span><span class="o">?</span> <span class="mf">8.8.8.8</span>
+<span class="n">IP</span> <span class="n">source</span> <span class="p">(</span><span class="mf">192.168.1.1</span> <span class="n">suggested</span><span class="p">,</span> <span class="mf">0.0.0.0</span> <span class="k">for</span> <span class="n">dynamic</span><span class="p">)</span> <span class="p">[</span><span class="mf">0.0.0.0</span><span class="p">]</span><span class="o">?</span> <span class="mf">0.0.0.0</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">data</span> <span class="n">bytes</span><span class="p">[</span><span class="mi">56</span><span class="p">]</span><span class="o">?</span>
+<span class="n">Differentiated</span> <span class="n">Services</span> <span class="n">Field</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">?</span>
+<span class="n">Time</span> <span class="n">between</span> <span class="n">pings</span><span class="p">(</span><span class="o">&gt;=</span><span class="mi">10</span><span class="n">ms</span><span class="p">)[</span><span class="mi">1000</span><span class="p">]</span><span class="o">?</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">pings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">?</span>
+<span class="n">Time</span> <span class="n">out</span><span class="p">(</span><span class="o">&gt;=</span><span class="mi">10</span><span class="n">ms</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">?</span>
+<span class="n">Avoid</span> <span class="n">fragmentation</span><span class="p">[</span><span class="n">no</span><span class="p">](</span><span class="n">Yes</span><span class="o">/</span><span class="n">No</span><span class="p">)</span>  <span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="o">?</span></code></pre></div>
+
+<p>Para cancelar el ping debemos pulsar intro o <strong>exit</strong> e intro desde otros modos.</p>
+
+<p>El comando <strong>device</strong> muestra los errores en las interfaces.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="o">+</span><span class="n">device</span>
+                                       <span class="n">Auto</span><span class="o">-</span><span class="n">test</span>   <span class="n">Auto</span><span class="o">-</span><span class="n">test</span>     <span class="n">Maintenance</span>
+<span class="n">Interface</span>               <span class="n">CSR</span>    <span class="n">Vect</span>      <span class="n">valids</span>    <span class="n">failures</span>        <span class="n">failures</span>
+<span class="n">ethernet0</span><span class="o">/</span><span class="mi">0</span>               <span class="mi">0</span>       <span class="mi">0</span>           <span class="mi">4</span>           <span class="mi">0</span>               <span class="mi">0</span>
+<span class="n">cellular1</span><span class="o">/</span><span class="mi">0</span>               <span class="mi">0</span>       <span class="mi">0</span>           <span class="mi">2</span>           <span class="mi">1</span>               <span class="mi">0</span>
+<span class="n">cellular1</span><span class="o">/</span><span class="mi">1</span>               <span class="mi">1</span>       <span class="mi">0</span>           <span class="mi">2</span>           <span class="mi">1</span>               <span class="mi">0</span>
+<span class="n">ppp1</span>                      <span class="mi">0</span>       <span class="mi">0</span>          <span class="mi">11</span>          <span class="mi">10</span>               <span class="mi">0</span></code></pre></div>
+
+<p>Es posible explorar más en profundiad una interfaz con <strong>network ‘interfaz’</strong></p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="o">+</span><span class="n">network</span> <span class="n">ethernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="n">router</span> <span class="n">ethernet0</span><span class="o">/</span><span class="mi">0</span> <span class="n">ETH</span><span class="o">+?</span>
+  <span class="n">bdescs</span>             <span class="n">List</span> <span class="n">descriptors</span>
+  <span class="n">bitrate</span>            <span class="n">Bit</span> <span class="n">rate</span> <span class="n">monitor</span>
+  <span class="n">clear</span>              <span class="n">Clear</span> <span class="n">information</span>
+  <span class="n">counters</span>           <span class="n">List</span> <span class="n">device</span> <span class="n">counters</span>
+  <span class="n">dot1x</span>              <span class="n">Access</span> <span class="n">to</span> <span class="mf">802.1</span><span class="n">X</span> <span class="n">monitoring</span>
+  <span class="n">dump</span>               <span class="n">Dump</span> <span class="n">internal</span> <span class="n">stats</span>
+  <span class="n">llc</span>                <span class="n">Access</span> <span class="n">to</span> <span class="n">llc</span> <span class="n">monitoring</span>
+  <span class="n">oam</span>                <span class="n">Ethernet</span> <span class="n">OAM</span> <span class="n">monitoring</span>
+  <span class="n">repeater</span><span class="o">-</span><span class="k">switch</span>    <span class="n">Access</span> <span class="n">to</span> <span class="k">switch</span> <span class="n">monitoring</span>
+  <span class="n">status</span>             <span class="n">List</span> <span class="n">interface</span> <span class="n">status</span>
+  <span class="n">exit</span></code></pre></div>
+
+<p>Cada interfaz tiene distintas opciones.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="o">+</span><span class="n">network</span> <span class="n">cellular1</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">router</span> <span class="n">cellular1</span><span class="o">/</span><span class="mi">1</span> <span class="n">AT</span><span class="o">+?</span>
+  <span class="n">at</span><span class="o">-</span><span class="n">mode</span>         <span class="n">Send</span> <span class="n">AT</span> <span class="n">commands</span> <span class="n">directly</span> <span class="n">to</span> <span class="n">the</span> <span class="n">module</span>
+  <span class="n">bdescs</span>          <span class="n">List</span> <span class="n">descriptors</span>
+  <span class="n">bitrate</span>         <span class="n">Bit</span> <span class="n">rate</span> <span class="n">monitor</span>
+  <span class="n">buffer</span>          <span class="n">Display</span> <span class="n">saved</span> <span class="n">commands</span> <span class="n">and</span> <span class="n">answers</span>
+  <span class="n">clear</span>           <span class="n">Clear</span> <span class="n">interface</span> <span class="n">and</span> <span class="n">module</span> <span class="n">parameters</span>
+  <span class="n">command</span>         <span class="n">Send</span> <span class="n">AT</span> <span class="n">command</span> <span class="n">to</span> <span class="n">the</span> <span class="n">module</span>
+  <span class="n">dump</span>            <span class="n">Dump</span> <span class="n">internal</span> <span class="n">stats</span>
+  <span class="n">list</span>            <span class="n">List</span> <span class="n">interface</span> <span class="n">and</span> <span class="n">module</span> <span class="n">parameters</span>
+  <span class="n">power</span><span class="o">-</span><span class="n">module</span>    <span class="n">Module</span> <span class="n">power</span> <span class="n">control</span>
+  <span class="n">qmi</span>             <span class="n">QMI</span> <span class="n">options</span>
+  <span class="n">sms</span>             <span class="n">SMS</span> <span class="n">menu</span>
+  <span class="n">statistics</span>      <span class="n">Interface</span> <span class="n">statistics</span>
+  <span class="n">exit</span></code></pre></div>
+
+<p>Para ver la potencia en una conexión radio</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="n">cellular1</span><span class="o">/</span><span class="mi">1</span> <span class="n">AT</span><span class="o">+</span><span class="n">network</span> <span class="n">status</span>
+<span class="n">Querying</span><span class="p">...</span><span class="n">Please</span> <span class="n">wait</span><span class="p">...</span>
+<span class="n">Registration</span> <span class="nl">state</span><span class="p">:</span> <span class="n">Home</span> <span class="n">network</span>
+<span class="n">PLMN</span> <span class="n">Public</span> <span class="n">Land</span> <span class="n">Mobile</span> <span class="n">Network</span> <span class="nl">code</span><span class="p">:</span> <span class="n">xxxxx</span>
+<span class="n">PLMN</span> <span class="n">Public</span> <span class="n">Land</span> <span class="n">Mobile</span> <span class="n">Network</span> <span class="nl">name</span><span class="p">:</span> <span class="n">operador</span>
+<span class="n">Cell</span> <span class="n">Location</span> <span class="n">Area</span> <span class="n">Code</span> <span class="mi">0</span><span class="n">xXXXX</span> <span class="p">(</span><span class="n">xxxx</span><span class="p">),</span> <span class="n">Identification</span> <span class="mi">0</span><span class="n">xXXXX</span> <span class="p">(</span><span class="n">xxx</span><span class="p">)</span>
+<span class="n">System</span> <span class="n">Mode</span> <span class="n">WCDMA</span><span class="p">,</span> <span class="n">Service</span> <span class="nl">domain</span><span class="p">:</span> <span class="n">PS</span>
+<span class="n">Network</span> <span class="n">technology</span> <span class="n">currently</span> <span class="n">in</span> <span class="nl">use</span><span class="p">:</span> <span class="n">HSDPA</span><span class="o">/</span><span class="n">HSUPA</span>
+<span class="n">Receive</span> <span class="n">signal</span> <span class="n">code</span> <span class="n">power</span> <span class="n">of</span> <span class="n">the</span> <span class="n">active</span> <span class="n">set</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">strongest</span> <span class="n">cells</span><span class="p">(</span><span class="n">RSCP</span><span class="p">)</span><span class="o">:</span>  <span class="o">-</span><span class="mi">59</span> <span class="n">dBm</span>
+<span class="n">Total</span> <span class="n">energy</span> <span class="n">per</span> <span class="n">chip</span> <span class="n">per</span> <span class="n">power</span> <span class="n">density</span> <span class="n">value</span> <span class="n">of</span> <span class="n">set</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">strongest</span> <span class="n">cells</span><span class="p">(</span><span class="n">EcIo</span><span class="p">)</span><span class="o">:</span>  <span class="o">-</span><span class="mf">2.0</span> <span class="n">dB</span>
+<span class="n">Last</span> <span class="n">EcIo</span> <span class="n">measured</span> <span class="n">in</span> <span class="n">WCDMA</span> <span class="n">DATA</span> <span class="nl">mode</span><span class="p">:</span>  <span class="o">-</span><span class="mf">3.5</span> <span class="n">dB</span>
+<span class="n">Primary</span> <span class="n">Scrambling</span> <span class="n">Code</span> <span class="p">(</span><span class="n">PSC</span><span class="p">)</span> <span class="mi">0</span><span class="n">xXXXX</span> <span class="p">(</span><span class="n">xx</span><span class="p">)</span>
+<span class="n">Operational</span> <span class="n">status</span>
+<span class="n">Current</span> <span class="nl">Time</span><span class="p">:</span>  <span class="mi">140100</span>           <span class="nl">Temperature</span><span class="p">:</span> <span class="mi">40</span>
+<span class="n">Bootup</span> <span class="nl">Time</span><span class="p">:</span>   <span class="mi">516</span>              <span class="nl">Mode</span><span class="p">:</span>        <span class="n">ONLINE</span>
+<span class="n">System</span> <span class="nl">mode</span><span class="p">:</span>   <span class="n">WCDMA</span>            <span class="n">PS</span> <span class="nl">state</span><span class="p">:</span>    <span class="n">Attached</span>
+<span class="n">WCDMA</span> <span class="nl">band</span><span class="p">:</span>    <span class="n">IMT2000</span>          <span class="n">GSM</span> <span class="nl">band</span><span class="p">:</span>    <span class="n">Unknown</span>
+<span class="n">WCDMA</span> <span class="nl">channel</span><span class="p">:</span> <span class="mi">10713</span>            <span class="n">GSM</span> <span class="nl">channel</span><span class="p">:</span> <span class="mi">65535</span>
+<span class="n">GMM</span> <span class="p">(</span><span class="n">PS</span><span class="p">)</span> <span class="nl">state</span><span class="p">:</span><span class="n">REGISTERED</span>       <span class="n">NORMAL</span> <span class="n">SERVICE</span>
+<span class="n">MM</span> <span class="p">(</span><span class="n">CS</span><span class="p">)</span> <span class="nl">state</span><span class="p">:</span> <span class="n">IDLE</span>             <span class="n">NORMAL</span> <span class="n">SERVICE</span>
+
+<span class="n">WCDMA</span> <span class="n">L1</span> <span class="nl">State</span><span class="p">:</span><span class="n">L1M_PCH_SLEEP</span>    <span class="n">RRC</span> <span class="nl">State</span><span class="p">:</span>   <span class="n">DISCONNECTED</span>
+
+<span class="n">RX</span> <span class="n">level</span> <span class="p">(</span><span class="n">dBm</span><span class="p">)</span><span class="o">:-</span><span class="mi">57</span>
+<span class="n">Coverage</span> <span class="nl">level</span><span class="p">:</span> <span class="mi">5</span> <span class="p">(</span><span class="o">*****</span><span class="p">)</span></code></pre></div>
+
+<p><strong>Protocolo IP</strong>
+Accedemos mediante este comando.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="o">+</span><span class="n">protocol</span> <span class="n">ip</span></code></pre></div>
+
+<p>Notese que cambia el <em>prompt</em>.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="n">IP</span><span class="o">+?</span>
+  <span class="n">access</span><span class="o">-</span><span class="n">controls</span>        <span class="n">IP</span> <span class="n">access</span> <span class="n">control</span> <span class="n">mode</span> <span class="n">and</span> <span class="n">configured</span> <span class="n">access</span> <span class="n">control</span>
+                         <span class="n">records</span>
+  <span class="n">aggregation</span><span class="o">-</span><span class="n">route</span>      <span class="n">Configured</span> <span class="n">aggregation</span> <span class="n">routes</span>
+  <span class="n">bping</span>                  <span class="n">Broadcast</span> <span class="n">ping</span>
+  <span class="n">cache</span>                  <span class="n">Cached</span> <span class="n">routing</span> <span class="n">table</span>
+  <span class="n">counters</span>               <span class="n">IP</span> <span class="n">statistics</span>
+  <span class="n">dump</span><span class="o">-</span><span class="n">routing</span><span class="o">-</span><span class="n">table</span>     <span class="n">Routing</span> <span class="n">table</span>
+  <span class="n">interface</span><span class="o">-</span><span class="n">addresses</span>    <span class="n">IP</span> <span class="n">interface</span> <span class="n">addresses</span>
+  <span class="n">ipsec</span>                  <span class="n">IPSec</span> <span class="n">monitoring</span>
+  <span class="n">nat</span>                    <span class="n">NAT</span> <span class="n">monitoring</span>
+  <span class="n">ping</span>                   <span class="n">Send</span> <span class="n">ping</span> <span class="n">queries</span> <span class="n">to</span> <span class="n">any</span> <span class="n">other</span> <span class="n">host</span>
+  <span class="n">pool</span>                   <span class="n">Address</span> <span class="n">pool</span> <span class="n">established</span> <span class="n">in</span> <span class="n">the</span> <span class="n">router</span> <span class="n">and</span> <span class="n">ranges</span> <span class="n">of</span>
+                         <span class="n">addresses</span> <span class="n">reserved</span>
+  <span class="n">proxy</span><span class="o">-</span><span class="n">igmp</span>             <span class="n">Proxy</span> <span class="n">IGMP</span> <span class="n">monitoring</span>
+  <span class="n">route</span><span class="o">-</span><span class="n">given</span><span class="o">-</span><span class="n">address</span>    <span class="n">Existing</span> <span class="n">routes</span> <span class="k">for</span> <span class="n">a</span> <span class="n">specific</span> <span class="n">destination</span> <span class="n">IP</span> <span class="n">address</span>
+  <span class="n">sizes</span>                  <span class="n">Size</span> <span class="n">of</span> <span class="n">specific</span> <span class="n">IP</span> <span class="n">parameters</span>
+  <span class="k">static</span><span class="o">-</span><span class="n">routes</span>          <span class="n">Configured</span> <span class="k">static</span> <span class="n">routes</span>
+  <span class="n">tcp</span><span class="o">-</span><span class="n">list</span>               <span class="n">List</span> <span class="n">of</span> <span class="n">TCP</span> <span class="n">connections</span>
+  <span class="n">traceroute</span>             <span class="n">Complete</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">particular</span> <span class="n">destination</span>
+  <span class="n">tvrp</span>                   <span class="n">TVRP</span> <span class="n">monitoring</span>
+  <span class="n">udp</span><span class="o">-</span><span class="n">list</span>               <span class="n">List</span> <span class="n">of</span> <span class="n">registered</span> <span class="n">UDP</span> <span class="n">ports</span>
+  <span class="n">vrf</span>                    <span class="n">IP</span> <span class="n">monitoring</span> <span class="n">in</span> <span class="n">a</span> <span class="n">VPN</span> <span class="n">Routing</span><span class="o">/</span><span class="n">Forwarding</span> <span class="n">instance</span>
+  <span class="n">vrrp</span>                   <span class="n">VRRP</span> <span class="n">monitoring</span>
+  <span class="n">exit</span></code></pre></div>
+
+<p>El comando <strong>cache</strong> es similar a <strong>ip accounting</strong> de Cisco.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="n">IP</span><span class="o">+</span><span class="n">cache</span> <span class="o">?</span>
+
+<span class="n">Destination</span>           <span class="n">Usage</span>        <span class="n">Next</span> <span class="n">hop</span>
+ 
+<span class="mf">207.46.193.115</span>    <span class="mi">98</span>           <span class="mf">207.46.193.115</span>   <span class="p">(</span><span class="n">ppp1</span><span class="p">)</span>
+<span class="mf">160.46.253.107</span>    <span class="mi">147</span>          <span class="mf">160.46.253.107</span>   <span class="p">(</span><span class="n">ppp1</span><span class="p">)</span>
+<span class="mf">50.22.210.154</span>     <span class="mi">3</span>            <span class="mf">50.22.210.154</span>    <span class="p">(</span><span class="n">ppp1</span><span class="p">)</span>
+<span class="mf">10.96.223.22</span>      <span class="mi">4</span>            <span class="mf">10.96.223.22</span>     <span class="p">(</span><span class="n">ethernet0</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<span class="mf">157.55.231.252</span>    <span class="mi">10</span>           <span class="mf">157.55.231.252</span>   <span class="p">(</span><span class="n">ppp1</span><span class="p">)</span>
+<span class="mf">213.199.148.230</span>   <span class="mi">5</span>            <span class="mf">213.199.148.230</span>  <span class="p">(</span><span class="n">ppp1</span><span class="p">)</span>
+<span class="mf">10.96.223.32</span>      <span class="mi">424</span>          <span class="mf">10.96.223.32</span>     <span class="p">(</span><span class="n">ethernet0</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<span class="mf">10.96.223.50</span>      <span class="mi">75</span>           <span class="mf">10.96.223.50</span>     <span class="p">(</span><span class="n">ethernet0</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span></code></pre></div>
+
+<p>Para ver las IP de las interfaces ejecutamos los que sigue.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="n">IP</span><span class="o">+</span><span class="n">interface</span><span class="o">-</span><span class="n">addresses</span>
+<span class="n">Interface</span> <span class="n">IP</span> <span class="nl">Addresses</span><span class="p">:</span>
+<span class="o">-----------------------</span>
+<span class="n">ethernet0</span><span class="o">/</span><span class="mi">0</span>        <span class="mf">192.168.1.1</span><span class="o">/</span><span class="mi">24</span>
+<span class="n">ppp1</span>               <span class="n">unnumbered</span> <span class="o">-</span> <span class="n">using</span> <span class="n">global</span><span class="o">-</span><span class="n">address</span> <span class="p">(</span><span class="mf">1.1.1.1</span><span class="p">)</span>
+
+<span class="n">Special</span> <span class="n">IP</span> <span class="nl">Addresses</span><span class="p">:</span>
+<span class="o">---------------------</span>
+<span class="n">internal</span><span class="o">-</span><span class="n">address</span>    <span class="mf">0.0.0.0</span>
+<span class="n">management</span><span class="o">-</span><span class="n">address</span>  <span class="mf">10.0.0.1</span>
+<span class="n">router</span><span class="o">-</span><span class="n">id</span>           <span class="mf">0.0.0.0</span>
+<span class="n">global</span><span class="o">-</span><span class="n">address</span>      <span class="mf">8.8.8.8</span></code></pre></div>
+
+<p>Para mostrar la tabla de rutas.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="n">IP</span><span class="o">+</span><span class="n">dump</span><span class="o">-</span><span class="n">routing</span><span class="o">-</span><span class="n">table</span>
+<span class="n">Type</span>                <span class="n">Dest</span> <span class="n">net</span><span class="o">/</span><span class="n">Mask</span>  <span class="n">Cost</span> <span class="n">Age</span>  <span class="n">Next</span> <span class="n">hop</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">stat</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>          <span class="mf">0.0.0.0</span><span class="o">/</span><span class="mi">0</span>  <span class="p">[</span> <span class="mi">60</span><span class="o">/</span><span class="mi">1</span> <span class="p">]</span> <span class="mi">0</span>   <span class="n">ppp1</span>
+<span class="n">sbnt</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>         <span class="mf">2.0.0.0</span><span class="o">/</span><span class="mi">8</span>  <span class="p">[</span><span class="mi">240</span><span class="o">/</span><span class="mi">1</span> <span class="p">]</span> <span class="mi">0</span>   <span class="n">none</span>
+ <span class="n">dir</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>      <span class="mf">1.0.0.1</span><span class="o">/</span><span class="mi">32</span> <span class="p">[</span>  <span class="mi">0</span><span class="o">/</span><span class="mi">1</span> <span class="p">]</span> <span class="mi">0</span>   <span class="n">snk</span>
+ <span class="n">dir</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>      <span class="mf">192.168.1.1</span><span class="o">/</span><span class="mi">24</span> <span class="p">[</span>  <span class="mi">0</span><span class="o">/</span><span class="mi">1</span> <span class="p">]</span> <span class="mi">0</span>   <span class="n">ethernet0</span><span class="o">/</span><span class="mi">0</span>
+
+<span class="n">Default</span> <span class="n">gateway</span> <span class="n">in</span> <span class="n">use</span><span class="p">.</span>
+<span class="n">Type</span> <span class="n">Cost</span> <span class="n">Age</span>  <span class="n">Next</span> <span class="n">hop</span>
+<span class="n">stat</span> <span class="mi">1</span>    <span class="mi">0</span>   <span class="n">ppp1</span>
+
+<span class="n">Routing</span> <span class="n">table</span> <span class="nl">size</span><span class="p">:</span> <span class="mi">7</span> <span class="n">nets</span> <span class="p">(</span><span class="mi">728</span> <span class="n">bytes</span><span class="p">),</span> <span class="mi">4</span> <span class="n">nets</span> <span class="n">known</span><span class="p">,</span> <span class="mi">4</span> <span class="n">shown</span></code></pre></div>
+
+<p>Protocolo HSRP/TVRP</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="n">IP</span><span class="o">+</span><span class="n">tvrp</span>
+<span class="n">router</span> <span class="n">TVRP</span><span class="o">+</span><span class="n">list</span> <span class="n">all</span>
+
+              <span class="o">=====</span> <span class="n">Global</span> <span class="n">TVRP</span> <span class="n">Parameters</span> <span class="o">=====</span>
+
+  <span class="n">TVRP</span> <span class="n">is</span> <span class="nl">currently</span><span class="p">:</span> <span class="n">ENABLED</span>
+  <span class="n">TVRP</span> <span class="n">port</span> <span class="p">(</span><span class="n">UDP</span><span class="p">)</span><span class="o">:</span>   <span class="mi">1985</span>
+  <span class="n">Virtual</span> <span class="nl">redirects</span><span class="p">:</span> <span class="n">ENABLED</span>
+  <span class="n">Unknown</span> <span class="nl">packets</span><span class="p">:</span>   <span class="mi">4</span>
+  <span class="n">Authentication</span> <span class="n">Failed</span> <span class="nl">packets</span><span class="p">:</span>   <span class="mi">0</span>
+
+
+                <span class="o">=====</span> <span class="n">List</span> <span class="n">of</span> <span class="n">TVRP</span> <span class="n">groups</span> <span class="o">=====</span>
+
+ <span class="o">+------------------------------------------------------------+</span>
+ <span class="o">|</span>                      <span class="n">TVRP</span> <span class="nl">GROUP</span><span class="p">:</span>   <span class="mi">1</span>                       <span class="o">|</span>
+ <span class="o">+------------------------------------------------------------+</span>
+   <span class="n">Virtual</span> <span class="nl">IP</span><span class="p">:</span>  <span class="mf">192.168.1.3</span>
+   <span class="n">Virtual</span> <span class="nl">MAC</span><span class="p">:</span> <span class="mo">00</span><span class="o">-</span><span class="mo">00</span><span class="o">-</span><span class="mi">0</span><span class="n">c</span><span class="o">-</span><span class="mo">07</span><span class="o">-</span><span class="n">ac</span><span class="o">-</span><span class="mo">01</span>
+   <span class="n">Current</span> <span class="n">local</span> <span class="n">IP</span><span class="o">/</span><span class="nl">Interface</span><span class="p">:</span> <span class="mf">192.168.1.1</span>
+   <span class="n">ACTIVE</span> <span class="nl">Router</span><span class="p">:</span>  <span class="mf">192.168.1.1</span>
+   <span class="n">STANDBY</span> <span class="nl">Router</span><span class="p">:</span> <span class="mf">192.168.1.2</span>
+   <span class="nl">Hellotime</span><span class="p">:</span> <span class="mi">3</span>               <span class="nl">Holdtime</span><span class="p">:</span> <span class="mi">10</span>
+   <span class="n">TVRP</span> <span class="nl">state</span><span class="p">:</span>  <span class="n">STANDBY</span>       <span class="n">Previous</span> <span class="nl">state</span><span class="p">:</span>    <span class="n">SPEAK</span>
+   <span class="n">Currently</span>  <span class="n">RUNNING</span>         <span class="n">Last</span> <span class="nl">event</span><span class="p">:</span> <span class="n">HELO_EXP</span>
+   <span class="nl">Initial</span><span class="p">:</span> <span class="mi">1</span>           <span class="nl">Learn</span><span class="p">:</span> <span class="mi">0</span>           <span class="nl">Listen</span><span class="p">:</span> <span class="mi">1</span>
+   <span class="nl">Speak</span><span class="p">:</span> <span class="mi">2</span>           <span class="nl">Standby</span><span class="p">:</span> <span class="mi">2</span>           <span class="nl">Active</span><span class="p">:</span> <span class="mi">1</span>
+     <span class="n">Hello</span> <span class="n">messages</span> <span class="o">--&gt;</span>  <span class="nl">sent</span><span class="p">:</span>   <span class="mi">46660</span><span class="p">,</span>   <span class="nl">received</span><span class="p">:</span>   <span class="mi">51616</span>
+     <span class="n">Coup</span> <span class="n">messages</span> <span class="o">---&gt;</span>  <span class="nl">sent</span><span class="p">:</span>       <span class="mi">0</span><span class="p">,</span>   <span class="nl">received</span><span class="p">:</span>       <span class="mi">2</span>
+     <span class="n">Resign</span> <span class="n">messages</span> <span class="o">-&gt;</span>  <span class="nl">sent</span><span class="p">:</span>       <span class="mi">1</span><span class="p">,</span>   <span class="nl">received</span><span class="p">:</span>       <span class="mi">0</span></code></pre></div>
+
+<p><strong>Protocolo ARP</strong></p>
+
+<p>De forma similar al protocolo IP.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="o">+</span><span class="n">protocol</span> <span class="n">arp</span>
+<span class="n">router</span> <span class="n">ARP</span><span class="o">+</span><span class="n">dump</span> <span class="n">ethernet0</span><span class="o">/</span><span class="mi">0</span>
+
+<span class="n">ARP</span> <span class="n">entries</span> <span class="k">for</span> <span class="n">IP</span> <span class="n">protocol</span>
+<span class="n">MAC</span> <span class="n">address</span>           <span class="n">IP</span> <span class="n">address</span>       <span class="n">Timeout</span><span class="p">(</span><span class="n">min</span><span class="p">)</span>
+<span class="mo">00</span><span class="o">-</span><span class="mo">00</span><span class="o">-</span><span class="mo">00</span><span class="o">-</span><span class="mo">00</span><span class="o">-</span><span class="mo">00</span><span class="o">-</span><span class="mo">00</span>     <span class="mf">192.168.1.2</span>      <span class="mi">200</span></code></pre></div>
+
+<h2 id="modo-configuracin">Modo configuración</h2>
+
+<p>Para salir de un modo de configuración previo pulsaremos <strong>Ctrl+p</strong></p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="n">Config</span><span class="o">&gt;?</span>
+  <span class="n">add</span>                    <span class="n">Create</span> <span class="n">a</span> <span class="n">virtual</span> <span class="n">interface</span>
+  <span class="n">autoinstall</span>            <span class="n">Set</span> <span class="n">autoinstall</span> <span class="n">parameters</span>
+  <span class="n">backup</span><span class="o">-</span><span class="n">files</span>           <span class="n">Perform</span> <span class="n">backup</span> <span class="n">router</span> <span class="n">system</span> <span class="n">files</span>
+  <span class="n">banner</span>                 <span class="n">Define</span> <span class="n">a</span> <span class="n">banner</span>
+  <span class="n">config</span><span class="o">-</span><span class="n">media</span>           <span class="n">Select</span> <span class="n">the</span> <span class="n">active</span> <span class="n">storage</span> <span class="n">device</span>
+  <span class="n">confirm</span><span class="o">-</span><span class="n">cfg</span>            <span class="n">Confirms</span> <span class="n">current</span> <span class="n">configuration</span>
+  <span class="n">confirm</span><span class="o">-</span><span class="n">cfg</span><span class="o">-</span><span class="n">needed</span>     <span class="n">Enables</span> <span class="n">the</span> <span class="n">need</span> <span class="n">of</span> <span class="n">configuration</span> <span class="n">confirmation</span>
+  <span class="n">copy</span>                   <span class="n">Copies</span> <span class="n">Running</span> <span class="n">Configuration</span> <span class="n">to</span> <span class="n">Static</span> <span class="n">Configuration</span>
+  <span class="n">description</span>            <span class="n">Configuration</span> <span class="n">description</span>
+  <span class="n">disable</span>                <span class="n">Disable</span> <span class="n">specific</span> <span class="n">features</span>
+  <span class="n">dump</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">errors</span>    <span class="n">View</span> <span class="n">command</span> <span class="n">line</span> <span class="n">errors</span>
+  <span class="n">enable</span>                 <span class="n">Enable</span> <span class="n">specific</span> <span class="n">features</span>
+  <span class="n">event</span>                  <span class="n">Record</span> <span class="n">those</span> <span class="n">events</span> <span class="n">you</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">be</span> <span class="n">stored</span>
+  <span class="n">feature</span>                <span class="n">Additional</span> <span class="n">features</span> <span class="n">of</span> <span class="n">the</span> <span class="n">router</span>
+  <span class="n">file</span>                   <span class="n">Access</span> <span class="n">the</span> <span class="n">files</span> <span class="n">present</span> <span class="n">in</span> <span class="n">the</span> <span class="n">device</span>
+  <span class="n">firmware</span><span class="o">-</span><span class="n">checking</span>      <span class="n">Enables</span> <span class="n">cheching</span> <span class="n">when</span> <span class="n">firmware</span> <span class="n">files</span> <span class="n">are</span> <span class="n">required</span>
+  <span class="n">format</span>                 <span class="n">Format</span> <span class="n">a</span> <span class="n">storage</span> <span class="n">unit</span> <span class="n">in</span> <span class="n">the</span> <span class="n">device</span>
+  <span class="n">global</span><span class="o">-</span><span class="n">profiles</span>        <span class="n">Defines</span> <span class="n">the</span> <span class="n">router</span> <span class="n">PPP</span><span class="p">,</span> <span class="n">ATM</span> <span class="n">etc</span> <span class="n">profiles</span>
+  <span class="n">licence</span><span class="o">-</span><span class="n">change</span>         <span class="n">Changes</span> <span class="n">current</span> <span class="n">licence</span>
+  <span class="n">list</span>                   <span class="n">Lists</span> <span class="n">all</span> <span class="n">kind</span> <span class="n">of</span> <span class="n">information</span>
+  <span class="n">log</span><span class="o">-</span><span class="n">command</span><span class="o">-</span><span class="n">errors</span>     <span class="n">Start</span> <span class="n">logging</span> <span class="n">command</span> <span class="n">line</span> <span class="n">errors</span>
+  <span class="n">network</span>                <span class="n">Access</span> <span class="n">the</span> <span class="n">commands</span> <span class="n">menu</span> <span class="n">to</span> <span class="n">configure</span> <span class="n">a</span> <span class="n">specific</span>
+                         <span class="n">interface</span>
+  <span class="n">no</span>                     <span class="n">Negate</span> <span class="n">a</span> <span class="n">command</span> <span class="n">or</span> <span class="n">set</span> <span class="n">its</span> <span class="n">defaults</span>
+  <span class="n">node</span>                   <span class="n">Access</span> <span class="n">the</span> <span class="n">X25</span> <span class="n">or</span> <span class="n">XOT</span> <span class="n">node</span> <span class="n">configuration</span>
+  <span class="n">privilege</span>              <span class="n">Defines</span> <span class="n">command</span> <span class="n">privilege</span> <span class="n">parameters</span>
+  <span class="n">protocol</span>               <span class="n">Access</span> <span class="n">the</span> <span class="n">configuration</span> <span class="n">environment</span> <span class="n">of</span> <span class="n">a</span> <span class="n">specific</span>
+                         <span class="n">protocol</span>
+  <span class="n">save</span>                   <span class="n">Store</span> <span class="n">the</span> <span class="n">configuration</span> <span class="n">in</span> <span class="n">the</span> <span class="n">active</span> <span class="n">storage</span> <span class="n">unit</span>
+  <span class="n">set</span>                    <span class="n">Configure</span> <span class="n">various</span> <span class="n">general</span> <span class="n">parameters</span>
+  <span class="n">strong</span><span class="o">-</span><span class="n">password</span>        <span class="n">Enable</span> <span class="n">strong</span> <span class="n">password</span>
+  <span class="n">telephony</span>              <span class="n">Set</span> <span class="n">VoIP</span> <span class="n">telephony</span> <span class="n">parameters</span>
+  <span class="n">time</span>                   <span class="n">Change</span> <span class="n">and</span> <span class="n">check</span> <span class="n">the</span> <span class="n">date</span> <span class="n">and</span> <span class="n">time</span>
+  <span class="n">uci</span>                    <span class="n">UCI</span> <span class="n">configuration</span>
+  <span class="n">unset</span><span class="o">-</span><span class="n">demo</span><span class="o">-</span><span class="n">licence</span>     <span class="n">Disable</span> <span class="n">demo</span> <span class="n">licence</span> <span class="n">and</span> <span class="k">return</span> <span class="n">to</span> <span class="n">base</span> <span class="n">licence</span>
+  <span class="n">user</span>                   <span class="n">Create</span> <span class="n">a</span> <span class="n">registered</span> <span class="n">user</span>
+  <span class="n">end</span>                    <span class="n">Configuration</span> <span class="n">end</span></code></pre></div>
+
+<p>Para mostrar la configuración.</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">router</span> <span class="n">Config</span><span class="o">&gt;</span><span class="n">show</span> <span class="n">config</span>
+<span class="p">.</span>
+<span class="p">.</span>
+<span class="p">.</span></code></pre></div>
+
+<p>Con esto termina la entrada de introducción.</p>
+
+  </article>
+
+
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading">Redes y Sistemas</h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>Ingeniería, Instalaciones e Integración</li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

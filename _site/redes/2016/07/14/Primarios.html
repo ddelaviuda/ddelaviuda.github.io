@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Primarios</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.">
+    <link rel="canonical" href="/redes/2016/07/14/Primarios.html">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+    <header class="site-header">
+<link rel="shortcut icon" type="image/png" href="/img/grey_circle_txt_48.png">
+  <div class="wrap">
+
+    <a class="site-title" href="/">Redes y Sistemas</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">¿Por qué?</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+    <h1>Primarios</h1>
+    <p class="meta">Jul 14, 2016</p>
+  </header>
+
+  <article class="post-content">
+  <h2 id="configuracin-en-extremo-cliente">Configuración en extremo cliente</h2>
+
+<p>La centralita debe tomar la señal de reloj del circuito del proveedor</p>
+
+<p>Protocolo EuroRDSI-DSS1</p>
+
+<p>Plan de numeración ISDN E.164</p>
+
+<p>Tipo de número (TON) National</p>
+
+<p>Longitud 9 dígitos</p>
+
+<p>CRC4 – ON</p>
+
+<p>CRC4-multiframe</p>
+
+<h2 id="alarmas-fsicas-en-par-de-cobre">Alarmas físicas en par de cobre</h2>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">%%DSP E1PORT: <span class="nv">FN</span><span class="o">=</span>3, <span class="nv">SN</span><span class="o">=</span>1, <span class="nv">PN</span><span class="o">=</span>29<span class="p">;</span>%%
+<span class="nv">RETCODE</span> <span class="o">=</span> <span class="m">0</span>  accomplished
+
+E32/T32/E63/T63 Port Status
+---------------------------
+               Working <span class="nv">Mode</span> <span class="o">=</span> E1
+    Send Line Coding <span class="nv">Scheme</span> <span class="o">=</span> HDB3
+ Receive Line Coding <span class="nv">Scheme</span> <span class="o">=</span> HDB3
+                  Loop <span class="nv">Mode</span> <span class="o">=</span> NO LOOP
+       Send Frame <span class="nv">Structure</span> <span class="o">=</span> CRC4_MULTIFRAME
+    Receive Frame <span class="nv">Structure</span> <span class="o">=</span> CRC4_MULTIFRAME
+          Highway Data <span class="nv">Rate</span> <span class="o">=</span> 16.384Mbps
+          System Clock <span class="nv">Rate</span> <span class="o">=</span> 16.384MHz
+           System <span class="nv">Multiplex</span> <span class="o">=</span> Y
+            Interleave <span class="nv">Mode</span> <span class="o">=</span> Byte
+             Line <span class="nv">Impedance</span> <span class="o">=</span> <span class="m">120</span> Ohm
+     Communication <span class="nv">Distance</span> <span class="o">=</span> SHORT
+                 Clock <span class="nv">Mode</span> <span class="o">=</span> SLAVE
+         RAI alarm <span class="nv">standard</span> <span class="o">=</span> ITUT
+       Code Violation <span class="nv">Count</span> <span class="o">=</span> 0
+        Framing Error <span class="nv">Count</span> <span class="o">=</span> 0
+            CRC Error <span class="nv">Count</span> <span class="o">=</span> 0
+          E-Bit Error <span class="nv">Count</span> <span class="o">=</span> 0
+        Sa6-Bit Error <span class="nv">Count</span> <span class="o">=</span> 0
+    Multiframe Period <span class="nv">Count</span> <span class="o">=</span> 0
+                 COFA <span class="nv">Count</span> <span class="o">=</span> 0
+                        <span class="nv">LOS</span> <span class="o">=</span> OFF
+                        <span class="nv">AIS</span> <span class="o">=</span> OFF
+                        <span class="nv">LFA</span> <span class="o">=</span> OFF
+                        <span class="nv">RRA</span> <span class="o">=</span> OFF
+                       <span class="nv">LMFA</span> <span class="o">=</span> OFF
+                        <span class="nv">XLO</span> <span class="o">=</span> OFF
+                        <span class="nv">XLS</span> <span class="o">=</span> OFF
+                        <span class="nv">NMF</span> <span class="o">=</span> OFF
+                    <span class="nv">TS16LOS</span> <span class="o">=</span> OFF
+                    <span class="nv">TS16AIS</span> <span class="o">=</span> OFF
+                    <span class="nv">TS16LFA</span> <span class="o">=</span> OFF
+                     <span class="nv">TS16RA</span> <span class="o">=</span> OFF
+
+---    END</code></pre></div>
+
+<h2 id="canales-en-el-primario">Canales en el primario</h2>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">+++    <span class="m">2107</span>        2016-06-16 14:55:40+02:00 DST
+O<span class="p">&amp;</span>M    <span class="c">#8900761</span>
+%%LST TG:TGN<span class="o">=</span><span class="s2">&quot;CCLO001MAD01C&quot;</span>,SSR<span class="o">=</span>YES,SRT<span class="o">=</span>YES,SOF<span class="o">=</span>YES,SL<span class="o">=</span>YES,SC<span class="o">=</span>YES,SS<span class="o">=</span>YES,SOT<span class="o">=</span>YES,CLRDSP<span class="o">=</span>YES,STGAP<span class="o">=</span>YES,SCAC<span class="o">=</span>YES,DIFF<span class="o">=</span>YES,DCMI<span class="o">=</span>YES<span class="p">;</span>%%
+<span class="nv">RETCODE</span> <span class="o">=</span> <span class="m">0</span>  Operation succeeded
+
+Basic Information
+-----------------
+                 Trunk group <span class="nv">number</span>  <span class="o">=</span>  4780
+                   Trunk group <span class="nv">name</span>  <span class="o">=</span>  CCLO001MAD01C
+                       Equipment <span class="nv">ID</span>  <span class="o">=</span>  10.254.224.1:2944
+                       Circuit <span class="nb">type</span>  <span class="o">=</span>  PRA
+                    Signalling <span class="nv">link</span>  <span class="o">=</span>  4780
+                    Group <span class="nv">direction</span>  <span class="o">=</span>  Bidirectional trunk
+             Circuit selection <span class="nv">mode</span>  <span class="o">=</span>  Cyclic
+                 Call-out <span class="nv">authority</span>  <span class="o">=</span>  Intra-office
+                                     <span class="o">=</span>  <span class="nv">Local</span>
+                                     <span class="o">=</span>  Local <span class="nv">toll</span>
+                                     <span class="o">=</span>  National <span class="nv">toll</span>
+                                     <span class="o">=</span>  International <span class="nv">toll</span>
+                                     <span class="o">=</span>  Intra-office national <span class="nv">toll</span>
+                                     <span class="o">=</span>  Intra-office international <span class="nv">toll</span>
+                                     <span class="o">=</span>  Intra-office <span class="nb">local </span><span class="nv">toll</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right1</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right2</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right3</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right4</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right5</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right6</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right7</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right8</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right9</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right10</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right11</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right12</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right13</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right14</span>
+                                     <span class="o">=</span>  Custom callout <span class="nv">right15</span>
+                                     <span class="o">=</span>  Custom callout right16
+                  Call-in <span class="nv">authority</span>  <span class="o">=</span>  Intra-office
+                                     <span class="o">=</span>  <span class="nv">Local</span>
+                                     <span class="o">=</span>  Local <span class="nv">toll</span>
+                                     <span class="o">=</span>  National <span class="nv">toll</span>
+                                     <span class="o">=</span>  International <span class="nv">toll</span>
+                                     <span class="o">=</span>  Intra-office national <span class="nv">toll</span>
+                                     <span class="o">=</span>  Intra-office international <span class="nv">toll</span>
+                                     <span class="o">=</span>  Intra-office <span class="nb">local </span><span class="nv">toll</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right1</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right2</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right3</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right4</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right5</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right6</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right7</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right8</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right9</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right10</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right11</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right12</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right13</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right14</span>
+                                     <span class="o">=</span>  Custom callin <span class="nv">right15</span>
+                                     <span class="o">=</span>  Custom callin right16
+                 Audio codec <span class="nv">prefer</span>  <span class="o">=</span>  None
+            EnhancedVoice <span class="nv">Attribute</span>  <span class="o">=</span>  NULL
+          Maximum Simultaneous <span class="nv">Call</span>  <span class="o">=</span>  None
+ Maximum Simultaneous Outgoing <span class="nv">Call</span>  <span class="o">=</span>  None
+Maximum Simultaneous Incomming <span class="nv">Call</span>  <span class="o">=</span>  None
+                         Codec <span class="nv">List</span>  <span class="o">=</span>  <span class="nv">G711_A</span>
+                                     <span class="o">=</span>  <span class="nv">G711_u</span>
+                                     <span class="o">=</span>  <span class="nv">G723_1</span>
+                                     <span class="o">=</span>  <span class="nv">G726</span>
+                                     <span class="o">=</span>  <span class="nv">G728</span>
+                                     <span class="o">=</span>  <span class="nv">G729</span>
+                                     <span class="o">=</span>  <span class="nv">MPEG4Audio</span>
+                                     <span class="o">=</span>  <span class="nv">G726_40</span>
+                                     <span class="o">=</span>  <span class="nv">G726_32</span>
+                                     <span class="o">=</span>  <span class="nv">G726_24</span>
+                                     <span class="o">=</span>  <span class="nv">G726_16</span>
+                                     <span class="o">=</span>  <span class="nv">H261</span>
+                                     <span class="o">=</span>  <span class="nv">H263</span>
+                                     <span class="o">=</span>  <span class="nv">MPEG4Video</span>
+                                     <span class="o">=</span>  <span class="nv">T38</span>
+                                     <span class="o">=</span>  <span class="nv">AMR</span>
+                                     <span class="o">=</span>  CLEARMODE
+                    Meter bill <span class="nv">flag</span>  <span class="o">=</span>  No
+                      Type of <span class="nv">usage</span>  <span class="o">=</span>  Network usage
+                  Master/Slave <span class="nv">flag</span>  <span class="o">=</span>  Master
+
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 1<span class="o">)</span>
+
+Sub-Route Related
+-----------------
+Trunk group <span class="nv">number</span>  <span class="o">=</span>  4780
+  Sub-route <span class="nv">number</span>  <span class="o">=</span>  4780
+    Sub-route <span class="nv">name</span>  <span class="o">=</span>  CCLO001MAD01C
+    Priority <span class="nv">level</span>  <span class="o">=</span>  0
+      <span class="nv">Availability</span>  <span class="o">=</span>  255
+ Master/Slave <span class="nb">type</span>  <span class="o">=</span>  Master
+
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 1<span class="o">)</span>
+
+Route Related
+-------------
+Trunk group <span class="nv">number</span>  <span class="o">=</span>  4780
+  Trunk group <span class="nv">name</span>  <span class="o">=</span>  CCLO001MAD01C
+         Route No.  <span class="o">=</span>  4780
+        Route <span class="nv">Name</span>  <span class="o">=</span>  CCLO001MAD01C
+ Master/Slave <span class="nb">type</span>  <span class="o">=</span>  Master
+
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 1<span class="o">)</span>
+
+Office Related
+--------------
+       Sub-route <span class="nv">number</span>  <span class="o">=</span>  4780
+         Sub-route <span class="nv">name</span>  <span class="o">=</span>  CCLO001MAD01C
+Office direction <span class="nv">number</span>  <span class="o">=</span>  4780
+  Office direction <span class="nv">name</span>  <span class="o">=</span>  CCLO001MAD01C
+       Peer office <span class="nb">type</span>  <span class="o">=</span>  PBX
+
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 1<span class="o">)</span>
+
+Show ClassMark info
+-------------------
+            Trunk group <span class="nv">number</span>  <span class="o">=</span>  4780
+        Incoming Trunk CM <span class="nv">Flag</span>  <span class="o">=</span>  Not Configure
+Incoming Trunk Class Mark <span class="nv">Code</span>  <span class="o">=</span>  NULL
+
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 1<span class="o">)</span>
+
+Show ClassMark info
+-------------------
+            Trunk group <span class="nv">number</span>  <span class="o">=</span>  4780
+        Outgoing Trunk CM <span class="nv">Flag</span>  <span class="o">=</span>  Not Configure
+Outgoing Trunk Class Mark <span class="nv">Code</span>  <span class="o">=</span>  NULL
+
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 1<span class="o">)</span>
+
+Trunk Group Load Related
+------------------------
+ Bearer index  Trunk seizure point  Caller sending change index  Callee sending change index 
+
+ <span class="m">151</span>           <span class="m">1</span>                    <span class="m">0</span>                            <span class="m">51</span>                          
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 1<span class="o">)</span>
+
+Circuit Distributing
+--------------------
+ Trunk group number  Startcircuit  Endcircuit  MN      Circuit <span class="nb">type  </span>Master/Slave flag 
+
+ <span class="m">4780</span>                <span class="m">13280</span>         <span class="m">13295</span>       <span class="m">22</span>      PRA           Master            
+ <span class="m">4780</span>                <span class="m">13297</span>         <span class="m">13311</span>       <span class="m">22</span>      PRA           Master            
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 2<span class="o">)</span>
+
+TotalCircuitNumber
+------------------
+ TotalNumber 
+
+ <span class="m">31</span>          
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 1<span class="o">)</span>
+
+Other Info
+----------
+                         Connect satellite <span class="nv">circuit</span>  <span class="o">=</span>  False
+                                International <span class="nv">call</span>  <span class="o">=</span>  False
+                                 Number <span class="nv">incomplete</span>  <span class="o">=</span>  False
+                                  Call <span class="nb">source </span><span class="nv">code</span>  <span class="o">=</span>  2721
+                                  Call <span class="nb">source </span><span class="nv">name</span>  <span class="o">=</span>  Madrid
+                                              <span class="nv">DOD2</span>  <span class="o">=</span>  False
+                                         CLIR <span class="nv">flag</span>  <span class="o">=</span>  NULL
+                                 Send initial <span class="nv">tone</span>  <span class="o">=</span>  True
+                                 Initial tone <span class="nb">type</span>  <span class="o">=</span>  Recorded 0
+                             Send exceptional <span class="nv">tone</span>  <span class="o">=</span>  False
+                             Exceptional tone <span class="nb">type</span>  <span class="o">=</span>  Recorded 0
+                                        Tone <span class="nv">Group</span>  <span class="o">=</span>  65534
+                              Charging <span class="nb">source </span><span class="nv">code</span>  <span class="o">=</span>  0
+               Outgoing trunk charging <span class="nb">source </span><span class="nv">code</span>  <span class="o">=</span>  65535
+                                Use opposite <span class="nv">pulse</span>  <span class="o">=</span>  False
+                       Centralized accounting <span class="nv">flag</span>  <span class="o">=</span>  False
+                                       EC use <span class="nv">mode</span>  <span class="o">=</span>  Always ON
+                        Support EC in hairpin <span class="nv">call</span>  <span class="o">=</span>  False
+                      Caller number provision <span class="nv">mode</span>  <span class="o">=</span>  Default number
+                             Default <span class="nb">caller </span><span class="nv">number</span>  <span class="o">=</span>  911820695
+Calling number address attribute transmitting <span class="nv">mode</span>  <span class="o">=</span>  Not transparently transmit
+                         Call barring group <span class="nv">number</span>  <span class="o">=</span>  65535
+                           Upper seizure <span class="nv">threshold</span>  <span class="o">=</span>  0
+                           Lower seizure <span class="nv">threshold</span>  <span class="o">=</span>  0
+                    Network management <span class="nb">source </span><span class="nv">code</span>  <span class="o">=</span>  65535
+           Idle circuits <span class="k">for</span> weak call <span class="nv">restriction</span>  <span class="o">=</span>  0
+         Idle circuits <span class="k">for</span> forced call <span class="nv">restriction</span>  <span class="o">=</span>  0
+             Software parameter of service <span class="nv">control</span>  <span class="o">=</span>  Service <span class="nv">8</span>
+                                                    <span class="o">=</span>  Service 18
+      Second software parameter of service <span class="nv">control</span>  <span class="o">=</span>  NULL
+       Third software parameter of service <span class="nv">control</span>  <span class="o">=</span>  NULL
+                               Circuit pool <span class="nv">number</span>  <span class="o">=</span>  0
+                        Overlap send called <span class="nv">number</span>  <span class="o">=</span>  False
+         Reserved circuit number <span class="k">for</span> priority <span class="nv">user</span>  <span class="o">=</span>  0
+         Reserved circuit number <span class="k">for</span> incoming <span class="nv">call</span>  <span class="o">=</span>  0
+                                 Timer group <span class="nv">index</span>  <span class="o">=</span>  0
+                         Can request <span class="nb">caller </span><span class="nv">number</span>  <span class="o">=</span>  True
+               Connect without valid <span class="nb">caller </span><span class="nv">number</span>  <span class="o">=</span>  True
+                                Connect by <span class="nv">default</span>  <span class="o">=</span>  True
+             Whether request <span class="nb">caller </span>number <span class="k">for</span> <span class="nv">CCB</span>  <span class="o">=</span>  False
+                                      Interface <span class="nv">ID</span>  <span class="o">=</span>  None
+                                            PRA <span class="nv">ID</span>  <span class="o">=</span>  NULL
+                             Preselect policy <span class="nv">code</span>  <span class="o">=</span>  65535
+                                        Gain <span class="nv">value</span>  <span class="o">=</span>  0
+                                 Master/Slave <span class="nv">flag</span>  <span class="o">=</span>  Master
+
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 1<span class="o">)</span>
+
+PRA Trunk Group Differences
+---------------------------
+             <span class="nv">Default_Current_Settings</span>  <span class="o">=</span>  Current Settings:
+                    Send initial <span class="nv">tone</span>  <span class="o">=</span>  True
+Software parameter of service <span class="nv">control</span>  <span class="o">=</span>  Service <span class="nv">8</span>
+                                       <span class="o">=</span>  Service 18
+           Overlap send called <span class="nv">number</span>  <span class="o">=</span>  False
+
+             <span class="nv">Default_Current_Settings</span>  <span class="o">=</span>  Default Settings:
+                    Send initial <span class="nv">tone</span>  <span class="o">=</span>  False
+Software parameter of service <span class="nv">control</span>  <span class="o">=</span>  NULL
+           Overlap send called <span class="nv">number</span>  <span class="o">=</span>  True
+
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 2<span class="o">)</span>
+
+---    END
+&gt;&gt;-----------------------------------------------------------------------------------------------------</code></pre></div>
+
+<h2 id="estado-de-los-canales">Estado de los canales</h2>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">+++    <span class="m">2107</span>        2016-06-16 14:53:57+02:00 DST
+O<span class="p">&amp;</span>M    <span class="c">#8900760</span>
+%%DSP N1CCN:MN<span class="o">=</span>22,CM<span class="o">=</span>PRA,SC<span class="o">=</span>13280,EC<span class="o">=</span>13311<span class="p">;</span>%%
+<span class="nv">RETCODE</span> <span class="o">=</span> <span class="m">0</span>  Operation succeeded
+
+SoftSwitch Dual-Home Work Mode
+------------------------------
+ DH Work Mode
+
+ Assist Deactive
+
+N1CC status
+-----------
+ Line <span class="nb">type     </span>Module number   Port number   Channel number   Status              Master/Slave Flag
+
+ PRA           <span class="m">22</span>              <span class="m">13280</span>         <span class="m">0</span>                Uninstalled         Master
+ PRA           <span class="m">22</span>              <span class="m">13281</span>         <span class="m">1</span>                Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13282</span>         <span class="m">2</span>                Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13283</span>         <span class="m">3</span>                Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13284</span>         <span class="m">4</span>                Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13285</span>         <span class="m">5</span>                Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13286</span>         <span class="m">6</span>                Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13287</span>         <span class="m">7</span>                Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13288</span>         <span class="m">8</span>                Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13289</span>         <span class="m">9</span>                Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13290</span>         <span class="m">10</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13291</span>         <span class="m">11</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13292</span>         <span class="m">12</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13293</span>         <span class="m">13</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13294</span>         <span class="m">14</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13295</span>         <span class="m">15</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13296</span>         <span class="m">16</span>               Uninstalled         NULL
+ PRA           <span class="m">22</span>              <span class="m">13297</span>         <span class="m">17</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13298</span>         <span class="m">18</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13299</span>         <span class="m">19</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13300</span>         <span class="m">20</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13301</span>         <span class="m">21</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13302</span>         <span class="m">22</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13303</span>         <span class="m">23</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13304</span>         <span class="m">24</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13305</span>         <span class="m">25</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13306</span>         <span class="m">26</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13307</span>         <span class="m">27</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13308</span>         <span class="m">28</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13309</span>         <span class="m">29</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13310</span>         <span class="m">30</span>               Idle                Master
+ PRA           <span class="m">22</span>              <span class="m">13311</span>         <span class="m">31</span>               Idle                Master
+<span class="o">(</span>Number of <span class="nv">results</span> <span class="o">=</span> 32<span class="o">)</span>
+
+---    END</code></pre></div>
+
+
+  </article>
+
+
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading">Redes y Sistemas</h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>Ingeniería, Instalaciones e Integración</li>
+        <li><a href="mailto:"></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>
