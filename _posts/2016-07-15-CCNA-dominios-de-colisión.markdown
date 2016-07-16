@@ -26,6 +26,4 @@ Un dominio de *broadcast* —que podríamos traducir como dominio de difusión�
 
 ![broadcast_domains]({{ site.url }}/img/redes/broadcast_domains.jpg)
 
-broadcast_domains
-
 Tal y como se puede ver en la figura, los equipos que limitan los dominios de *broadcast* por antonomasia son los *router* —aunque también hay *switches* que pueden limitar esta difusión creando VLANs—. En la imagen se ve como los puertos del *router* son los que marcan la división de los dominios de *broadcast* y para remarcarlo, al igual que se hizo en el dominio de colisión, se han empleado elipses para señalar cada uno de estos dominos de *broadcast*.
