@@ -5,9 +5,62 @@
     <description>Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 16 Jul 2016 12:28:31 +0200</pubDate>
-    <lastBuildDate>Sat, 16 Jul 2016 12:28:31 +0200</lastBuildDate>
+    <pubDate>Sun, 17 Jul 2016 20:23:34 +0200</pubDate>
+    <lastBuildDate>Sun, 17 Jul 2016 20:23:34 +0200</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
+    
+      <item>
+        <title>¿Cómo saber qué puertos están abiertos y qué aplicación los escucha?</title>
+        <description>&lt;p&gt;¿Qué comando utilar para analizar los puertos de la máquina donde nos encontramos conectados?&lt;/p&gt;
+
+&lt;h2 id=&quot;netstat&quot;&gt;&lt;strong&gt;netstat&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo netstat -tulpn&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;De la ejecución de este comando obtendremos sobre los puertos y protocolos que escucha nuestra máquina, que programa y PID tienen asociado cada puerto y el estado del mismo.&lt;/p&gt;
+
+&lt;h2 id=&quot;ss&quot;&gt;&lt;strong&gt;ss&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Alternativamente se puede emplear el más moderno y potente comando &lt;code&gt;ss&lt;/code&gt; con el que se pueden obtener resultados similares.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ss -a &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep LISTEN --color&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;fuser&quot;&gt;&lt;strong&gt;fuser&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Si sabemos ya el puerto que queremos comprobar el PID del programa que escucha en un puerto lo podremos hacer con el comando siguiente, donde cambiaremos &lt;strong&gt;#puerto&lt;/strong&gt; por el número de puerto, poniendo &lt;em&gt;tcp&lt;/em&gt; o &lt;em&gt;udp&lt;/em&gt; dependiendo del protocolo que nos interese.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo fuser &lt;span class=&quot;c&quot;&gt;#puerto\tcp&lt;/span&gt;
+cat /proc/xxx y ps&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si queremos saber el programa asociado al PID obtenido ejecutaremos el comando que sigue cambiando &lt;code&gt;#pid&lt;/code&gt; por el número obtenido.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo ls -l /proc/#pid/exe&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Si con el nombre obtenido aún no tenemos claro que programa es podremos ejecutar &lt;code&gt;man “programa”&lt;/code&gt; o &lt;code&gt;whatis “programa”&lt;/code&gt;. Aunque siempre nos quedará &lt;em&gt;google&lt;/em&gt;…&lt;/p&gt;
+
+&lt;p&gt;Si lo que queremos saber es el propietario del programa ejecutaremos lo siguiente.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo ls -l /proc/#pid/cwd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;O también …&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo ps aux &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep &lt;span class=&quot;c&quot;&gt;#pid&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;nmap&quot;&gt;&lt;strong&gt;nmap&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Si queremos comprobar los puertos de una máquina remota podremos ejecutar el siguiente comando.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo nmap -sN -p T:#puerto URL&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Donde T se refiere a &lt;em&gt;tcp&lt;/em&gt; y puede cambiarse por U para comprobar el protocolo &lt;em&gt;udp&lt;/em&gt;, &lt;strong&gt;#puerto&lt;/strong&gt; es el número de puerto y &lt;em&gt;URL&lt;/em&gt; es la dirección del host a comprobar.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Jul 2016 12:39:22 +0200</pubDate>
+        <link>/redes/2016/07/17/como-saber-que-puertos-y-quien-los-escucha.html</link>
+        <guid isPermaLink="true">/redes/2016/07/17/como-saber-que-puertos-y-quien-los-escucha.html</guid>
+        
+        
+        <category>redes</category>
+        
+      </item>
     
       <item>
         <title>Primarios</title>
@@ -786,9 +839,11 @@ Accedemos mediante este comando.&lt;/p&gt;
 &lt;p&gt;Con esto termina la entrada de introducción.&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Jul 2016 20:39:22 +0200</pubDate>
-        <link>/2016/07/12/Comandos-Teldat.html</link>
-        <guid isPermaLink="true">/2016/07/12/Comandos-Teldat.html</guid>
+        <link>/redes/2016/07/12/Comandos-Teldat.html</link>
+        <guid isPermaLink="true">/redes/2016/07/12/Comandos-Teldat.html</guid>
         
+        
+        <category>redes</category>
         
       </item>
     
@@ -1230,8 +1285,6 @@ wpa-psk &lt;span class=&quot;s1&quot;&gt;&amp;#39;your_password&amp;#39;&lt;/spa
 
 &lt;p&gt;&lt;img src=&quot;/img/redes/broadcast_domains.jpg&quot; alt=&quot;broadcast_domains&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;broadcast_domains&lt;/p&gt;
-
 &lt;p&gt;Tal y como se puede ver en la figura, los equipos que limitan los dominios de &lt;em&gt;broadcast&lt;/em&gt; por antonomasia son los &lt;em&gt;router&lt;/em&gt; —aunque también hay &lt;em&gt;switches&lt;/em&gt; que pueden limitar esta difusión creando VLANs—. En la imagen se ve como los puertos del &lt;em&gt;router&lt;/em&gt; son los que marcan la división de los dominios de &lt;em&gt;broadcast&lt;/em&gt; y para remarcarlo, al igual que se hizo en el dominio de colisión, se han empleado elipses para señalar cada uno de estos dominos de &lt;em&gt;broadcast&lt;/em&gt;.&lt;/p&gt;
 </description>
         <pubDate>Fri, 08 Jul 2016 12:39:22 +0200</pubDate>
@@ -1240,133 +1293,6 @@ wpa-psk &lt;span class=&quot;s1&quot;&gt;&amp;#39;your_password&amp;#39;&lt;/spa
         
         
         <category>redes</category>
-        
-      </item>
-    
-      <item>
-        <title>Lo básico de Git y GitHub</title>
-        <description>&lt;p&gt;&lt;a href=&quot;https://services.github.com/kit/downloads/es_ES/github-git-cheat-sheet.pdf&quot;&gt;Hoja de referencia rápida&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;instalacin-de-git&quot;&gt;Instalación de Git&lt;/h2&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo apt-get install git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;iniciar-repositorio-git&quot;&gt;Iniciar repositorio Git&lt;/h2&gt;
-
-&lt;p&gt;Nos situamos en el directorio de nuestra elección.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /path&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Y iniciamos el repositorio, este creará un directorio .git&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;adicin-de-archivosdirectorios-al-repositorio&quot;&gt;Adición de archivos/directorios al repositorio&lt;/h2&gt;
-&lt;p&gt;Cuando está creado el repositorio podemos ejecutar desde el directorio el comando git status, que nos mostrará todos los archivos que están en él y que no han sido añadidos al repositorio —más sobre esto después—. Podemos probara a ejecutarlo vacío y tras haber añadido un fichero de prueba, git nos indicará que el fichero no está en el repositorio.&lt;/p&gt;
-
-&lt;p&gt;Ejecutando el siguiente comando veremos como el fichero de prueba.txt se al seguimiento del repositorio, todavía no está incluido en él.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git add prueba.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Se pueden añadir varios archivos con el comodín * si usamos ‘’.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git add &lt;span class=&quot;s1&quot;&gt;&amp;#39;*.txt&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Si ejecutasemos después git status git indicará que el repositorio está al día —siempre que prueba.txt fuese el único archivo en el directorio—.&lt;/p&gt;
-
-&lt;p&gt;El fichero prueba.txt todavía sólo está en observación, si queremos añadir –cometer– todos los ficheros en observación al respositorio ejecutamos el siguiente comando —la opción -m permite añadir un comentario, es recomendable—.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git commit -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;comentario sobre la comisión&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Si queremos eliminar de observación (stage) un archivo añadido antes de una comisión ejecutamos.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git reset HEAD prueba.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;repositorios-remotos-github&quot;&gt;Repositorios remotos (GitHub)&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Subir&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Para guardar nuestro repositorio en remoto y hacer comisiones contra él será necesario darle un nombre y asociarle una URL, el repositorio de GitHub es muy práctico para ello. Se suele usar origin como nombre para el repositorio remoto.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git remote add origin https://github.com/usuario/nombre_repositorio&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Para actualizar el repositorio remoto usamos push tal y como sigue —la opción -u es para que git recuerde los parámetros y usando git push git añada origin y master, más sobre master después—. Es necesario que el directorio remoto no tenga nada en él, de otro modo el comando dará un error.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git push -u origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Bajar&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Si se han hecho cambios en el repositorio remoto que ahora queremos tener ejectuamos&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git pull origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;gestin-de-las-diferencias&quot;&gt;Gestión de las diferencias&lt;/h2&gt;
-&lt;p&gt;¿Queremos saber la diferencia entre el repositorio remoto y nuestro último commit? Ejecutamos&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git diff HEAD&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Restaurar&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Si una vez modificado un archivo deseamos que este se recupere a su estado en la última comisión ejecutamos el siguiente comando indicando el nombre del archivo a recuperar.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git checkout -- octocat.txt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Ramas&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Si queremos trabajar en una “versión” diferente del proyecto crearemos una rama para modificarla libremente —en el ejemplo llamamos a la rama borrador—.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git branch borrador&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Para pasar a utilizar la nueva rama ejecutamos.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git checkout borrador&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Si queremos enumerar las ramas disponibles ejecutamos&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git branch -a&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;En la nueva rama podremos hacer varias modificaciones, por ejemplo borrar archivos en el directorio y en la rama.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git rm &lt;span class=&quot;s1&quot;&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Una vez borrado, y para que esto se traslade al repositorio, ejecutamos.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git commit -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;Borrado de archivos&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Si queremos que los cambios en una rama se materialicen en la maestra (master) haremos lo que sigue:&lt;/p&gt;
-
-&lt;p&gt;Accedemos a la rama maestra.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git checkout master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Y unimos la rama alternativa —llamada borrador en el ejemplo— a la maestra.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git merge borrador&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Si queremos eliminar la rama alternativa —llamada borrador— suponiendo que no sea necesaria.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git branch -d borrador&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Respaldo remoto&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Si queremos sincronizar el repositorio local con un repositorio remoto ejecutamos el proceso en dos pasos.&lt;/p&gt;
-
-&lt;p&gt;Búsqueda…&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git fetch origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;… y respaldo.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git reset --hard origin/master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Tue, 05 Jul 2016 20:39:22 +0200</pubDate>
-        <link>/desarrollo/versiones/2016/07/05/Lo-b%C3%A1sico-de-Git.html</link>
-        <guid isPermaLink="true">/desarrollo/versiones/2016/07/05/Lo-b%C3%A1sico-de-Git.html</guid>
-        
-        
-        <category>desarrollo</category>
-        
-        <category>versiones</category>
         
       </item>
     
