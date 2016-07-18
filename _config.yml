@@ -1,12 +1,12 @@
 # Site settings
-title: Redes y Sistemas
+title: "Telectric: Blog de Redes y Sistemas"
 #email: info@telectric.es
 lema: Ingeniería, Instalaciones e Integración
 description: "Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio."
 baseurl: ""
 url: ""
-#twitter_username: factores_es
-#github_username:  factores
+twitter_username: telectric_es
+#github_username:  telectric
 # Build settings
 markdown: kramdown
 kramdown:
