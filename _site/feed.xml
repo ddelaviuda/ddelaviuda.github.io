@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Redes y Sistemas</title>
+    <title>Telectric | Blog de Redes y Sistemas</title>
     <description>Un equipo de Ingenieros Técnicos de Telecomunicaciones e Industriales, Integradores de servicios junto con nuestros Instaladores autorizados a su servicio.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 17 Jul 2016 20:23:34 +0200</pubDate>
-    <lastBuildDate>Sun, 17 Jul 2016 20:23:34 +0200</lastBuildDate>
+    <pubDate>Mon, 18 Jul 2016 09:13:48 +0200</pubDate>
+    <lastBuildDate>Mon, 18 Jul 2016 09:13:48 +0200</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
