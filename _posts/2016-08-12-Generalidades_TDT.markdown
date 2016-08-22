@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Generalidades de TDT y SAT"
+title:  "Generalidades de TDT"
 date:   2016-08-12 10:39:22
 categories: redes
 comments: true
