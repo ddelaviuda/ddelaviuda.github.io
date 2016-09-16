@@ -31,7 +31,7 @@ ss -a | grep LISTEN --color
 Si sabemos ya el puerto que queremos comprobar el PID del programa que escucha en un puerto lo podremos hacer con el comando siguiente, donde cambiaremos **#puerto** por el número de puerto, poniendo *tcp* o *udp* dependiendo del protocolo que nos interese.
 
 {% highlight bash %}
-sudo fuser #puerto\tcp
+sudo fuser #puerto/tcp
 cat /proc/xxx y ps
 {% endhighlight %}
 

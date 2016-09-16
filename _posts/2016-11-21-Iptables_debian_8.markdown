@@ -16,7 +16,7 @@ Iptables es el programa que hace las funciones de cortafuegos en los sistemas De
 Listado de reglas
 -----------------
 
-Para mostrar las reglas configuradas en iptables existen diversas opciones '-L' lista y '--line-numbers' muestra el número de la línea.
+Para mostrar las reglas configuradas en iptables existen diversas opciones `-L` lista y `--line-numbers` muestra el número de la línea.
 
 {% highlight bash %}
 $ sudo iptables -L --line-numbers -t nat
@@ -35,7 +35,7 @@ num  target     prot opt source               destination
 1    MASQUERADE  all  --  anywhere             anywhere
 {% endhighlight %}
 
-La opción '-S' muestra las reglas como el comando que se emplea para añadirlas.
+La opción `-S` muestra las reglas como el comando que se emplea para añadirlas.
 
 {% highlight bash %}
 $ sudo iptables -S -t nat
@@ -47,4 +47,4 @@ $ sudo iptables -S -t nat
 -A POSTROUTING -o wlan0 -j MASQUERADE
 {% endhighlight %}
 
-Finalmente, hay una opción que indica a iptables que tabla emplear '-t nat' emplea la tabla nat, las otras son filter (por defecto), nat, mangle y raw.
+Finalmente, hay una opción que indica a iptables que tabla emplear `-t nat` emplea la tabla nat, las otras son filter (por defecto), nat, mangle y raw.
