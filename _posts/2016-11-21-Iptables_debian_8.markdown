@@ -11,10 +11,12 @@ Información obtenidad de [aquí](https://wiki.debian.org/iptables).
 Introducción
 ------------
 
-Iptables es el programa que hace las funciones de cortafuegos en los sistemas Debian (así como en otras distribuciones GNU Linux). Desde hace algunos años está integrado en el nucleo del sistema esto implica, al no ser un servicio, que no se puede detener. 
+Iptables es el programa que hace las funciones de cortafuegos en los sistemas Debian (así como en otras distribuciones GNU Linux). Desde hace algunos años está integrado en el 
 
-Listado de reglas
------------------
+nucleo del sistema esto implica, al no ser un servicio, que no se puede detener. 
+
+Como se listan las reglas
+-------------------------
 
 Para mostrar las reglas configuradas en iptables existen diversas opciones `-L` lista y `--line-numbers` muestra el número de la línea.
 
@@ -47,4 +49,40 @@ $ sudo iptables -S -t nat
 -A POSTROUTING -o wlan0 -j MASQUERADE
 {% endhighlight %}
 
-Finalmente, hay una opción que indica a iptables que tabla emplear `-t nat` emplea la tabla nat, las otras son filter (por defecto), nat, mangle y raw.
+Finalmente, la opción `-t` indica a iptables que tabla emplear, en el ejemplo `-t nat` emplea la tabla nat. Las opciones son filter (por defecto), nat, mangle y raw.
+
+Tablas y cadenas
+----------------
+
+Cada una de las tablas tiene ciertas cadenas asociadas, aunque compartan el nombre se trata de cadenas diferentes, además de las cadenas obligatorias se pueden crear nuevas con 
+
+otros nombres.
+
+filter (OUTPUT, INPUT, FORWARD)
+
+raw (OUTPUT, PREROUTING)
+
+nat (INPUT, OUTPUT, PREROUTING, POSTROUTING)
+
+mangle (INPUT, OUTPUT, PREROUTING, POSTROUTING, FORWARD)
+
+Para añadir una regla a iptables la tabla precedida de `-t`, la opción a ejecutar: `-A` para añadir al final o `-I` para insertar en una posición seguida del número o `-D` para 
+
+borrar y las demás opciones como en el ejemplo. Añade al final de las reglas de filter en la cadena INPUT un bloqueo a las ip 20.0.0.4/24 que usen el protocolo udp con destino 
+
+las ip 192.168.1.1/24, se bloqu
+
+{% highlight bash %}
+sudo iptables -t filter -A INPUT -p udp -s 20.0.0.0/24 -d 192.168.1.1/24 -j DROP
+{% endhighlight %}
+
+Protocolos y puertos
+--------------------
+
+En el ejemplo anterior se explicó como actuar sobre el protocolo UDP para filtrar un flujo de entrada entre dos rangos de ip. Sin embargo, es posible ser más específico en el 
+
+filtrado y sólo bloquear o per
+
+{% highlight bash %}
+
+{% endhighlight %}
