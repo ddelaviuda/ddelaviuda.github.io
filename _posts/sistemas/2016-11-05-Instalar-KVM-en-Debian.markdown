@@ -349,12 +349,18 @@ $ sudo virsh dumpxml template template.xml
 </domain>
 {% endhighlight %}
 
+Ahora podemos acceder por consola mediante el siguiente comando:
+
+{% highlight bash %}
+sudo virsh console template
+{% endhighlight %}
+
 Si queremos montar la imagen .img para poder acceder por ssh con root podemos hacer esto.
 {% highlight bash %}
 sudo mount -o loop,offset=1048576 /media/kvm/images/template.img /media/HDD-1T/
 {% endhighlight %}
 
-Debemos editar el archivo /etc/ssh/sshd_config modificando la línea de PermitRootLogin.
+Por ejemplo, podemos editar el archivo /etc/ssh/sshd_config modificando la línea de PermitRootLogin para acceder por ssh con el usuario root.
 
 {% highlight bash %}
 PermitRootLogin yes
