@@ -2,7 +2,7 @@
 layout: post
 title:  "Lo básico de LVM (Logical Volume Manager) en Debian" 
 date:   2016-07-13 10:39:22
-categories: 
+categories: sistemas
 ---
 Información [aquí](https://www.howtoforge.com/linux_lvm_p2) y [aquí](https://wiki.debian.org/LVM#List_of_LVM_commands).
 
