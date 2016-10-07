@@ -372,7 +372,8 @@ Es posible añadir dentro de <devices></devices> la siguiente línea para poder 
 Debemos actuar sobre la máquina para que recupere la configuración.
 
 {% highlight bash %}
-sudo virsh shutdown template shutdown
+sudo virsh destroy template
+sudo virsh shutdown template
 sudo virsh undefine template
 sudo virsh define templateVNC.xml
 sudo virsh start template
