@@ -70,21 +70,10 @@ mangle (INPUT, OUTPUT, PREROUTING, POSTROUTING, FORWARD)
 
 Para añadir una regla a iptables la tabla precedida de `-t`, la opción a ejecutar: `-A` para añadir al final o `-I` para insertar en una posición seguida del número o `-D` para 
 
-borrar y las demás opciones como en el ejemplo. Añade al final de las reglas de filter en la cadena INPUT un bloqueo a las ip 20.0.0.4/24 que usen el protocolo udp con destino 
-
-las ip 192.168.1.1/24, se bloqu
+borrar y las demás opciones como en el ejemplo. Añade al final de las reglas de filter en la cadena INPUT un bloqueo a las ip 20.0.0.4/24 que usen el protocolo udp con destino las ip 192.168.1.1/24, se bloquean (DROP).
 
 {% highlight bash %}
 sudo iptables -t filter -A INPUT -p udp -s 20.0.0.0/24 -d 192.168.1.1/24 -j DROP
 {% endhighlight %}
 
-Protocolos y puertos
---------------------
 
-En el ejemplo anterior se explicó como actuar sobre el protocolo UDP para filtrar un flujo de entrada entre dos rangos de ip. Sin embargo, es posible ser más específico en el 
-
-filtrado y sólo bloquear o per
-
-{% highlight bash %}
-
-{% endhighlight %}
