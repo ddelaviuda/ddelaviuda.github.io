@@ -355,6 +355,8 @@ Ahora podemos acceder por consola mediante el siguiente comando:
 sudo virsh console template
 {% endhighlight %}
 
+Para salir de la consola con un teclado español pulsaremos Ctrl+5
+
 Si queremos montar la imagen .img para poder acceder por ssh con root podemos hacer esto.
 {% highlight bash %}
 sudo mount -o loop,offset=1048576 /media/kvm/images/template.img /media/HDD-1T/
