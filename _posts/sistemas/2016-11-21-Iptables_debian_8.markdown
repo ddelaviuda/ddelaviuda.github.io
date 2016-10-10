@@ -56,13 +56,13 @@ Tablas y cadenas
 
 Cada una de las tablas tiene ciertas cadenas asociadas, aunque compartan el nombre se trata de cadenas diferentes, además de las cadenas obligatorias se pueden crear nuevas con otros nombres.
 
-filter (OUTPUT, INPUT, FORWARD)
+**filter** (OUTPUT, INPUT, FORWARD)
 
-raw (OUTPUT, PREROUTING)
+**raw** (OUTPUT, PREROUTING)
 
-nat (INPUT, OUTPUT, PREROUTING, POSTROUTING)
+**nat** (INPUT, OUTPUT, PREROUTING, POSTROUTING)
 
-mangle (INPUT, OUTPUT, PREROUTING, POSTROUTING, FORWARD)
+**mangle** (INPUT, OUTPUT, PREROUTING, POSTROUTING, FORWARD)
 
 Para añadir una regla a iptables la tabla precedida de `-t`, la opción a ejecutar: `-A` para añadir al final o `-I` para insertar en una posición seguida del número o `-D` para borrar y las demás opciones como en el ejemplo. Añade al final de las reglas de filter en la cadena INPUT un bloqueo a las ip 20.0.0.4/24 que usen el protocolo udp con destino las ip 192.168.1.1/24, se bloquean (DROP).
 

@@ -56,4 +56,14 @@ echo "</body></html>"
 
 La parte que ejecuta el wol es el comando `sudo etherwake -i eth0 ff:ff:ff:ff:ff:ff` cambiando las efes por la mac del la nic del ordenador a despertar.
 
+Dar permisos
+------------
+
+Para que lo anterior funcione, ya que `etherwake` necesita ser ejecutado como superusuario, será necesario añadir la siguiente línea ejecutando el comando `sudo visudo` para no solicitar contraseña al usuario `www-data` para ejecutar el comando `etherwake` como superusuario. 
+
+{% highlight bash %}
+www-data ALL=(ALL) NOPASSWD: /usr/sbin/etherwake
+{% endhighlight %} 
+
 Ahora solo es necesario levanta el servidor apache2 sin no lo está ya mediante `sudo service apache2 start` y meter la ip del localhost `127.0.0.1` en nuestro navegador preferido. Ejemplo: `lynx localhost`.
+
