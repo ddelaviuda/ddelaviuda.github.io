@@ -1,0 +1,59 @@
+---
+layout: post
+title:  "WOL con Apache2 y CGI"
+date:   2016-12-16 09:39:22
+categories: sistemas
+comments: true
+tags:
+- wol
+---
+
+Creación de la página web
+-------------------------
+
+Creamos y editamos el fichero `index.html` con el texto que sigue y --suponiendo el empleo del servidor http apache2-- lo situamos en la dirección correspondiente. Para ello ejecutamos `nano /var/www/index.html`
+
+{% highlight bash %}
+<html><head></head><body>
+<form method="get" action="/cgi-bin/wake-on-lan.cgi">
+    <button type="submit">Wake-on-LAN</button>
+</form>
+</body></html>
+{% endhighlight %}
+
+Edición de archivos de configuración apache2
+-------------------------------------------
+
+Editamos el archivo de configuración con el comando siguiente `sudo nano /etc/apache2/sites-available/default` modificando el apartado correspondiente para que quede tal y como se muestra a continuación.
+
+{% highlight bash %}
+ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+<Directory "/usr/lib/cgi-bin">
+	AllowOverride None
+	Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+	Order allow,deny
+	Allow from all
+</Directory>
+{% endhighlight %}
+
+Creación del script cgi
+-----------------------
+
+Creamos un archivo mediante `sudo nano /usr/lib/cgi-bin/wake-on-lan.cgi` 
+
+{% highlight bash %}
+#!/bin/bash
+echo "Content-type: text/html"
+echo ""
+echo "<html><head><title>Bash as CGI"
+echo "</title></head><body>"
+echo "<h1>Wake on LAN</h1>"
+echo ""
+echo "<pre> $(sudo etherwake -i eth0 ff:ff:ff:ff:ff:ff)</pre>"
+echo "<center>Information generated on $(date)</center>"
+echo "</body></html>"
+{% endhighlight %}
+
+La parte que ejecuta el wol es el comando `sudo etherwake -i eth0 ff:ff:ff:ff:ff:ff` cambiando las efes por la mac del la nic del ordenador a despertar.
+
+Ahora solo es necesario levanta el servidor apache2 sin no lo está ya mediante `sudo service apache2 start` y meter la ip del localhost `127.0.0.1` en nuestro navegador preferido. Ejemplo: `lynx localhost`.
