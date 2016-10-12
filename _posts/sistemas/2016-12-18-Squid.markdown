@@ -1,0 +1,141 @@
+---
+layout: post
+title:  "Proxy Squid en Debian"
+date:   2016-12-18 09:39:22
+categories: sistemas
+comments: true
+tags:
+- proxy
+---
+
+Instalación
+-----------
+
+Como siempre es necesario actualizar el sistema e instalar el paquete software.
+
+
+{% highlight bash %}
+$ sudo apt-get update
+$ sudo apt-get install squid3
+{% endhighlight %}
+
+Squid3 se instala y su servicio se arranca automáticamente, antes de cambiar la configuración lo paramos.
+
+
+{% highlight bash %}
+$ sudo service squid3 stop
+{% endhighlight %}
+
+O en Debian 8.
+
+{% highlight bash %}
+$ sudo systemctl stop squid3
+{% endhighlight %}
+
+
+Configuración de la autenticación
+---------------------------------
+
+La configuración de Squid3 reside en `/etc/squid3/squid.conf` donde configuraremos la seguridad básica utilizando `htpasswd`, un programa que primero instalaremos.
+
+{% highlight bash %}
+$ sudo apt-get install apache2-utils
+{% endhighlight %}
+
+Utilizaremos el programa mencionado para generar un fichero con un usuario y una contraseña, pero primero escalaremos al direcctorio adecuado.
+
+{% highlight bash %}
+$ cd /etc/squid3
+{% endhighlight %}
+
+Y generaremos el usuario y la contraseña.
+
+{% highlight bash %}
+$ sudo htpasswd -bc squid_passwords usuario_proxy clave_proxy
+{% endhighlight %}
+
+Ahora editaremos el fichero `/etc/squid3/squid.conf no sin antes hacer una copia de seguridad con `sudo cp squid.conf squid.conf.original`. Una vez hecho esto añadiremos el siguiente texto --línea 343-- a squid.conf.
+
+{% highlight bash %}
+auth_param basic realm Acceso privado.
+auth_param basic program /usr/lib/squid3/ncsa_auth /etc/squid3/squid_passwords
+auth_param basic credentialsttl 4 hours
+auth_param basic children 5
+{% endhighlight %}
+
+Y añadimos una lista de acceso en la línea 840.
+
+{% highlight bash %}
+acl nscaauth proxy_auth REQUIRED
+http_access allow ncsaauth
+{% endhighlight %}
+
+Para enmascarar las cabeceras editaremos el mismo fichero en la línea 3500
+
+{% highlight bash %}
+request_header_access Allow allow all
+request_header_access Authorization allow all
+request_header_access WWW-Authenticate allow all
+request_header_access Proxy-Authorization allow all
+request_header_access Proxy-Authenticate allow all
+request_header_access Cache-Control allow all
+request_header_access Content-Encoding allow all
+request_header_access Content-Length allow all
+request_header_access Content-Type allow all
+request_header_access Date allow all
+request_header_access Expires allow all
+request_header_access Host allow all
+request_header_access If-Modified-Since allow all
+request_header_access Last-Modified allow all
+request_header_access Location allow all
+request_header_access Pragma allow all
+request_header_access Accept allow all
+request_header_access Accept-Charset allow all
+request_header_access Accept-Encoding allow all
+request_header_access Accept-Language allow all
+request_header_access Content-Language allow all
+request_header_access Mime-Version allow all
+request_header_access Retry-After allow all
+request_header_access Title allow all
+request_header_access Connection allow all
+request_header_access Cookie allow all
+request_header_access Proxy-Connection allow all
+request_header_access All deny all
+{% endhighlight %}
+
+Extra, cambio de User-Agent
+---------------------------
+
+   Unas pocas líneas bajo la anterior sección encontraremos la sección `#  TAG: request_header_replace` que editaremos para pretender ser un usuario de Windows lo lo que se quiera.
+
+{% highlight bash %}
+request_header_replace User-Agent Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko
+{% endhighlight %}
+
+Último toque para conseguir un mayor anonimato
+----------------------------------------------
+
+La sección a editar esta vez, que se encuentra en la línea 5550 aproximadamente `#  TAG: forwarded_for   on|off|transparent|truncate|delete` donde se añadira
+
+{% highlight bash %}
+#referencia_personal anonimato extra
+forwarded_for off
+{% endhighlight %}
+
+Guardamos la configuración y ya casi estamos.
+
+Arranque del servicio
+---------------------
+
+Ejecutamos el siquiente comando y hemos terminado.
+
+{% highlight bash %}
+$ sudo service squid3 start
+[ ok ] Starting Squid HTTP Proxy 3.x: squid3.
+{% endhighlight %}
+
+Configuración del proxy en el cliente Firefox
+---------------------------------------------
+
+En la barra de navegación introducimos los siguiente `about:config` y buscamos las opcines **network.automatic-ntlm-auth.allow-proxies** y **network.negotiate-auth.allow-proxies** que pondremos a false.
+
