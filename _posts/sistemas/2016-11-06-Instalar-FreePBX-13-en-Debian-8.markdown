@@ -245,72 +245,87 @@ nano /etc/logrotate.d/asterisk
 CDR ODBC
 --------
 
-If the deprecated cdr_mysql.so module is installed then this is optional, but still recommended.
+Se recomienda la instalación de este módulo aunque si `crd_mysql.so` está instalado esta parte es opcional.
 
-nano /etc/odbcinst.ini
+Insertaremos el siguiente texto empleando nuestro editor favorito, en este caso nano, ejecutamos `nano /etc/odbcinst.ini` y añadimos:
 
-[MySQL]
-Description = ODBC for MySQL
-Driver = /usr/lib/x86_64-linux-gnu/odbc/libmyodbc.so
-Setup = /usr/lib/x86_64-linux-gnu/odbc/libodbcmyS.so
+{% highlight bash %}
+[MySQL] 
+Description = ODBC for MySQL 
+Driver = /usr/lib/x8664-linux-gnu/odbc/libmyodbc.so 
+Setup = /usr/lib/x8664-linux-gnu/odbc/libodbcmyS.so 
 FileUsage = 1
+{% endhighlight %}
+y tambión `nano /etc/odbc.ini`:
 
-nano /etc/odbc.ini
-[MySQL-asteriskcdrdb]
-Description=MySQL connection to 'asteriskcdrdb' database
-driver=MySQL
+{% highlight bash %}
+[MySQL-asteriskcdrdb] 
+Description=MySQL connection to ‘asteriskcdrdb’ database 
+driver=MySQL 
 server=localhost
-database=asteriskcdrdb
-Port=3306
-Socket=/var/run/mysqld/mysqld.sock
+database=asteriskcdrdb 
+Port=3306 
+Socket=/var/run/mysqld/mysqld.sock 
 option=3
+{% endhighlight %}
 
-Test ODBC driver
+**Prueba del driver ODBC**
 
+Ejecutamos:
+
+{% highlight bash %}
 odbcinst -s -q
+{% endhighlight %}
 
-Use username & password in /etc/asterisk/res_odbc_additional.conf to test connectivity to the DB via ODBC.
+Debemos usar "usuario" y "clave" en /etc/asterisk/res_odbc_additional.conf para comprobar la conexión con la base de datos vía ODBC.
 
-isql -v MySQL-asteriskcdrdb freepbxuser 12e7c1f0c041ee853085624ec3bba112=
+{% highlight bash %}
+isql -v MySQL-asteriskcdrdb usuario_freepbx 12e7c1f0c041ee853085624ec3bba112=
+{% endhighlight %}
 
-TFTP
+Servidor TFTP
+-------------
 
-If you plan to use hardware SIP phones you will probably want to enable the tftp server.
+En caso de emplear teléfonos IP es interesante configurar un servidor TFTP para cargar la configuración.
 
-Create tftp configuration file.
+Creamos y editamos archivo con `nano /etc/xinetd.d/tftp` para incluir.
 
-nano /etc/xinetd.d/tftp
+{% highlight bash %}
+service tftp { 
+protocol = udp 
+port = 69 
+socket_type = dgram 
+wait = yes 
+user = nobody 
+server = /usr/sbin/xinetd
+server_args = /tftpboot 
+disable = no 
+*}
+{% endhighlight %}
 
-service tftp
-{
-protocol        = udp
-port            = 69
-socket_type     = dgram
-wait            = yes
-user            = nobody
-server          = /usr/sbin/in.tftpd
-server_args     = /tftpboot
-disable         = no
-}
+Creamos el directorio `/tftpboot` si no esta creado, cambiamos permisos y reiniciamos el servico.
 
-Make the directory and restart the daemon to start tftp.
-
-mkdir /tftpboot
-chmod 777 /tftpboot
+{% highlight bash %}
+mkdir /tftpboot 
+chmod 777 /tftpboot 
 systemctl restart xinetd
+{% endhighlight %}
 
-Misc. settings
+Toques finales
+--------------
 
-Change the “upload_max_filesize” from 2M to 20M to allow larger music on hold files.
+Cambiamos “upload_max_filesize” de 2M a 20M para permitir ficheros de audio mayores.
 
-nano +810 /etc/php5/apache2/php.ini
+Y editamos el siguiente fichero `nano +810/etc/php5/apache2/php.ini` para añadir `AllowOverride All` bajo `doc_root =` para que los fichers `.htaccess` esté activos.
 
-Add AllowOverride All under DocumentRoot so that .htaccess files in web folders are active.
+Editamos `nano +14 /etc/apache2/sites-available/000-default.conf` para añadir.
 
-nano +14 /etc/apache2/sites-available/000-default.conf
+{% highlight bash %}
+<Directory /var/www/html> AllowOverride All </Directory>
+{% endhighlight %}
 
-<Directory /var/www/html>
-    AllowOverride All
-    </Directory>
+Finalmente reiniciamos Apache2.
 
+{% highlight bash %}
 service apache2 restart
+{% endhighlight %}
