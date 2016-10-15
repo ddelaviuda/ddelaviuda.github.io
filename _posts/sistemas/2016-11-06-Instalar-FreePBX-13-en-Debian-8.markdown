@@ -202,9 +202,6 @@ reboot
 
 Ahora podremos accedemos al GUI de FreePBX en `http://iP_del_servidor`
 
-{% highlight bash %}
-{% endhighlight %}
-
 Tareas a realizar tras la instalación
 -------------------------------------
 
