@@ -1,0 +1,218 @@
+---
+layout: post
+title:  "Instalación de GNS3 en Debian 8"
+date:   2016-07-28 10:39:22
+categories: redes
+comments: true
+---
+
+[Instrucciones en inglés](https://gns3.com/support/docs/installing-gns3-1-4-on-ubuntu-li)
+
+Instalación de dependencias
+---------------------------
+
+**Dependencias de GNS3**
+
+Para ello ejecutamos el comando `apt-get`.
+
+{% highlight bash %}
+sudo apt-get update 
+{% endhighlight %}
+y
+
+{% highlight bash %}
+sudo apt-get install python3-dev
+sudo apt-get install python3-setuptools
+sudo apt-get install python3-pyqt5
+sudo apt-get install python3-pyqt5.qtsvg
+sudo apt-get install python3-pyqt5.qtwebkit
+sudo apt‐get install python3‐ws4py
+sudo apt‐get install python3‐netifaces
+sudo apt-get install python3-pip
+{% endhighlight %}
+
+
+**Dependencias de Dynamips**
+
+{% highlight bash %}
+sudo apt-get install cmake
+sudo apt‐get install uuid‐dev
+sudo apt‐get install libelf‐dev
+sudo apt‐get install libpcap‐dev
+{% endhighlight %}
+
+Compilado de Dynamips
+---------------------
+
+**Primero descargamos las fuentes**
+
+Las fuentes de GNS3 estan en *github*, este servidor utiliza git por lo tanto lo primero que vamos a hacer es instalar *git*.
+
+{% highlight bash %}
+sudo apt-get install git
+{% endhighlight %}
+
+Ahora que ya tenemos *git* creamos un directorio que nos guste.
+
+{% highlight bash %}
+mkdir -p ~/git/
+{% endhighlight %}
+Y nos situamos en él
+{% highlight bash %}
+cd ~/git/
+{% endhighlight %}
+
+Y descargamos las fuentes
+{% highlight bash %}
+git clone https://github.com/GNS3/dynamips
+{% endhighlight %}
+
+**Ahora compilamos**
+
+Dentro del directorio dynamips, mediante `cd ~/git/dynamips` ejecutamos lo siguiente.
+
+{% highlight bash %}
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+sudo setcap cap_net_admin,cap_net_raw=ep /usr/local/bin/dynamips
+{% endhighlight %}
+
+
+Compilado de GNS3
+-----------------
+
+**Descargamos las fuentes**
+
+Nos situamos en direcctorio seleccionado anteriormente.
+{% highlight bash %}
+cd ~/git/
+{% endhighlight %}
+
+Y descargamos las fuentes
+{% highlight bash %}
+git clone https://github.com/GNS3/gns3-gui
+{% endhighlight %}
+
+
+**Compilamos**
+
+Aquí *GNS3* nos brinda un guión en **python** que podemos aprovechar ejecutándolo una vez accedido al mismo mediante `cd ~/git/gns3`.
+
+{% highlight bash %}
+sudo python3 setup.py install
+{% endhighlight %}
+
+Instalación de GNS3-server
+--------------------------
+
+Ejecutamos los siguiente.
+
+{% highlight bash %}
+cd ~/git/
+git clone https://github.com/GNS3/gns3-server
+cd gns3-server
+sudo apt-get install python3-setuptools
+cd gns3-server-master
+sudo python3 setup.py install
+gns3server
+{% endhighlight %}
+
+
+Instalación de complementos para IOS e IOU
+-------------------------------------------
+
+Habilitamos la arquitectura de 32 bit en Debian si instalamos el sistema de 64 bit.
+
+{% highlight bash %}
+sudo dpkg --add-architecture i386
+sudo apt-get update
+{% endhighlight %}
+
+Ahora es tiempo de instalar los complementos.
+
+{% highlight bash %}
+sudo apt-get install libssl1.0.0:i386
+sudo ln -s /lib/i386-linux-gnu/libcrypto.so.1.0.0 /lib/libcrypto.so.4
+sudo apt-get install bison
+sudo apt-get install flex
+{% endhighlight %}
+
+Y ahora instalamos unas librerias que residen en **github**.
+
+{% highlight bash %}
+cd ~/git/
+git clone http://github.com/ndevilla/iniparser.git
+cd iniparser
+make
+sudo cp libiniparser.* /usr/lib/
+sudo cp src/iniparser.h /usr/local/include
+sudo cp src/dictionary.h /usr/local/include
+{% endhighlight %}
+
+Compilado e instalación de IOUYAP
+---------------------------------
+
+{% highlight bash %}
+cd ~/git/
+git clone https://github.com/GNS3/iouyap
+cd iouyap
+sudo make install
+{% endhighlight %}
+
+Opcionalmente instalaremos Ubridge
+----------------------------------
+
+{% highlight bash %}
+sudo apt-get install libpcap-dev
+cd ~/git/
+git clone https://github.com/GNS3/ubridge
+cd ubridge
+make
+sudo make install
+{% endhighlight %}
+
+Y VPCS
+------
+
+{% highlight bash %}
+cd ~/git/
+git clone https://github.com/GNS3/vpcs
+cd vpcs/src
+./mk.sh
+sudo cp vpcs /usr/local/bin/
+{% endhighlight %}
+
+Instalación de complementos: Cpulimit, Virtualbox, QEMU y Wireshark
+-------------------------------------------------------------------
+
+Lo que equivale a hacer.
+
+{% highlight bash %}
+sudo apt-get install cpulimit
+sudo apt-get install virtualbox
+sudo apt-get install qemu
+sudo apt-get install wireshark
+{% endhighlight %}
+
+Inicio de GNS3
+--------------
+
+Ejecutamos desde el terminal.
+
+{% highlight bash %}
+gns3
+{% endhighlight %}
+
+Actualizaciones
+---------------
+
+Ejecutar los comandos siguientes con la versión antecedida por el igual/=.
+
+{% highlight bash %}
+sudo pip3 install gns3-gui==1.4.5
+sudo pip3 install gns3-server==1.4.5
+{% endhighlight %}
+

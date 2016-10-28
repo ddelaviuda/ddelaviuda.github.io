@@ -2,7 +2,7 @@
 layout: post
 title:  "Router Teldat 3G, comandos básicos" 
 date:   2016-07-12 18:39:22
-categories: 
+categories: redes
 ---
 
 Acceso inicial

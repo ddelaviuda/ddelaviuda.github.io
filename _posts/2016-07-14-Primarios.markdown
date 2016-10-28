@@ -1,15 +1,15 @@
 ---
 layout: post
-title:  "Primarios"
+title:  "Primarios de voz"
 date:   2016-07-14 10:39:22
-categories:
+categories: redes
 ---
 
 
 Configuración en extremo cliente
 --------------------------------
 
-La centralita debe tomar la señal de reloj del circuito de Jazztel
+La centralita debe tomar la señal de reloj del circuito del proveedor
                                                           
 Protocolo EuroRDSI-DSS1
 
