@@ -50,3 +50,16 @@ $ virsh list
 
 El resultado debe ser el indicado ya que no hay ninguna máquina virtual funcionando.
 
+Configuración de red
+--------------------
+
+La opción que se va a adoptar es configurar una interfaz puente entre las máquinas huésped y el anfitrión. Para llevarlo acabo debemos deshabilitar el Network Manager, ver [aquí](http://blog.telectric.es/redes/2016/07/11/Debian-manual-wifi.html).
+
+
+
+Podemos verificar que está deshabilitado observando que las interfazes aparecen como no gestionadas tras ejecutar el siguiente comando.
+
+{% highlight bash %}
+$ nmcli device status
+Error: NetworkManager is not running. 
+{% endhighlight %}

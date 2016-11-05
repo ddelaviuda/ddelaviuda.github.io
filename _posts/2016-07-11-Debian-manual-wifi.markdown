@@ -325,3 +325,19 @@ Para forzar la conexión con la red ejecutaremos el comando.
 {% highlight bash %}
 wpa_supplicant -B -i 'interfaz' -c /etc/wpa_supplicant.conf
 {% endhighlight %}
+
+**Deshabilitando Network Manager**
+
+Si queremos deshabilitar el Network Manager podemos ejecutar los siguientes comandos en Debian 8.
+
+{% highlight bash %}
+$ sudo systemctl stop NetworkManager.service
+$ sudo systemctl disable NetworkManager.service 
+{% endhighlight %}
+
+Por otro lado si sólo queremos que Network Manager no gestione algunas interfaces bastará con configurar esta en **/etc/network/interfaces** y añadir en **/etc/NetworkManager/NetworkManager.conf** el siguiente texto.
+
+{% highlight bash %}
+[ifupdown]
+managed=false
+{% endhighlight %}
