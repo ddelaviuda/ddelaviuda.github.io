@@ -21,14 +21,16 @@ Instalación
 Para instalar los programs necesarios ejecutamos lo siguiente.
 
 {% highlight bash %}
-sudo apt-get install lvm2 dmsetup mdadm reiserfsprogs xfsprogs
+$ sudo apt-get install lvm2 dmsetup mdadm reiserfsprogs xfsprogs
 {% endhighlight %}
 
 Formateando las unidades de disco
 ---------------------------------
 
+Damos formato a la unidad de disco con fdisk.
+
 {% highlight bash %}
-sudo fdisk /dev/sdb
+$ sudo fdisk /dev/sdb
 
 Command (m for help): t
 Selected partition 1
@@ -41,13 +43,13 @@ Command (m for help): w
 Preparamos la partición para LVM
 
 {% highlight bash %}
-pvcreate /dev/sdb1
+$ sudo pvcreate /dev/sdb1
 {% endhighlight %}
 
 Si lo deseamos es posible deshacer el cambio mediante el comando.
 
 {% highlight bash %}
-pvremove /dev/sdb1
+$ sudo pvremove /dev/sdb1
 {% endhighlight %}
 
 Comandos para mostrar el estado de LVM
@@ -83,9 +85,40 @@ $ sudo lvmdiskscan
 
 {% endhighlight %}
 
+Creación y listado de grupos
+----------------------------
+
+Creamos el grupo llamado servidor_de_archivos.
+
+
+{% highlight bash %}
+$ sudo vgcreate servidor_de_archivos /dev/sdb1
+{% endhighlight %}
+
 Listado de configuración VG (*Volume Groups*)
 
 {% highlight bash %}
-sudo vgdisplay
+$ sudo vgdisplay 
+  --- Volume group ---
+  VG Name               servidor_de_archivos
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  1
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                0
+  Open LV               0
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               931.51 GiB
+  PE Size               4.00 MiB
+  Total PE              238466
+  Alloc PE / Size       0 / 0   
+  Free  PE / Size       238466 / 931.51 GiB
+  VG UUID               xxxxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxxxx
+
 {% endhighlight %}
 
