@@ -207,3 +207,34 @@ Do you really want to reduce data? [y/n]: y
   Size of logical volume archivador/data changed from 40.00 GiB (10240 extents) to 35.00 GiB (8960 extents).
   Logical volume data successfully resized
 {% endhighlight %}
+
+Formateando los volúmenes
+-------------------------
+
+Damos formato Ext4 al volúmen /dev/archivador/data.
+
+{% highlight bash %}
+$ sudo mkfs.ext4 /dev/archivador/data
+{% endhighlight %}
+
+Montando los volúmenes en ficheros
+----------------------------------
+
+Creamos un directorio donde montar el volúmen.
+
+{% highlight bash %}
+$ sudo mkdir /media/data
+{% endhighlight %}
+
+Podemos montar ahora el volúmen.
+
+{% highlight bash %}
+$ sudo mount /dev/archivador/data /media/data
+{% endhighlight %}
+
+Si queremos que las unidades se monten en el arranque debemos editar /etc/fstab añadiendo lo que sigue al final del archivo.
+
+{% highlight bash %}
+/dev/archivador/data    /media/data      ext4   rw,noatime    0 0
+{% endhighlight %}
+
