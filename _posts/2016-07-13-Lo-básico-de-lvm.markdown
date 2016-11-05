@@ -122,3 +122,88 @@ $ sudo vgdisplay
 
 {% endhighlight %}
 
+Otro comando similar con salida más breve es este.
+
+{% highlight bash %}
+$ sudo vgscan
+  Reading all physical volumes.  This may take a while...
+  Found volume group "servidor_de_archivos" using metadata type lvm2
+{% endhighlight %}
+
+Podemos cambiar el nombre del grupo servidor_de_archivos
+
+{% highlight bash %}
+$ sudo vgrename servidor_de_archivos archivador
+{% endhighlight %}
+
+Es posible borrar el grupo mediante el comando siguiente.
+
+{% highlight bash %}
+$ sudo vgremove data
+{% endhighlight %}
+
+Creación y listado de volúmenes
+-------------------------------
+
+{% highlight bash %}
+$ sudo lvcreate --name data --size 35G archivador
+{% endhighlight %}
+
+Mostramos el nuevo volúmen con este comando.
+
+{% highlight bash %}
+$ sudo lvdisplay
+  --- Logical volume ---
+  LV Path                /dev/archivador/data
+  LV Name                data
+  VG Name                archivador
+  LV UUID                xxxxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxxxx
+  LV Write Access        read/write
+  LV Creation host, time AMD-II, 2016-11-06 00:19:27 +0000
+  LV Status              available
+  # open                 0
+  LV Size                35.00 GiB
+  Current LE             8960
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           253:0
+{% endhighlight %}
+
+Trambién puede ser útil lvscan.
+
+{% highlight bash %}
+$ sudo lvscan
+{% endhighlight %}
+
+Podemos cambiar el nómbre a los volúmenes de un grupo mediante el comando.
+
+{% highlight bash %}
+$ lvrename archivador data datos
+{% endhighlight %}
+
+Podremos eliminar un volúmen mediante este comando.
+
+{% highlight bash %}
+$ lvremove /dev/archivador/datos
+{% endhighlight %}
+
+Podemos aumentar el tamaño de un volúmen.
+
+{% highlight bash %}
+$ sudo lvextend -L40G /dev/archivador/data
+  Size of logical volume archivador/data changed from 35.00 GiB (8960 extents) to 40.00 GiB (10240 extents).
+  Logical volume data successfully resized
+{% endhighlight %}
+
+O reducirlo.
+
+{% highlight bash %}
+$ sudo lvreduce -L35G /dev/archivador/data
+  WARNING: Reducing active logical volume to 35.00 GiB
+  THIS MAY DESTROY YOUR DATA (filesystem etc.)
+Do you really want to reduce data? [y/n]: y
+  Size of logical volume archivador/data changed from 40.00 GiB (10240 extents) to 35.00 GiB (8960 extents).
+  Logical volume data successfully resized
+{% endhighlight %}
