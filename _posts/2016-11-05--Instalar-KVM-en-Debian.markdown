@@ -19,35 +19,34 @@ Para mostrar las máquinas viturales que están activadas en XEN se usa el sigui
 $ egrep '(vmx|svm)' --color /proc/cpuinfo
 {% endhighlight %}
 
-Creación
---------
+Instalación de KVM
+------------------
 
-
-Para crear una máquina virtual –en el ejemplo se usa direccionamiento estático y la distribución debian jessie– ejecutamos el comando siguiente:
-
-{% highlight bash %}
-sudo xen-create-image --hostname=nombre \
-  --size=8Gb --memory=1024Mb --swap 1024Mb \
-  --ip=10.0.0.2 \
-  --netmask=255.255.255.0 \
-  --gateway=10.0.0.1 \
-  --vcpus=2 \
-  --lvm=vg0 \
-  --pygrub \
-  --dist=jessie
-{% endhighlight %}
-
-Al terminar la creación se genera texto con un resumen de la configuración de red y la contraseña root del sistema.
-Arranque
-
-El comando de creación del apartado anterior genera una archivo `.cfg` que debe ser invocado para cargar la máquina virtual creada. En el siguiente comando se muestra un ejemplo.
+El siguiente comando instalará lo necesario.
 
 {% highlight bash %}
-sudo xl create /path/archivo_generado.cfg
+$ sudo apt-get install qemu-kvm libvirt-bin 
 {% endhighlight %}
 
-Para que una máquina creada arranque al inicio con dom0 será necesario crear un enlace simbólico de su archivo de configuración al directorio `/etc/xen/auto`.
+Es muy probable que sea necesario añadir nuestro usuario al grupo libvirt-qemu, para coprobar si es así lanzaremos el comando id para ver si somos miembros del grupo.
 
 {% highlight bash %}
-sudo ln -s /etc/xen/archivo_generado.cfg /etc/xen/auto/nombre_enlace.cfg
+$ id $USER | grep libvirt
 {% endhighlight %}
+
+Debemos añadirnos al grupo manualmente para poder gestionar los huéspedes de nuestra máquina anfitrion. Para ello ejecutamos esto.
+
+{% highlight bash %}
+$ sudo adduser $USER libvirt-qemu
+{% endhighlight %}
+
+Si todo ha ido bien podremos ejecutar el siguiente comando sin ningún problema de permisos.
+
+{% highlight bash %}
+$ virsh list
+ Id    Name                           State
+----------------------------------------------------
+{% endhighlight %}
+
+El resultado debe ser el indicado ya que no hay ninguna máquina virtual funcionando.
+
