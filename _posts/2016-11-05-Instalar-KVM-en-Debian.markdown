@@ -19,13 +19,18 @@ Para mostrar las máquinas viturales que están activadas en XEN se usa el sigui
 $ egrep '(vmx|svm)' --color /proc/cpuinfo
 {% endhighlight %}
 
+Habilitación de virtualización en la BIOS
+-----------------------------------------
+
+Es necesario acceder a la BIOS de nuestra máquina y habilitar la capacidad de virtualización si es que no estuviera ya realizada.
+
 Instalación de KVM
 ------------------
 
 El siguiente comando instalará lo necesario.
 
 {% highlight bash %}
-$ sudo apt-get install qemu-kvm libvirt-bin 
+$ sudo apt-get install qemu-kvm libvirt-bin virtinst virt-viewer
 {% endhighlight %}
 
 Es muy probable que sea necesario añadir nuestro usuario al grupo libvirt-qemu, para coprobar si es así lanzaremos el comando id para ver si somos miembros del grupo.
@@ -38,6 +43,7 @@ Debemos añadirnos al grupo manualmente para poder gestionar los huéspedes de n
 
 {% highlight bash %}
 $ sudo adduser $USER libvirt-qemu
+$ sudo adduser $USER kvm
 {% endhighlight %}
 
 Si todo ha ido bien podremos ejecutar el siguiente comando sin ningún problema de permisos.
@@ -105,15 +111,15 @@ br0		8000.10bf4872a827	no		eth0
 {% endhighlight %}
 Trambién es necesario comprobar que la interfaz br0 tiene la IP desada y la interfaz eth0 no tiene IP.
 
-Crear una máquina Virtual desde consola
----------------------------------------
+Crear una máquina Virtual desde el terminal
+-------------------------------------------
 
-La configuración de una instalación KVM se guarda en un archivo con formato XML. 
+La configuración de una instalación KVM se guarda en un archivo con formato XML, en el ejemplo lo llamaremos debian8.xml. Una explicación de este formato se puede leer [aquí](https://libvirt.org/formatdomain.html).
 
 {% highlight xml %}
 <domain type='kvm'>
-  <name>alice</name>
-  <uuid>f5b8c05b-9c7a-3211-49b9-2bd635f7e2aa</uuid>
+  <name>debian8</name>
+  <uuid>f5b8c05b-9c7a-3211-49b9-2bd635f7e2af</uuid>
   <memory>1048576</memory>
   <currentMemory>1048576</currentMemory>
   <vcpu>1</vcpu>
@@ -130,18 +136,17 @@ La configuración de una instalación KVM se guarda en un archivo con formato XM
   <on_crash>destroy</on_crash>
   <devices>
     <emulator>/usr/bin/kvm</emulator>
-    <disk type="file" device="disk">
-      <driver name="qemu" type="raw"/>
-      <source file="/home/dev/images/alice.img"/>
-      <target dev="vda" bus="virtio"/>
-      <address type="pci" domain="0x0000" bus="0x00" slot="0x04" function="0x0"/>
-    </disk>
+    
     <disk type="file" device="cdrom">
       <driver name="qemu" type="raw"/>
-      <source file="/home/dev/iso/CentOS-6.5-x86_64-minimal.iso"/>
+      <source file="/media/os/debian_8/debian-8.5.0-amd64-DVD-1.iso"/>
       <target dev="hdc" bus="ide"/>
       <readonly/>
       <address type="drive" controller="0" bus="1" target="0" unit="0"/>
+    </disk>
+    <disk type='block' device='disk'>
+      <source dev='/dev/mapper/archivador-asterisk'/>
+      <target dev='hda' bus='ide'/>
     </disk>
     <interface type='bridge'>
       <source bridge='br0'/>
@@ -158,3 +163,25 @@ La configuración de una instalación KVM se guarda en un archivo con formato XM
   </devices>
 </domain>
 {% endhighlight %}
+
+Crearemos la máquina virtual con el siguiente comando y el archivo debian8.xml
+
+{% highlight bash %}
+$ sudo virsh create debian8.xml
+{% endhighlight %}
+
+Podemos comprobar si está funcionando correctamente con el comando siguiente.
+
+{% highlight bash %}
+$ sudo virsh list
+$ sudo virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 3     debian8                       running
+{% endhighlight %}
+
+En el archivo hemos definido dos maneras de acceder al la máquina virtual para hacer la instalación, mediante un cliente vnc como vinagre y por consola.
+
+Acceso a la MV mediante vinagre
+-------------------------------
+
