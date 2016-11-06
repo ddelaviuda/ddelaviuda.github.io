@@ -174,14 +174,21 @@ Podemos comprobar si está funcionando correctamente con el comando siguiente.
 
 {% highlight bash %}
 $ sudo virsh list
-$ sudo virsh list
  Id    Name                           State
 ----------------------------------------------------
  3     debian8                       running
 {% endhighlight %}
 
-En el archivo hemos definido dos maneras de acceder al la máquina virtual para hacer la instalación, mediante un cliente vnc como vinagre y por consola.
+En el archivo hemos definido dos maneras de acceder al la máquina virtual para hacer la instalación, mediante un cliente VNC como vinagre y por consola.
 
 Acceso a la MV mediante vinagre
 -------------------------------
 
+Primero debemos ver en qué puerto escucha el servidor VNC, para ello ejecutamos este comando.
+
+{% highlight bash %}
+sudo lsof -i -P | grep -i "libvirt"
+qemu-syst 1326 libvirt-qemu   16u  IPv4  16266      0t0  TCP *:5900 (LISTEN)
+{% endhighlight %}
+
+Vemos que es el puerto 5900, configuramos la IP del huesped y el puerto indicado en vinagre y accedemos. Allí podremos configurar debian8 como lo haríamos desde un CD o un USB.
