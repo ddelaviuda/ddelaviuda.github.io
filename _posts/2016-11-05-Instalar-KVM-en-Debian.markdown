@@ -184,11 +184,9 @@ En el archivo hemos definido dos maneras de acceder al la máquina virtual para 
 Alternativamente podemos hacer los siguiente.
 
 {% highlight bash %}
-# create a storage pool
+# mkdir -p /media/kvm/images
 
-root@dlp:~# mkdir -p /media/kvm/images
-
-root@dlp:~# virt-install \
+# virt-install \
 --name template \
 --ram 4096 \
 --disk path=/media/kvm/images/template.img,size=30 \
@@ -203,7 +201,7 @@ root@dlp:~# virt-install \
 Starting install...# installation starts
 
 
-# on initial boot after installing, push "e" key on the screen like follows
+# En la ventana inicial pulsar "e"
 
  +----------------------------------------------------------------------------+
  |*Debian GNU/Linux                                                           |
@@ -224,7 +222,7 @@ Starting install...# installation starts
       Press enter to boot the selected OS, `e' to edit the commands
       before booting or `c' for a command-line.
 
-# add virtual console like followsand push "Ctrl + x" key to proceed
+# Añadir consola virtual y pulsar  "Ctrl + x" para continuar.
 
  +---------------------------------------------------------------------------------------+
  |          search --no-floppy --fs-uuid --set=root  82c9915f-4b67-46cc-ac63-c6dd4d7662d1|
@@ -248,12 +246,12 @@ Starting install...# installation starts
       a command-line or ESC to discard edits and return to the GRUB menu.
   Booting a command list
 
-# after login with root account, enable the service like follows
+# Después de arrancar habilitar el servicio como sigue.
 
-root@debian:~# systemctl enable getty@ttyS0
+# systemctl enable getty@ttyS0
 
 Created symlink from /etc/systemd/system/getty.target.wants/getty@ttyS0.service to /lib/systemd/system/getty@.service.
-# it's OK, finish installation
+# Instalación terminada
 {% endhighlight %}
 
 Acceso a la MV mediante vinagre
