@@ -181,13 +181,88 @@ $ sudo virsh list
 
 En el archivo hemos definido dos maneras de acceder al la máquina virtual para hacer la instalación, mediante un cliente VNC como vinagre y por consola.
 
+Alternativamente podemos hacer los siguiente.
+
+{% highlight bash %}
+# create a storage pool
+
+root@dlp:~# mkdir -p /media/kvm/images
+
+root@dlp:~# virt-install \
+--name template \
+--ram 4096 \
+--disk path=/media/kvm/images/template.img,size=30 \
+--vcpus 2 \
+--os-type linux \
+--os-variant debianwheezy \
+--network bridge=br0 \
+--graphics none \
+--console pty,target_type=serial \
+--location 'http://ftp.jaist.ac.jp/pub/Linux/debian/dists/jessie/main/installer-amd64/' \
+--extra-args 'console=ttyS0,115200n8 serial'
+Starting install...# installation starts
+
+
+# on initial boot after installing, push "e" key on the screen like follows
+
+ +----------------------------------------------------------------------------+
+ |*Debian GNU/Linux                                                           |
+ | Advanced options for Debian GNU/Linux                                      |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ |                                                                            |
+ +----------------------------------------------------------------------------+
+
+      Use the ^ and v keys to select which entry is highlighted.
+      Press enter to boot the selected OS, `e' to edit the commands
+      before booting or `c' for a command-line.
+
+# add virtual console like followsand push "Ctrl + x" key to proceed
+
+ +---------------------------------------------------------------------------------------+
+ |          search --no-floppy --fs-uuid --set=root  82c9915f-4b67-46cc-ac63-c6dd4d7662d1|
+ |                                                                                       |
+ |        else                                                                           |
+ |          search --no-floppy --fs-uuid --set=root 82c9915f-4b67-46cc-ac63-c6dd4d7662d1 |
+ |                                                                                       |
+ |        fi                                                                             |
+ |        echo        'Loading Linux 3.16.0-4-amd64 ...'                                 |
+ |        linux        /vmlinuz-3.16.0-4-amd64 root=/dev/mapper/debian--vg-root ro quiet\|
+
+ |                     console=ttyS0,115200n8                                            |
+
+ |        echo        'Loading initial ramdisk ...'                                      |
+ |        initrd        /initrd.img-3.16.0-4-amd64                                       |
+ |                                                                                       |
+ +---------------------------------------------------------------------------------------+
+
+      Minimum Emacs-like screen editing is supported. TAB lists
+      completions. Press Ctrl-x or F10 to boot, Ctrl-c or F2 for
+      a command-line or ESC to discard edits and return to the GRUB menu.
+  Booting a command list
+
+# after login with root account, enable the service like follows
+
+root@debian:~# systemctl enable getty@ttyS0
+
+Created symlink from /etc/systemd/system/getty.target.wants/getty@ttyS0.service to /lib/systemd/system/getty@.service.
+# it's OK, finish installation
+{% endhighlight %}
+
 Acceso a la MV mediante vinagre
 -------------------------------
 
 Primero debemos ver en qué puerto escucha el servidor VNC, para ello ejecutamos este comando.
 
 {% highlight bash %}
-sudo lsof -i -P | grep -i "libvirt"
+$ sudo lsof -i -P | grep -i "libvirt"
 qemu-syst 1326 libvirt-qemu   16u  IPv4  16266      0t0  TCP *:5900 (LISTEN)
 {% endhighlight %}
 
