@@ -233,9 +233,7 @@ Starting install...# installation starts
  |        fi                                                                             |
  |        echo        'Loading Linux 3.16.0-4-amd64 ...'                                 |
  |        linux        /vmlinuz-3.16.0-4-amd64 root=/dev/mapper/debian--vg-root ro quiet\|
-
  |                     console=ttyS0,115200n8                                            |
-
  |        echo        'Loading initial ramdisk ...'                                      |
  |        initrd        /initrd.img-3.16.0-4-amd64                                       |
  |                                                                                       |
@@ -356,14 +354,40 @@ Si queremos montar la imagen .img para poder acceder por ssh con root podemos ha
 sudo mount -o loop,offset=1048576 /media/kvm/images/template.img /media/HDD-1T/
 {% endhighlight %}
 
+Debemos editar el archivo /etc/ssh/sshd_config modificando la línea de PermitRootLogin.
+
+{% highlight bash %}
+PermitRootLogin yes
+{% endhighlight %}
+
 Acceso a la MV mediante vinagre
 -------------------------------
 
-Primero debemos ver en qué puerto escucha el servidor VNC, para ello ejecutamos este comando.
+Es posible añadir dentro de <devices></devices> la siguiente línea para poder acceder por VNC a la máquina virtual, en el ejemplo llamaremos a la nueva plantilla templateVNC.xml.
+
+{% highlight bash %}
+<graphics type='vnc' port='-1' autoport="yes" listen='0.0.0.0'/>
+{% endhighlight %}
+
+Debemos actuar sobre la máquina para que recupere la configuración.
+
+{% highlight bash %}
+sudo virsh shutdown template shutdown
+sudo virsh undefine template
+sudo virsh define templateVNC.xml
+sudo virsh start template
+{% endhighlight %}
+
+Una vez arrancado el sistema con esto, debemos ver en qué puerto escucha el servidor VNC, para ello ejecutamos este comando.
 
 {% highlight bash %}
 $ sudo lsof -i -P | grep -i "libvirt"
 qemu-syst 1326 libvirt-qemu   16u  IPv4  16266      0t0  TCP *:5900 (LISTEN)
 {% endhighlight %}
 
-Vemos que es el puerto 5900, configuramos la IP del huesped y el puerto indicado en vinagre y accedemos. Allí podremos configurar debian8 como lo haríamos desde un CD o un USB.
+Vemos que es el puerto 5900, configuramos la IP del huesped y el puerto indicado en vinagre y accedemos. Allí podremos configurar debian8 como lo haríamos desde un CD o un USB si tomamos la primera opción de instalación.
+
+Cómo usar LVM junto con KVM
+----------------------
+
+Pendiente.
