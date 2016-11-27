@@ -2,7 +2,9 @@
 layout: post
 title:  "Generalidades SAT"
 date:   2016-08-13 10:39:22
-categories: redes
+categories: multimedia
+tags:
+- tv
 comments: true
 ---
 

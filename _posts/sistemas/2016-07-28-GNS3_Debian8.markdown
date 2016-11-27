@@ -2,7 +2,9 @@
 layout: post
 title:  "Instalación de GNS3 en Debian 8"
 date:   2016-07-28 10:39:22
-categories: redes
+categories: sistemas
+tags:
+- redes
 comments: true
 ---
 

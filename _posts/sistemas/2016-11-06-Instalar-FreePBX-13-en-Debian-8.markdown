@@ -3,6 +3,8 @@ layout: post
 title:  "Instalación de FreePBX 13 en Debian 8"
 date:   2016-11-06 18:39:22
 categories: sistemas
+tags:
+- voz
 comments: true
 ---
 Información obtenidad de [aquí](http://wiki.freepbx.org/display/FOP/Installing+FreePBX+13+on+Debian+8.1).

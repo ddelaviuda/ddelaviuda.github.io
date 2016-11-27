@@ -2,7 +2,7 @@
 layout: post
 title:  "Instalación de VMWARE Player en Debian 8"
 date:   2016-08-10 10:39:22
-categories: redes
+categories: sistemas
 comments: true
 ---
 

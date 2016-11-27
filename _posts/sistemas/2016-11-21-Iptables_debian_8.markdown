@@ -4,6 +4,8 @@ title:  "Iptables en Debian 8"
 date:   2016-11-21 09:39:22
 categories: sistemas
 comments: true
+tags:
+- seguridad
 ---
 Información obtenidad de [aquí](https://wiki.debian.org/iptables).
 

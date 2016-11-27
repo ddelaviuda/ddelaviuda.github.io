@@ -2,7 +2,10 @@
 layout: post
 title:  "¿Cómo saber qué puertos están abiertos y qué aplicación los escucha?"
 date:   2016-07-17 10:39:22
-categories: redes
+categories: sistemas
+tags:
+- seguridad
+- redes
 comments: true
 ---
 

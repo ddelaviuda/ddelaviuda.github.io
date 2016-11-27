@@ -2,7 +2,9 @@
 layout: post
 title:  "Generalidades de TDT"
 date:   2016-08-12 10:39:22
-categories: redes
+categories: multimedia
+tags:
+- tv
 comments: true
 ---
 

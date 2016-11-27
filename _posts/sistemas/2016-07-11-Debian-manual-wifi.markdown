@@ -2,7 +2,9 @@
 layout: post
 title:  "Configuración manual Wi-Fi en Debian"
 date:   2016-07-11 18:39:22
-categories: redes
+categories: sistemas
+tags:
+- redes
 ---
 Comandos de comprobación
 ------------------------

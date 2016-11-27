@@ -3,6 +3,8 @@ layout: post
 title:  "Reconexión WiFi automática con Raspberry Pi + Debian (Raspbian)"
 date:   2016-07-11 18:39:22
 categories: sistemas
+tags:
+- redes
 ---
 La configuración por defecto hace que cuando se pierde la conexión con el AP por reinicio o corte Raspbian no intenta conectar de nuevo. Para solucionar este pequeño inconveniente haremos las siguiente operación.
 
