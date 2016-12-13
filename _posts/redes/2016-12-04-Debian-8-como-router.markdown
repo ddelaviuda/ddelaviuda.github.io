@@ -94,5 +94,6 @@ $ sudo nano /etc/hosts
 
 A la izquierda situaremos la dirección IP y a la derecha el URL correspondiente. Siguiendo el ejemplo.
 
+{% highlight bash %}
 10.0.0.1	nombre-equipo-diez-cero-cero-uno
-
+{% endhighlight %}
