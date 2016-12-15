@@ -100,3 +100,15 @@ function buscador_ilo() {
 buscador_ilo $1
 {% endhighlight %}
 
+Acceso por consola a Debian 8 desde iLO
+---------------------------------------
+
+Para que Jessie nos envíe la información a la consola habrá que editar el archivo `/etc/default/grub` para añadir o modificar lo siguiente.
+
+{% highlight bash %}
+GRUB_TERMINAL="serial console"
+GRUB_SERIAL_COMMAND="serial --speed=9600 --unit=1 --word=8 --parity=no --stop=1"
+GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS1,9600n8"
+{% endhighlight %}
+
+Después será necesario ejecutar `sudo update-grub`. Jessie se encarga de escuchar el el puerto serial automáticamente cuando lo detecta en la configuración.
