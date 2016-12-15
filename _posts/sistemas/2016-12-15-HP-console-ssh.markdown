@@ -81,3 +81,22 @@ Starting virtual serial port.
 Press 'ESC (' to return to the CLI Session.
 {% endhighlight %}
 
+Cómo encontrar las ip de las interfaces ilO en nuestra red
+----------------------------------------------------------
+
+El siguiente script facilita la tarea de encontrar que IP le fue asignada por un --supuestamente existente-- servidor dhcp.
+
+{% highlight bash %}
+#!/bin/bash
+function buscador_ilo() {
+	if [ -z $1 ]; then
+		echo "ilo_list/<subred>"
+		echo "ejemplo: buscador_ilo 192.168.1.0/24"
+	else
+		sudo nmap -n -P0 -sS -p 17988 -oG - $1 | fgrep /open/ | awk '{print $2}'
+	fi
+}
+
+buscador_ilo $1
+{% endhighlight %}
+
