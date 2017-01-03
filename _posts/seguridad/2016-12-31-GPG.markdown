@@ -1,0 +1,88 @@
+---
+layout: post
+title:  "Cómo usar GNUPG en Debian, una implementación de OpenPGP"
+date:   2016-12-30 09:39:22
+categories: seguridad
+comments: true
+tags:
+- proxy
+---
+
+Información obtenida principalmente de [aquí](https://ekaia.org/blog/2009/05/10/creating-new-gpgkey/).
+
+Edición de gpg.conf
+-------------------
+
+Editamos el archivo de marras con `nano ~/.gnupg/gpg.conf` para incluir al final lo siguiente:
+
+{% highlight bash %}
+personal-digest-preferences SHA256
+cert-digest-algo SHA256
+default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP Uncompressed
+{% endhighlight %}
+
+Creación de la clave
+--------------------
+
+{% highlight bash %}
+ana@pryan:~$ gpg --gen-key
+ ...
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection? 4                       
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048) 4096           
+Requested keysize is 4096 bits                  
+Please specify how long the key should be valid.
+         0 = key does not expire
+        = key expires in n days
+      w = key expires in n weeks
+      m = key expires in n months
+      y = key expires in n years
+Key is valid for? (0)
+Key does not expire at all
+Is this correct? (y/N) y
+
+ ...
+
+Real name: Mi nombre
+Email address: mi@correo.com
+Comment:
+You are using the `utf-8' character set.
+You selected this USER-ID:
+    "Mi nombre <mi@correo.com>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
+You need a Passphrase to protect your secret key.
+
+ ...
+
+gpg: key 6AA15948 marked as ultimately trusted
+public and secret key created and signed.
+
+gpg: checking the trustdb
+
+ ...
+
+gpg: 3 marginal(s) needed, 1 complete(s) needed, classic trust model
+gpg: depth: 0  valid:   3  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 3u
+pub   4096R/6AA15948 2009-05-10
+      Key fingerprint = 7A33 ECAA 188B 96F2 7C91  7288 B346 4F89 6AA1 5948
+uid                  Mi nombre <mi@correo.com>
+
+Note that this key cannot be used for encryption.  You may want to use
+the command "--edit-key" to generate a subkey for this purpose.
+{% endhighlight %}
+
+Exportación de clave pública
+----------------------------
+
+Ejecutamos el siguiendo comando.
+
+{% highlight bash %}
+gpg --armor --export mi@correo.com > miClave.asc
+{% endhighlight %}
