@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Cómo usar GNUPG en Debian, una implementación de OpenPGP"
+title:  "Cómo usar GNUPG en Debian"
 date:   2016-12-30 09:39:22
 categories: seguridad
 comments: true
@@ -85,4 +85,36 @@ Ejecutamos el siguiendo comando.
 
 {% highlight bash %}
 gpg --armor --export mi@correo.com > miClave.asc
+{% endhighlight %}
+
+Importación de clave pública
+----------------------------
+
+Suponiendo que `clave.gpg` es un archivo con la clave pública de la persona con la que nos queremos comunicar. Debermos añadir esta clave de la siguiente forma.
+
+{% highlight bash %}
+gpg --import clave.gpg
+gpg: key 9E98BC16: public key imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+{% endhighlight %}
+
+Con `gpg --list-keys` mostraremos la lista de claves, las recientemente añadidas deberán aparecer.
+
+Cifrado de mensajes
+-------------------
+
+Para cifrar un mensaje `documento.txt` con una clave pública asociada a `mi@correo.com` y guardar el texto cifrado en `documento.gpg` ejecutamos lo siguiente.
+
+{% highlight bash %}
+gpg --output documento.gpg --encrypt --recipient mi@correo.com documento.txt
+{% endhighlight %}
+
+Descifrado de mensajes
+----------------------
+
+Para descifrar `documento.gpg` y guardarlo en `documento` ejecutamos lo siguiente.
+
+{% highlight bash %}
+gpg --output documento --decrypt documento.gpg
 {% endhighlight %}
