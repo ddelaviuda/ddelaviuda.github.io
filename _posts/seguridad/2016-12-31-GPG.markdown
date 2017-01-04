@@ -49,33 +49,50 @@ Is this correct? (y/N) y
 
  ...
 
-Real name: Mi nombre
-Email address: mi@correo.com
-Comment:
-You are using the `utf-8' character set.
-You selected this USER-ID:
-    "Mi nombre <mi@correo.com>"
+{% endhighlight %}
 
-Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
-You need a Passphrase to protect your secret key.
+Creación de subclaves
+---------------------
+
+Ahora crearemos una subclave sobre nuestra clave anterior.
+
+{% highlight bash %}
+gpg --edit-key mi@correo.com
+  ...
+Command> addkey
+Key is protected.
+
+You need a passphrase to unlock the secret key for
+user: "Mi nombre <mi@correo.org>"
+4096-bit RSA key, ID 6AA15948, created 2017-01-03
+
+Please select what kind of key you want:
+   (2) DSA (sign only)
+   (4) Elgamal (encrypt only)
+   (5) RSA (sign only)
+   (6) RSA (encrypt only)
+Your selection? 6
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048) 4096
+Requested keysize is 4096 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+        = key expires in n days
+      w = key expires in n weeks
+      m = key expires in n months
+      y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Thu 04 Jan 2018 20:31:27 CET
+Is this correct? (y/N) y
+Really create? (y/N) y
 
  ...
+{% endhighlight %}
 
-gpg: key 6AA15948 marked as ultimately trusted
-public and secret key created and signed.
-
-gpg: checking the trustdb
-
- ...
-
-gpg: 3 marginal(s) needed, 1 complete(s) needed, classic trust model
-gpg: depth: 0  valid:   3  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 3u
-pub   4096R/6AA15948 2009-05-10
-      Key fingerprint = 7A33 ECAA 188B 96F2 7C91  7288 B346 4F89 6AA1 5948
-uid                  Mi nombre <mi@correo.com>
-
-Note that this key cannot be used for encryption.  You may want to use
-the command "--edit-key" to generate a subkey for this purpose.
+Y después de crearla la guardamos.
+ 
+{% highlight bash %}
+Command> save
 {% endhighlight %}
 
 Exportación de clave pública
@@ -117,4 +134,31 @@ Para descifrar `documento.gpg` y guardarlo en `documento` ejecutamos lo siguient
 
 {% highlight bash %}
 gpg --output documento --decrypt documento.gpg
+{% endhighlight %}
+
+Otras cosas de interes
+----------------------
+
+Para comprobar la autenticidad de una clave podemos comprobar su "fingerprint" mediante el comando siguiente:
+
+{% highlight bash %}
+gpg --edit-key mi@correo.comando
+....
+Command> fpr
+pub  1024D/9E98BC16 1999-06-04 usuario (Executioner) <mi@correo.com>
+             Fingerprint: 268F 448F CCD7 AF34 183E  52D8 9BDE 1A08 9E98 BC16
+{% endhighlight %}
+
+Verificando con el originador que este código es idéntico.
+
+La firmaremos con:
+
+{% highlight bash %}
+Command> sign
+{% endhighlight %}
+
+Y comprobaremos las firmas con 
+
+{% highlight bash %}
+Command> check
 {% endhighlight %}
