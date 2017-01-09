@@ -60,7 +60,7 @@ timedatectl status
 Instalación de DAHDI
 --------------------
 
-Será necesario isntalarlo en caso de que sea necesario el empleo de tarjetas.
+Será necesario instalarlo en caso de que sea necesario el empleo de tarjetas.
 
 {% highlight bash %}
 cd /usr/src
@@ -71,7 +71,7 @@ make all && make install && make config
 systemctl start dahdi
 {% endhighlight %}
 
-Si falla reiniciar y tratar de isntalar las cabeceras.
+Si falla reiniciar y tratar de instalar las cabeceras.
 
 {% highlight bash %}
 apt-get install linux-headers*
