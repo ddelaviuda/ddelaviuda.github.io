@@ -7,7 +7,7 @@ tags:
 - voz
 comments: true
 ---
-Información obtenidad de [aquí](https://www.powerpbx.org/asterisk-freepbx-install-guide-debian-v8-asterisk-v13-freepbx-v13-v1).
+Información obtenidad de [aquí](https://www.powerpbx.org/asterisk-freepbx-install-guide-debian-v8-asterisk-v13-freepbx-v13-v1) y [aquí](http://wiki.freepbx.org/display/FOP/Installing+FreePBX+13+on+Debian+8.1#InstallingFreePBX13onDebian8.1-CompileandinstallDAHDI..)
 
 
 Configuración inicial
@@ -68,13 +68,28 @@ wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linu
 tar zxvf dahdi-linux-complete*
 cd /usr/src/dahdi-linux-complete*/
 make all && make install && make config
-systemctl start dahdi
 {% endhighlight %}
 
-Si falla reiniciar y tratar de instalar las cabeceras.
+Si falla `make all` hay que reiniciar y tratar de instalar las cabeceras.
 
 {% highlight bash %}
 apt-get install linux-headers*
+{% endhighlight %}
+
+Podemos comprobar is `dahdi` está funcionando con:
+
+{% highlight bash %}
+lsmod | grep dahdi
+dahdi_voicebus         53442  1 wctdm24xxp
+dahdi                 212264  2 wctdm24xxp,dahdi_voicebus
+crc_ccitt              12347  2 wctdm24xxp,dahdi
+{% endhighlight %}
+
+Con `dahdi_hardware` comprobaremos el harware conectado.
+
+{% highlight bash %}
+dahdi_hardware 
+pci:0000:04:05.0     wctdm24xxp+  d161:8005 Wildcard TDM410P
 {% endhighlight %}
 
 PJSIP
@@ -91,10 +106,15 @@ make distclean
 ./configure --enable-shared --disable-sound --disable-resample \
 --disable-video --disable-opencore-amr CFLAGS='-O2 -DNDEBUG'
 
-make uninstall && ldconfig && make dep && make && make install && ldconfig
+make uninstall
+ldconfig
+make dep
+make
+make install
+ldconfig
 {% endhighlight %}
 
-Para verificar la instalación `ldconfig -p | grep pj` que deberá mostrar varios ficheros `*.so` el el directorio `/usr/local/lib`.
+Su falla la instalación (make install) repetir de nuevo desde `ldconfig`. Depués, para verificar la instalación `ldconfig -p | grep pj` que deberá mostrar varios ficheros `*.so` el el directorio `/usr/local/lib`.
 
 Asterisk
 --------
