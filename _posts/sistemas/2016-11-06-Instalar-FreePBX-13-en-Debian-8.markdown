@@ -200,7 +200,8 @@ Y la configuración...
 
 {% highlight bash %}
 cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf_orig
-
+sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
 {% endhighlight %}
 
 Reiniciamos apache2.
