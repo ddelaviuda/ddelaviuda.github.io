@@ -21,7 +21,7 @@ $ sudo service sshd restart
 Probado con:
 ------------
 
-**Debian 8 (Jessie)**
+**Debian 8.6 (Jessie)**
 **Asterisk v13**
 **Freepbx v13**
 
@@ -151,30 +151,34 @@ Creación de los usuarios de asterisk
 
 {% highlight bash %}
 adduser asterisk --disabled-password --shell /sbin/nologin --gecos "Asterisk User"
-make && make install && chown -R asterisk. /var/lib/asterisk
+make 
+make install
+chown -R asterisk. /var/lib/asterisk
+chown -R asterisk. /etc/asterisk
+chown -R asterisk. /var/{lib,log,spool}/asterisk
+chown -R asterisk. /usr/lib/asterisk
 {% endhighlight %}
 
 Freepbx
 -------
 
+Haremos lo siguiente.
+
 {% highlight bash %}
 cd /usr/src
-git clone -b release/13.0 --single-branch https://github.com/FreePBX/framework.git freepbx
-
-cd /usr/src/freepbx
+wget http://mirror.freepbx.org/modules/packages/freepbx/freepbx-13.0-latest.tgz
+tar vxfz freepbx-13.0-latest.tgz
+rm -f freepbx-13.0-latest.tgz
+cd freepbx
 ./start_asterisk start
+./install -n --dbpass contraseña_mysql
 {% endhighlight %}
 
-Reemplazar "contraseña" con la contraseña del usuario root en MySQL.
-{% highlight bash %}
-./install -n --dbpass contraseña
-{% endhighlight %}
+Reemplazar "contraseña_mysql" con la contraseña del usuario root en MySQL.
 
 Instalación del los módulos mínimos.
 {% highlight bash %}
-fwconsole ma upgrade framework core voicemail sipsettings infoservices \
-featurecodeadmin logfiles callrecording cdr dashboard
-
+fwconsole ma upgrade framework core voicemail sipsettings infoservices featurecodeadmin logfiles callrecording cdr dashboard
 fwconsole restart
 fwconsole reload
 fwconsole chown
@@ -190,11 +194,25 @@ sed -i 's/\(APACHE_RUN_USER=\)\(.*\)/\1asterisk/g' /etc/apache2/envvars
 sed -i 's/\(APACHE_RUN_GROUP=\)\(.*\)/\1asterisk/g' /etc/apache2/envvars
 chown asterisk. /run/lock/apache2
 mv /var/www/html/index.html /var/www/html/index.html.disable
+{% endhighlight %}
+
+Y la configuración...
+
+{% highlight bash %}
+cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf_orig
+
+{% endhighlight %}
+
+Reiniciamos apache2.
+
+{% highlight bash %}
 systemctl restart apache2
 {% endhighlight %}
 
+Configurar FreePBX en arranque
+-------------------------------
 
-Configurar para que `Freepbx` comience al arrancar el sistema.
+Configurar para que `Freepbx` comience al arrancar el sistema requiere las siguientes operaciones.
 
 {% highlight bash %}
 nano /etc/systemd/system/freepbx.service
@@ -225,7 +243,7 @@ Ahora podremos accedemos al GUI de FreePBX en `http://iP_del_servidor`
 Tareas a realizar tras la instalación
 -------------------------------------
 
-Lo primero es bloquer el servidor de bases de datos.
+Lo primero es asegurar el servidor de bases de datos.
 
 {% highlight bash %}
 mysql_secure_installation
@@ -233,11 +251,9 @@ mysql_secure_installation
 
 Introduciremos la contraseña de `root` y diremos que sí (y) a todo.
 
-Configuración de la rotación de los logs para que no se acumulen.
+Configuración de la rotación de los logs para que no se acumulen editando `nano /etc/logrotate.d/asterisk` y añadiendo:
 
 {% highlight bash %}
-nano /etc/logrotate.d/asterisk
-
 /var/spool/mail/asterisk
 /var/log/asterisk/*log
 /var/log/asterisk/messages
@@ -264,16 +280,17 @@ CDR ODBC
 
 Se recomienda la instalación de este módulo aunque si `crd_mysql.so` está instalado esta parte es opcional.
 
-Insertaremos el siguiente texto empleando nuestro editor favorito, en este caso nano, ejecutamos `nano /etc/odbcinst.ini` y añadimos:
+Añadimos al fichero de configuración mediante `nano /etc/odbcinst.ini` el siguiente texto.
 
 {% highlight bash %}
-[MySQL] 
-Description = ODBC for MySQL 
-Driver = /usr/lib/x8664-linux-gnu/odbc/libmyodbc.so 
-Setup = /usr/lib/x8664-linux-gnu/odbc/libodbcmyS.so 
+[MySQL]
+Description = ODBC for MySQL
+Driver = /usr/lib/x86_64-linux-gnu/odbc/libmyodbc.so
+Setup = /usr/lib/x86_64-linux-gnu/odbc/libodbcmyS.so
 FileUsage = 1
 {% endhighlight %}
-y tambión `nano /etc/odbc.ini`:
+
+y también `nano /etc/odbc.ini`:
 
 {% highlight bash %}
 [MySQL-asteriskcdrdb] 
@@ -294,10 +311,10 @@ Ejecutamos:
 odbcinst -s -q
 {% endhighlight %}
 
-Debemos usar "usuario" y "clave" en /etc/asterisk/res_odbc_additional.conf para comprobar la conexión con la base de datos vía ODBC.
+Debemos usar "usuario" y "clave" en `/etc/asterisk/res_odbc_additional.conf` para comprobar la conexión con la base de datos vía ODBC.
 
 {% highlight bash %}
-isql -v MySQL-asteriskcdrdb usuario_freepbx 12e7c1f0c041ee853085624ec3bba112=
+isql -v MySQL-asteriskcdrdb usuario_freepbx clave_freepbx
 {% endhighlight %}
 
 Servidor TFTP
@@ -331,18 +348,4 @@ systemctl restart xinetd
 Toques finales
 --------------
 
-Cambiamos “upload_max_filesize” de 2M a 20M para permitir ficheros de audio mayores.
-
-Y editamos el siguiente fichero `nano +810/etc/php5/apache2/php.ini` para añadir `AllowOverride All` bajo `doc_root =` para que los fichers `.htaccess` esté activos.
-
-Editamos `nano +14 /etc/apache2/sites-available/000-default.conf` para añadir.
-
-{% highlight bash %}
-<Directory /var/www/html> AllowOverride All </Directory>
-{% endhighlight %}
-
-Finalmente reiniciamos Apache2.
-
-{% highlight bash %}
-service apache2 restart
-{% endhighlight %}
+Cambiamos “upload_max_filesize” de 2M a 20M para permitir ficheros de audio mayores editanado el siguiente fichero `nano +810/etc/php5/apache2/php.ini`. 
