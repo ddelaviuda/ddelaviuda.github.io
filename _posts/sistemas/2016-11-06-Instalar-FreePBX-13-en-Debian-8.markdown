@@ -151,8 +151,6 @@ Creación de los usuarios de asterisk
 
 {% highlight bash %}
 adduser asterisk --disabled-password --shell /sbin/nologin --gecos "Asterisk User"
-make 
-make install
 chown -R asterisk. /var/lib/asterisk
 chown -R asterisk. /etc/asterisk
 chown -R asterisk. /var/{lib,log,spool}/asterisk
