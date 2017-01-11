@@ -238,3 +238,34 @@ Si queremos que las unidades se monten en el arranque debemos editar /etc/fstab 
 /dev/archivador/data    /media/data      ext4   rw,noatime    0 0
 {% endhighlight %}
 
+Extra: Swap en un lvm
+---------------------
+
+Creamos el volúmen swap.
+
+{% highlight bash %}
+lvcreate --name swap --size 8G archivador
+{% endhighlight %}
+
+Le damos formato.
+
+{% highlight bash %}
+mkswap /dev/archivador/swap 
+Setting up swapspace version 1, size = 8388604 KiB
+no label, UUID=e16c3452-5bbf-4dde-a5a1-8f03ebacb5aa
+{% endhighlight %}
+
+Añadimos los siguiente a `/etc/fstab`.
+
+{% highlight bash %}
+/dev/mapper/archivador-swap none            swap    sw              0       0
+{% endhighlight %}
+
+Y reiniciamos o `swapon -va`.
+
+Para comprobar si está funcionando correctamente ejecutamos lo siguiente.
+
+{% highlight bash %}
+cat /proc/swaps
+free -h
+{% endhighlight %}

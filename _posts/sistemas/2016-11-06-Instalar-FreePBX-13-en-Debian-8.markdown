@@ -92,6 +92,25 @@ dahdi_hardware
 pci:0000:04:05.0     wctdm24xxp+  d161:8005 Wildcard TDM410P
 {% endhighlight %}
 
+Finalmente habrá que hacer propietario de los siguientes archivos al usuario `asterisk`, si no existen también habrá que crearlos.
+{% highlight bash %}
+touch /etc/dahdi/system.conf
+chown asterisk /etc/dahdi/system.conf
+touch /etc/modprobe.d/dahdi.conf
+chown asterisk /etc/modprobe.d/dahdi.conf
+touch /etc/dahdi/modules
+chown asterisk /etc/dahdi/modules
+touch /etc/asterisk/chan_dahdi_general.conf
+touch /etc/asterisk/chan_dahdi_groups.conf
+touch /etc/asterisk/chan_dahdi.conf
+chown asterisk /etc/asterisk/chan_dahdi_general.conf
+chown asterisk /etc/asterisk/chan_dahdi_groups.conf
+chown asterisk /etc/asterisk/chan_dahdi.conf
+mkdir wanpipe
+touch wanpipe/global.conf
+chown -R asterisk wanpipe/
+{% endhighlight %}
+
 PJSIP
 -----
 
@@ -200,6 +219,7 @@ Y la configuración...
 cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf_orig
 sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
+sed -i 's/\= 128M/\= 256M/g' /etc/php5/apache2/php.ini
 {% endhighlight %}
 
 Reiniciamos apache2.
