@@ -367,4 +367,4 @@ systemctl restart xinetd
 Toques finales
 --------------
 
-Cambiamos “upload_max_filesize” de 2M a 20M para permitir ficheros de audio mayores editanado el siguiente fichero `nano +810/etc/php5/apache2/php.ini`. 
+Cambiamos “upload_max_filesize” de 2M a 20M para permitir ficheros de audio mayores editanado el siguiente fichero `nano +810/etc/php5/apache2/php.ini`. Si va mos a usar dahdi, es conveniente ejecutar `dahdi_genconf`.
