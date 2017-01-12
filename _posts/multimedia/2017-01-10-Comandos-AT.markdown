@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Comandos AT modem GSM y Debian"
+title:  "Comandos AT y SMS con modem GSM y Debian"
 date:   2017-01-09 18:39:22
 categories: multimedia
 tags:
@@ -13,6 +13,10 @@ Probado con:
 
 **Debian 8.6 (Jessie)**
 **Módem ZTE WCDMA Technologies MSM**
+
+Comandos AT
+-----------
+-----------
 
 Configuración del módem
 -----------------------
@@ -112,4 +116,79 @@ Con la llamada el primer comando evita que se ignore el comando de hang up y el 
 {% highlight bash %}
 AT+CVHU=0
 ATH
+{% endhighlight %}
+
+Recepción y envío de de SMS de forma automatizada
+-------------------------------------------------
+-------------------------------------------------
+
+
+Vamos a emplear `smstools` para ello instalamos el software, más información sobre la herramienta [aquí](http://smstools3.kekekasvi.com).
+
+{% highlight bash %}
+apt-get install smstools
+{% endhighlight %}
+
+Para rellenar el archivo de configuración necesitamos saber el puerto como hicimos antes, del timo `ttyUSB0`.
+
+La configuración necesita editar un archivo .conf lo haremos así `nano /etc/smsd.conf`.
+
+Para añadir lo siguiente,
+
+{% highlight bash %}
+devices = GSM1
+outgoing = /var/spool/sms/outgoing
+checked = /var/spool/sms/checked
+incoming = /var/spool/sms/incoming
+logfile = /var/log/smstools/smsd.log
+infofile = /var/run/smstools/smsd.working
+pidfile = /var/run/smstools/smsd.pid
+outgoing = /var/spool/sms/outgoing
+checked = /var/spool/sms/checked
+failed = /var/spool/sms/failed
+incoming = /var/spool/sms/incoming
+sent = /var/spool/sms/sent
+receive_before_send = no
+autosplit = 3
+
+[GSM1]
+device = /dev/ttyUSB0
+incoming = yes
+baudrate = 115200
+memory_start = 1
+pin = 1111
+{% endhighlight %}
+
+El campo `boudrate` depende del modem, en el caso del ejemplo era un ZTE MF190.
+
+Una vez configurado habrá que reiniciar el servicio con `systemctl restart smstools.service`. He observado que es necesario reiniciar una vez más el sericio para que lleguen los SMS.
+
+Se puden leer los SMS recibidos en el directorio configurado por ejemplos así: `ls -l /var/spool/sms/incoming`. Si queremos ver que falla es útil revisar el log `/var/log/smstools/smsd.log`.
+
+Envío de SMS
+------------
+
+Será tan sencillo como situar un archivo de texto en el directorio `/var/spool/sms/outgoing` con el formato siguiente.
+
+{% highlight bash %}
+To: 34666666666
+
+Texto del SMS que deseamos enviar.
+{% endhighlight %}
+
+El teléfono debe incluir el prefijo del país sin el '+' y el texto debajo. Así de sencillo. Cuando la aplicación envía el SMS el programa mueve el fichero de texto a `/var/spool/sms/sent`.
+
+Gestores de eventos y alarmas
+-----------------------------
+
+Se puede encontrar un ejemplo de gestor hecho por el desarrollador en `/usr/share/doc/smstools/examples/scripts/smsevent`. Para que funcione hay que indicarle al programa dónde encontrar el gestor/guión. Para ello añadimos con `nano /etc/smsd.conf` lo siguiente.
+
+{% highlight bash %}
+eventhandler = /home/yo/smstools/mi_gestor_de_eventos
+{% endhighlight %}
+
+El gestor de alarmas es muy parecido pero se dispara si ocurre un error. Añadimos a `/etc/smsd.conf` lo siguiente.
+
+{% highlight bash %}
+alarmhandler = /home/yo/smstools/mi_gestor_de_alarmas
 {% endhighlight %}
