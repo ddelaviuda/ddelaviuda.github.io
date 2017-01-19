@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Comandos AT y SMS con modem GSM y Debian"
+title:  "Llamadas y envío de SMS con modem GSM en Debian"
 date:   2017-01-09 18:39:22
 categories: multimedia
 tags:
@@ -15,7 +15,6 @@ Probado con:
 **Módem ZTE WCDMA Technologies MSM**
 
 Comandos AT
------------
 -----------
 
 Configuración del módem
@@ -120,7 +119,6 @@ ATH
 
 Recepción y envío de de SMS de forma automatizada
 -------------------------------------------------
--------------------------------------------------
 
 
 Vamos a emplear `smstools` para ello instalamos el software, más información sobre la herramienta [aquí](http://smstools3.kekekasvi.com).
@@ -192,3 +190,6 @@ El gestor de alarmas es muy parecido pero se dispara si ocurre un error. Añadim
 {% highlight bash %}
 alarmhandler = /home/yo/smstools/mi_gestor_de_alarmas
 {% endhighlight %}
+
+Recepción de llamadas y eventos de respuesta
+--------------------------------------------
