@@ -27,7 +27,7 @@ Ahora creamos un servicio con el comando `nano /etc/systemd/system/gsm-modem-cam
 
 {% highlight bash %}
 [Unit]
-After=smstools.service
+Before=smstools.service
 
 [Service]
 ExecStart=/usr/local/sbin/modem_gsm.sh
