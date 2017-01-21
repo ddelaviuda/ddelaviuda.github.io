@@ -40,4 +40,4 @@ Una vez creado reiniciamos el demonio systectl con `systemctl daemon-reload` y h
 
 Listo para arrancar en el siguiente reinicio.
 
-
+Con el comando `systemd-analyze plot > /tmp/plot.svg` podemos generar un archivo `.svg` para ver el gráfico del la secuencia de arranque.
