@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Servicio personalizado con un guión en systemctl"
+title:  "Servicio personalizado con un script en systemctl"
 date:   2017-01-12 18:39:22
 categories: sistemas
 tags:
