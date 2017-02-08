@@ -71,3 +71,8 @@ sudo iptables -t filter -A INPUT -p udp -s 20.0.0.0/24 -d 192.168.1.1/24 -j DROP
 {% endhighlight %}
 
 
+Para comprobar qué reglas se están aplicando usamos el comando siguiente:
+
+{% highlight bash %}
+sudo iptables -L -n -t nat -v
+{% endhighlight %}
