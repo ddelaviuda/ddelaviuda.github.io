@@ -77,7 +77,3 @@ Cuenca
 | 59 | 21 | 32 | 48 | 53 | 40 | 44 | 36
 |---
 
-Televisión digital por Satélite
--------------------------------
-
-DVB-S
