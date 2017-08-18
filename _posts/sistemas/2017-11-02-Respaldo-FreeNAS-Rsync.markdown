@@ -14,17 +14,17 @@ Se parte de que en FreeNAS se ha activado y configurado rsync en `Services --> R
 Copiado desde Debian hacia FreeNAS
 ----------------------------------
 
-Ejecutar la siguiente línea, donde 
+Ejecutar la siguiente línea, donde
 
 
 {% highlight bash %}
 rsync -avz --delete /nombre_directorio_local IP_servidor_freenas::nombre_module_rsync
 {% endhighlight %}
 
-Copiado desde FreeNAS hacia Debian 
+Copiado desde FreeNAS hacia Debian
 ----------------------------------
 
-Ejecutar la siguiente línea, donde 
+Ejecutar la siguiente línea, donde
 
 
 {% highlight bash %}
@@ -48,17 +48,15 @@ Y añadimos la siguiente línea.
 Encendido y apagado autmático
 -----------------------------
 
-*Configuración de acceso ssh mediante clave pública/privada*
+Para el encendido se podría usar `wol` --*wake on lan*-- pero en este caso se optará por mandar comando a la ILO de un Proliant GEN8 quedando:
 
-Generación de las claves en el servidor ssh, se pedirá por pantalla confirmar la localización de los archivos a generar y una contraseña (passphrase) que se podrá omitir o introducir dos veces.
+Para encender:
 
 {% highlight bash %}
-ssh-keygen -b 4096
+ssh -t usuario@ip_ilo power on
 {% endhighlight %}
 
-La localización por defecto es `~/.ssh/id_rsa` para la clave privada y `~/.ssh/id_rsa.pub` para la clave pública.
-
-Apagado remoto de servidor Linux.
+Para apagar enviando el comando a freenas.
 
 {% highlight bash %}
 ssh -t root@10.0.0.10 'shutdown -p now'
