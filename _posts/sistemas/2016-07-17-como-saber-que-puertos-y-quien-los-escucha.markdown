@@ -68,3 +68,9 @@ sudo nmap -sN -p T:#puerto URL
 {% endhighlight %}
 
 Donde T se refiere a *tcp* y puede cambiarse por U para comprobar el protocolo *udp*, **#puerto** es el número de puerto y *URL* es la dirección del host a comprobar.
+
+Se puede obtener algo más de información con las siguientes opciones.
+
+{% highlight bash %}
+sudo nmap -p 1-65535 -T4 -A -v URL
+{% endhighlight %}
