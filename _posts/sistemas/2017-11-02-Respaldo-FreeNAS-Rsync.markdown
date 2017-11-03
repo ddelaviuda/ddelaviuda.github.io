@@ -48,15 +48,18 @@ Y añadimos la siguiente línea.
 Encendido y apagado autmático
 -----------------------------
 
-**Configuración de acceso ssh mediante clave pública/privada**
+*Configuración de acceso ssh mediante clave pública/privada*
 
-Editamos crontab como root para que haga el trabajo por nosotros cada día a las 18:30.
+Generación de las claves en el servidor ssh, se pedirá por pantalla confirmar la localización de los archivos a generar y una contraseña (passphrase) que se podrá omitir o introducir dos veces.
 
 {% highlight bash %}
-sudo crontab -e
+ssh-keygen -b 4096
 {% endhighlight %}
 
-Y añadimos la siguiente línea.
+La localización por defecto es `~/.ssh/id_rsa` para la clave privada y `~/.ssh/id_rsa.pub` para la clave pública.
+
+Apagado remoto de servidor Linux.
+
 {% highlight bash %}
-30 18 * * * rsync -az --delete  /nombre_directorio_local IP_servidor_freenas::nombre_module_rsync
+ssh -t root@10.0.0.10 'shutdown -p now'
 {% endhighlight %}
