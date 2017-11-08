@@ -61,3 +61,11 @@ Para apagar enviando el comando a freenas.
 {% highlight bash %}
 ssh -t root@10.0.0.10 'shutdown -p now'
 {% endhighlight %}
+
+El encendido del sistema local se programará en la bios, el apagado con el comando siguiente añadido al final del fichero `/etc/rc.local` indicando la hora y minuto en que se realizará el apagado.
+
+{% highlight bash %}
+shutdown -h #horas:#minutos
+{% endhighlight %}
+
+
