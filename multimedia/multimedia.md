@@ -10,8 +10,8 @@ permalink: /multimedia/
     {% for post in site.posts %}
     {% if post.categories contains 'multimedia' or post.tags contains 'tv' or post.tags contains 'voz' %}
       <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+<!--        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+-->        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       </li>
     {% endif %}
     {% endfor %}

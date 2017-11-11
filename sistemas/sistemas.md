@@ -10,7 +10,7 @@ permalink: /sistemas/
     {% for post in site.posts %}
     {% if post.categories contains 'sistemas' or post.tags contains 'sistemas' %}
       <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+<!--        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span> -->
         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       </li>
     {% endif %}
