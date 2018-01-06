@@ -2,7 +2,7 @@
 layout: post
 title:  "Criptografía elemental"
 date:   2016-07-08 18:39:22
-categories: seguridad
+categories: ciberseguridad
 tags:
 ---
 Definición de código criptográfico

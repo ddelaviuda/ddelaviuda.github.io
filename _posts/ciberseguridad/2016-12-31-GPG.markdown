@@ -2,7 +2,7 @@
 layout: post
 title:  "Cómo usar GNUPG en Debian"
 date:   2016-12-30 09:39:22
-categories: seguridad
+categories: ciberseguridad
 comments: true
 tags:
 - proxy
