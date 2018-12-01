@@ -15,3 +15,5 @@ kramdown:
 #redcarpet
 #kramdown
 #permalink: pretty
+
+theme: jekyll-theme-merlot
