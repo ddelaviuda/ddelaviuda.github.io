@@ -1,1 +1,2 @@
-# blog.telectric.es
+# blog.atelia.es
+# https://ddelaviuda.github.io
